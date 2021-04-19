@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="26a523fd09854c1cbf8d1ed0365103fa" Name="Diagram1">
+        <EntityTypeShape EntityType="QLHeThongDatVeMayBayModel.ACCOUNT" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHeThongDatVeMayBayModel.CHUYENBAY" Width="1.5" PointX="9.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHeThongDatVeMayBayModel.DATVE" Width="1.5" PointX="14.375" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHeThongDatVeMayBayModel.DOANHTHU" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHeThongDatVeMayBayModel.HANGMAYBAY" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHeThongDatVeMayBayModel.HOADON" Width="1.5" PointX="16.625" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHeThongDatVeMayBayModel.KHUYENMAI" Width="1.5" PointX="2.875" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHeThongDatVeMayBayModel.LOAIQUYEN" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHeThongDatVeMayBayModel.LOAIVE" Width="1.5" PointX="12" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHeThongDatVeMayBayModel.MAYBAY" Width="1.5" PointX="7.5" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHeThongDatVeMayBayModel.USER" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLHeThongDatVeMayBayModel.VEMAYBAY" Width="1.5" PointX="12" PointY="1.25" IsExpanded="true" />
+        <AssociationConnector Association="QLHeThongDatVeMayBayModel.FK_ACCOUNT_LOAIQUYEN" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHeThongDatVeMayBayModel.FK_HANGMAYBAY_ACCOUNT" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHeThongDatVeMayBayModel.FK_USER_ACCOUNT" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHeThongDatVeMayBayModel.FK_CHUYENBAY_MAYBAY" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHeThongDatVeMayBayModel.FK_VEMAYBAY_CHUYENBAY" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHeThongDatVeMayBayModel.FK_DATVE_USER" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="QLHeThongDatVeMayBayModel.FK_DATVE_VEMAYBAY" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHeThongDatVeMayBayModel.FK_HOADON_DATVE" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHeThongDatVeMayBayModel.FK_MAYBAY_HANGMAYBAY" ManuallyRouted="false" />
+        <AssociationConnector Association="QLHeThongDatVeMayBayModel.FK_VEMAYBAY_LOAIVE" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

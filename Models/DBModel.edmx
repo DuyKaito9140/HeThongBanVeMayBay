@@ -1,0 +1,779 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QLHeThongDatVeMayBayModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ACCOUNT">
+          <Key>
+            <PropertyRef Name="idAccount" />
+          </Key>
+          <Property Name="idAccount" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TenDangNhap" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="idQuyen" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CHUYENBAY">
+          <Key>
+            <PropertyRef Name="idChuyenBay" />
+          </Key>
+          <Property Name="idChuyenBay" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NgayBay" Type="date" />
+          <Property Name="GioBay" Type="nvarchar" MaxLength="10" />
+          <Property Name="GioDen" Type="nvarchar" MaxLength="10" />
+          <Property Name="NoiDi" Type="nvarchar" MaxLength="50" />
+          <Property Name="NoiDen" Type="nvarchar" MaxLength="50" />
+          <Property Name="idMayBay" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="DATVE">
+          <Key>
+            <PropertyRef Name="idDatVe" />
+          </Key>
+          <Property Name="idDatVe" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="idUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgayDatVe" Type="date" />
+          <Property Name="idVe" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="DOANHTHU">
+          <Key>
+            <PropertyRef Name="idDoanhThu" />
+          </Key>
+          <Property Name="idDoanhThu" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ThangNamTK" Type="date" />
+          <Property Name="TongSoHD" Type="int" />
+          <Property Name="TongDT" Type="int" />
+        </EntityType>
+        <EntityType Name="HANGMAYBAY">
+          <Key>
+            <PropertyRef Name="idHang" />
+          </Key>
+          <Property Name="idHang" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TenHang" Type="nvarchar" MaxLength="50" />
+          <Property Name="SdtHang" Type="nvarchar" MaxLength="12" />
+          <Property Name="EmailHang" Type="nvarchar" MaxLength="50" />
+          <Property Name="idAccount" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="HOADON">
+          <Key>
+            <PropertyRef Name="idHoaDon" />
+          </Key>
+          <Property Name="idHoaDon" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NgayXuatHoaDon" Type="date" />
+          <Property Name="TongTienHD" Type="int" />
+          <Property Name="idDatVe" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="KHUYENMAI">
+          <Key>
+            <PropertyRef Name="idKhuyenMai" />
+          </Key>
+          <Property Name="idKhuyenMai" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MaKhuyenMai" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgayBatDauKM" Type="date" />
+          <Property Name="NgayKetThucKM" Type="date" />
+          <Property Name="ChiTietMoTaKM" Type="ntext" />
+          <Property Name="GiaTriKM" Type="int" />
+        </EntityType>
+        <EntityType Name="LOAIQUYEN">
+          <Key>
+            <PropertyRef Name="idQuyen" />
+          </Key>
+          <Property Name="idQuyen" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TenQuyen" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LOAIVE">
+          <Key>
+            <PropertyRef Name="idLoaiVe" />
+          </Key>
+          <Property Name="idLoaiVe" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TenLoaiVe" Type="nvarchar" MaxLength="50" />
+          <Property Name="ThemSoKg" Type="int" />
+          <Property Name="TienTraThem" Type="int" />
+        </EntityType>
+        <EntityType Name="MAYBAY">
+          <Key>
+            <PropertyRef Name="idMayBay" />
+          </Key>
+          <Property Name="idMayBay" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TenMayBay" Type="nvarchar" MaxLength="50" />
+          <Property Name="SoLuongKhach" Type="int" />
+          <Property Name="idHang" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgaySinh" Type="date" />
+          <Property Name="GioiTinh" Type="nvarchar" MaxLength="12" />
+          <Property Name="DiaChi" Type="ntext" />
+          <Property Name="Sdt" Type="nvarchar" MaxLength="12" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cmnd" Type="nvarchar" MaxLength="12" />
+          <Property Name="QuocTich" Type="nvarchar" MaxLength="50" />
+          <Property Name="idAccount" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="VEMAYBAY">
+          <Key>
+            <PropertyRef Name="idVe" />
+          </Key>
+          <Property Name="idVe" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="idChuyenBay" Type="nvarchar" MaxLength="50" />
+          <Property Name="idLoaiVe" Type="nvarchar" MaxLength="50" />
+          <Property Name="SoKgHanhLy" Type="int" />
+          <Property Name="GiaVe" Type="int" />
+        </EntityType>
+        <Association Name="FK_ACCOUNT_LOAIQUYEN">
+          <End Role="LOAIQUYEN" Type="Self.LOAIQUYEN" Multiplicity="0..1" />
+          <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAIQUYEN">
+              <PropertyRef Name="idQuyen" />
+            </Principal>
+            <Dependent Role="ACCOUNT">
+              <PropertyRef Name="idQuyen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CHUYENBAY_MAYBAY">
+          <End Role="MAYBAY" Type="Self.MAYBAY" Multiplicity="0..1" />
+          <End Role="CHUYENBAY" Type="Self.CHUYENBAY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MAYBAY">
+              <PropertyRef Name="idMayBay" />
+            </Principal>
+            <Dependent Role="CHUYENBAY">
+              <PropertyRef Name="idMayBay" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DATVE_USER">
+          <End Role="USER" Type="Self.USER" Multiplicity="0..1" />
+          <End Role="DATVE" Type="Self.DATVE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="DATVE">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DATVE_VEMAYBAY">
+          <End Role="VEMAYBAY" Type="Self.VEMAYBAY" Multiplicity="0..1" />
+          <End Role="DATVE" Type="Self.DATVE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VEMAYBAY">
+              <PropertyRef Name="idVe" />
+            </Principal>
+            <Dependent Role="DATVE">
+              <PropertyRef Name="idVe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HANGMAYBAY_ACCOUNT">
+          <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="0..1" />
+          <End Role="HANGMAYBAY" Type="Self.HANGMAYBAY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCOUNT">
+              <PropertyRef Name="idAccount" />
+            </Principal>
+            <Dependent Role="HANGMAYBAY">
+              <PropertyRef Name="idAccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOADON_DATVE">
+          <End Role="DATVE" Type="Self.DATVE" Multiplicity="0..1" />
+          <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DATVE">
+              <PropertyRef Name="idDatVe" />
+            </Principal>
+            <Dependent Role="HOADON">
+              <PropertyRef Name="idDatVe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MAYBAY_HANGMAYBAY">
+          <End Role="HANGMAYBAY" Type="Self.HANGMAYBAY" Multiplicity="0..1" />
+          <End Role="MAYBAY" Type="Self.MAYBAY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HANGMAYBAY">
+              <PropertyRef Name="idHang" />
+            </Principal>
+            <Dependent Role="MAYBAY">
+              <PropertyRef Name="idHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_ACCOUNT">
+          <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="0..1" />
+          <End Role="USER" Type="Self.USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCOUNT">
+              <PropertyRef Name="idAccount" />
+            </Principal>
+            <Dependent Role="USER">
+              <PropertyRef Name="idAccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VEMAYBAY_CHUYENBAY">
+          <End Role="CHUYENBAY" Type="Self.CHUYENBAY" Multiplicity="0..1" />
+          <End Role="VEMAYBAY" Type="Self.VEMAYBAY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHUYENBAY">
+              <PropertyRef Name="idChuyenBay" />
+            </Principal>
+            <Dependent Role="VEMAYBAY">
+              <PropertyRef Name="idChuyenBay" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VEMAYBAY_LOAIVE">
+          <End Role="LOAIVE" Type="Self.LOAIVE" Multiplicity="0..1" />
+          <End Role="VEMAYBAY" Type="Self.VEMAYBAY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAIVE">
+              <PropertyRef Name="idLoaiVe" />
+            </Principal>
+            <Dependent Role="VEMAYBAY">
+              <PropertyRef Name="idLoaiVe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLHeThongDatVeMayBayModelStoreContainer">
+          <EntitySet Name="ACCOUNT" EntityType="Self.ACCOUNT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CHUYENBAY" EntityType="Self.CHUYENBAY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DATVE" EntityType="Self.DATVE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DOANHTHU" EntityType="Self.DOANHTHU" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HANGMAYBAY" EntityType="Self.HANGMAYBAY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HOADON" EntityType="Self.HOADON" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KHUYENMAI" EntityType="Self.KHUYENMAI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOAIQUYEN" EntityType="Self.LOAIQUYEN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOAIVE" EntityType="Self.LOAIVE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MAYBAY" EntityType="Self.MAYBAY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER" EntityType="Self.USER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VEMAYBAY" EntityType="Self.VEMAYBAY" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ACCOUNT_LOAIQUYEN" Association="Self.FK_ACCOUNT_LOAIQUYEN">
+            <End Role="LOAIQUYEN" EntitySet="LOAIQUYEN" />
+            <End Role="ACCOUNT" EntitySet="ACCOUNT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CHUYENBAY_MAYBAY" Association="Self.FK_CHUYENBAY_MAYBAY">
+            <End Role="MAYBAY" EntitySet="MAYBAY" />
+            <End Role="CHUYENBAY" EntitySet="CHUYENBAY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DATVE_USER" Association="Self.FK_DATVE_USER">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="DATVE" EntitySet="DATVE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DATVE_VEMAYBAY" Association="Self.FK_DATVE_VEMAYBAY">
+            <End Role="VEMAYBAY" EntitySet="VEMAYBAY" />
+            <End Role="DATVE" EntitySet="DATVE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HANGMAYBAY_ACCOUNT" Association="Self.FK_HANGMAYBAY_ACCOUNT">
+            <End Role="ACCOUNT" EntitySet="ACCOUNT" />
+            <End Role="HANGMAYBAY" EntitySet="HANGMAYBAY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOADON_DATVE" Association="Self.FK_HOADON_DATVE">
+            <End Role="DATVE" EntitySet="DATVE" />
+            <End Role="HOADON" EntitySet="HOADON" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MAYBAY_HANGMAYBAY" Association="Self.FK_MAYBAY_HANGMAYBAY">
+            <End Role="HANGMAYBAY" EntitySet="HANGMAYBAY" />
+            <End Role="MAYBAY" EntitySet="MAYBAY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_ACCOUNT" Association="Self.FK_USER_ACCOUNT">
+            <End Role="ACCOUNT" EntitySet="ACCOUNT" />
+            <End Role="USER" EntitySet="USER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VEMAYBAY_CHUYENBAY" Association="Self.FK_VEMAYBAY_CHUYENBAY">
+            <End Role="CHUYENBAY" EntitySet="CHUYENBAY" />
+            <End Role="VEMAYBAY" EntitySet="VEMAYBAY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VEMAYBAY_LOAIVE" Association="Self.FK_VEMAYBAY_LOAIVE">
+            <End Role="LOAIVE" EntitySet="LOAIVE" />
+            <End Role="VEMAYBAY" EntitySet="VEMAYBAY" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLHeThongDatVeMayBayModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ACCOUNT">
+          <Key>
+            <PropertyRef Name="idAccount" />
+          </Key>
+          <Property Name="idAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenDangNhap" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="idQuyen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LOAIQUYEN" Relationship="Self.FK_ACCOUNT_LOAIQUYEN" FromRole="ACCOUNT" ToRole="LOAIQUYEN" />
+          <NavigationProperty Name="HANGMAYBAYs" Relationship="Self.FK_HANGMAYBAY_ACCOUNT" FromRole="ACCOUNT" ToRole="HANGMAYBAY" />
+          <NavigationProperty Name="USERs" Relationship="Self.FK_USER_ACCOUNT" FromRole="ACCOUNT" ToRole="USER" />
+        </EntityType>
+        <EntityType Name="CHUYENBAY">
+          <Key>
+            <PropertyRef Name="idChuyenBay" />
+          </Key>
+          <Property Name="idChuyenBay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NgayBay" Type="DateTime" Precision="0" />
+          <Property Name="GioBay" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="GioDen" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="NoiDi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NoiDen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="idMayBay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MAYBAY" Relationship="Self.FK_CHUYENBAY_MAYBAY" FromRole="CHUYENBAY" ToRole="MAYBAY" />
+          <NavigationProperty Name="VEMAYBAYs" Relationship="Self.FK_VEMAYBAY_CHUYENBAY" FromRole="CHUYENBAY" ToRole="VEMAYBAY" />
+        </EntityType>
+        <EntityType Name="DATVE">
+          <Key>
+            <PropertyRef Name="idDatVe" />
+          </Key>
+          <Property Name="idDatVe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="idUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NgayDatVe" Type="DateTime" Precision="0" />
+          <Property Name="idVe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="USER" Relationship="Self.FK_DATVE_USER" FromRole="DATVE" ToRole="USER" />
+          <NavigationProperty Name="VEMAYBAY" Relationship="Self.FK_DATVE_VEMAYBAY" FromRole="DATVE" ToRole="VEMAYBAY" />
+          <NavigationProperty Name="HOADONs" Relationship="Self.FK_HOADON_DATVE" FromRole="DATVE" ToRole="HOADON" />
+        </EntityType>
+        <EntityType Name="DOANHTHU">
+          <Key>
+            <PropertyRef Name="idDoanhThu" />
+          </Key>
+          <Property Name="idDoanhThu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ThangNamTK" Type="DateTime" Precision="0" />
+          <Property Name="TongSoHD" Type="Int32" />
+          <Property Name="TongDT" Type="Int32" />
+        </EntityType>
+        <EntityType Name="HANGMAYBAY">
+          <Key>
+            <PropertyRef Name="idHang" />
+          </Key>
+          <Property Name="idHang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenHang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SdtHang" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="EmailHang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="idAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ACCOUNT" Relationship="Self.FK_HANGMAYBAY_ACCOUNT" FromRole="HANGMAYBAY" ToRole="ACCOUNT" />
+          <NavigationProperty Name="MAYBAYs" Relationship="Self.FK_MAYBAY_HANGMAYBAY" FromRole="HANGMAYBAY" ToRole="MAYBAY" />
+        </EntityType>
+        <EntityType Name="HOADON">
+          <Key>
+            <PropertyRef Name="idHoaDon" />
+          </Key>
+          <Property Name="idHoaDon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NgayXuatHoaDon" Type="DateTime" Precision="0" />
+          <Property Name="TongTienHD" Type="Int32" />
+          <Property Name="idDatVe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DATVE" Relationship="Self.FK_HOADON_DATVE" FromRole="HOADON" ToRole="DATVE" />
+        </EntityType>
+        <EntityType Name="KHUYENMAI">
+          <Key>
+            <PropertyRef Name="idKhuyenMai" />
+          </Key>
+          <Property Name="idKhuyenMai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaKhuyenMai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NgayBatDauKM" Type="DateTime" Precision="0" />
+          <Property Name="NgayKetThucKM" Type="DateTime" Precision="0" />
+          <Property Name="ChiTietMoTaKM" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GiaTriKM" Type="Int32" />
+        </EntityType>
+        <EntityType Name="LOAIQUYEN">
+          <Key>
+            <PropertyRef Name="idQuyen" />
+          </Key>
+          <Property Name="idQuyen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenQuyen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ACCOUNTs" Relationship="Self.FK_ACCOUNT_LOAIQUYEN" FromRole="LOAIQUYEN" ToRole="ACCOUNT" />
+        </EntityType>
+        <EntityType Name="LOAIVE">
+          <Key>
+            <PropertyRef Name="idLoaiVe" />
+          </Key>
+          <Property Name="idLoaiVe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenLoaiVe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ThemSoKg" Type="Int32" />
+          <Property Name="TienTraThem" Type="Int32" />
+          <NavigationProperty Name="VEMAYBAYs" Relationship="Self.FK_VEMAYBAY_LOAIVE" FromRole="LOAIVE" ToRole="VEMAYBAY" />
+        </EntityType>
+        <EntityType Name="MAYBAY">
+          <Key>
+            <PropertyRef Name="idMayBay" />
+          </Key>
+          <Property Name="idMayBay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenMayBay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SoLuongKhach" Type="Int32" />
+          <Property Name="idHang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CHUYENBAYs" Relationship="Self.FK_CHUYENBAY_MAYBAY" FromRole="MAYBAY" ToRole="CHUYENBAY" />
+          <NavigationProperty Name="HANGMAYBAY" Relationship="Self.FK_MAYBAY_HANGMAYBAY" FromRole="MAYBAY" ToRole="HANGMAYBAY" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HoTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+          <Property Name="GioiTinh" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sdt" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cmnd" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="QuocTich" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="idAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ACCOUNT" Relationship="Self.FK_USER_ACCOUNT" FromRole="USER" ToRole="ACCOUNT" />
+          <NavigationProperty Name="DATVEs" Relationship="Self.FK_DATVE_USER" FromRole="USER" ToRole="DATVE" />
+        </EntityType>
+        <EntityType Name="VEMAYBAY">
+          <Key>
+            <PropertyRef Name="idVe" />
+          </Key>
+          <Property Name="idVe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="idChuyenBay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="idLoaiVe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SoKgHanhLy" Type="Int32" />
+          <Property Name="GiaVe" Type="Int32" />
+          <NavigationProperty Name="CHUYENBAY" Relationship="Self.FK_VEMAYBAY_CHUYENBAY" FromRole="VEMAYBAY" ToRole="CHUYENBAY" />
+          <NavigationProperty Name="DATVEs" Relationship="Self.FK_DATVE_VEMAYBAY" FromRole="VEMAYBAY" ToRole="DATVE" />
+          <NavigationProperty Name="LOAIVE" Relationship="Self.FK_VEMAYBAY_LOAIVE" FromRole="VEMAYBAY" ToRole="LOAIVE" />
+        </EntityType>
+        <Association Name="FK_ACCOUNT_LOAIQUYEN">
+          <End Role="LOAIQUYEN" Type="Self.LOAIQUYEN" Multiplicity="0..1" />
+          <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAIQUYEN">
+              <PropertyRef Name="idQuyen" />
+            </Principal>
+            <Dependent Role="ACCOUNT">
+              <PropertyRef Name="idQuyen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HANGMAYBAY_ACCOUNT">
+          <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="0..1" />
+          <End Role="HANGMAYBAY" Type="Self.HANGMAYBAY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCOUNT">
+              <PropertyRef Name="idAccount" />
+            </Principal>
+            <Dependent Role="HANGMAYBAY">
+              <PropertyRef Name="idAccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_ACCOUNT">
+          <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="0..1" />
+          <End Role="USER" Type="Self.USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCOUNT">
+              <PropertyRef Name="idAccount" />
+            </Principal>
+            <Dependent Role="USER">
+              <PropertyRef Name="idAccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CHUYENBAY_MAYBAY">
+          <End Role="MAYBAY" Type="Self.MAYBAY" Multiplicity="0..1" />
+          <End Role="CHUYENBAY" Type="Self.CHUYENBAY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MAYBAY">
+              <PropertyRef Name="idMayBay" />
+            </Principal>
+            <Dependent Role="CHUYENBAY">
+              <PropertyRef Name="idMayBay" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VEMAYBAY_CHUYENBAY">
+          <End Role="CHUYENBAY" Type="Self.CHUYENBAY" Multiplicity="0..1" />
+          <End Role="VEMAYBAY" Type="Self.VEMAYBAY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHUYENBAY">
+              <PropertyRef Name="idChuyenBay" />
+            </Principal>
+            <Dependent Role="VEMAYBAY">
+              <PropertyRef Name="idChuyenBay" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DATVE_USER">
+          <End Role="USER" Type="Self.USER" Multiplicity="0..1" />
+          <End Role="DATVE" Type="Self.DATVE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="DATVE">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DATVE_VEMAYBAY">
+          <End Role="VEMAYBAY" Type="Self.VEMAYBAY" Multiplicity="0..1" />
+          <End Role="DATVE" Type="Self.DATVE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VEMAYBAY">
+              <PropertyRef Name="idVe" />
+            </Principal>
+            <Dependent Role="DATVE">
+              <PropertyRef Name="idVe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOADON_DATVE">
+          <End Role="DATVE" Type="Self.DATVE" Multiplicity="0..1" />
+          <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DATVE">
+              <PropertyRef Name="idDatVe" />
+            </Principal>
+            <Dependent Role="HOADON">
+              <PropertyRef Name="idDatVe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MAYBAY_HANGMAYBAY">
+          <End Role="HANGMAYBAY" Type="Self.HANGMAYBAY" Multiplicity="0..1" />
+          <End Role="MAYBAY" Type="Self.MAYBAY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HANGMAYBAY">
+              <PropertyRef Name="idHang" />
+            </Principal>
+            <Dependent Role="MAYBAY">
+              <PropertyRef Name="idHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VEMAYBAY_LOAIVE">
+          <End Role="LOAIVE" Type="Self.LOAIVE" Multiplicity="0..1" />
+          <End Role="VEMAYBAY" Type="Self.VEMAYBAY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAIVE">
+              <PropertyRef Name="idLoaiVe" />
+            </Principal>
+            <Dependent Role="VEMAYBAY">
+              <PropertyRef Name="idLoaiVe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBEntities_QLHeThongDatVeMayBay" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ACCOUNTs" EntityType="Self.ACCOUNT" />
+          <EntitySet Name="CHUYENBAYs" EntityType="Self.CHUYENBAY" />
+          <EntitySet Name="DATVEs" EntityType="Self.DATVE" />
+          <EntitySet Name="DOANHTHUs" EntityType="Self.DOANHTHU" />
+          <EntitySet Name="HANGMAYBAYs" EntityType="Self.HANGMAYBAY" />
+          <EntitySet Name="HOADONs" EntityType="Self.HOADON" />
+          <EntitySet Name="KHUYENMAIs" EntityType="Self.KHUYENMAI" />
+          <EntitySet Name="LOAIQUYENs" EntityType="Self.LOAIQUYEN" />
+          <EntitySet Name="LOAIVEs" EntityType="Self.LOAIVE" />
+          <EntitySet Name="MAYBAYs" EntityType="Self.MAYBAY" />
+          <EntitySet Name="USERs" EntityType="Self.USER" />
+          <EntitySet Name="VEMAYBAYs" EntityType="Self.VEMAYBAY" />
+          <AssociationSet Name="FK_ACCOUNT_LOAIQUYEN" Association="Self.FK_ACCOUNT_LOAIQUYEN">
+            <End Role="LOAIQUYEN" EntitySet="LOAIQUYENs" />
+            <End Role="ACCOUNT" EntitySet="ACCOUNTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HANGMAYBAY_ACCOUNT" Association="Self.FK_HANGMAYBAY_ACCOUNT">
+            <End Role="ACCOUNT" EntitySet="ACCOUNTs" />
+            <End Role="HANGMAYBAY" EntitySet="HANGMAYBAYs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_ACCOUNT" Association="Self.FK_USER_ACCOUNT">
+            <End Role="ACCOUNT" EntitySet="ACCOUNTs" />
+            <End Role="USER" EntitySet="USERs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CHUYENBAY_MAYBAY" Association="Self.FK_CHUYENBAY_MAYBAY">
+            <End Role="MAYBAY" EntitySet="MAYBAYs" />
+            <End Role="CHUYENBAY" EntitySet="CHUYENBAYs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VEMAYBAY_CHUYENBAY" Association="Self.FK_VEMAYBAY_CHUYENBAY">
+            <End Role="CHUYENBAY" EntitySet="CHUYENBAYs" />
+            <End Role="VEMAYBAY" EntitySet="VEMAYBAYs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DATVE_USER" Association="Self.FK_DATVE_USER">
+            <End Role="USER" EntitySet="USERs" />
+            <End Role="DATVE" EntitySet="DATVEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DATVE_VEMAYBAY" Association="Self.FK_DATVE_VEMAYBAY">
+            <End Role="VEMAYBAY" EntitySet="VEMAYBAYs" />
+            <End Role="DATVE" EntitySet="DATVEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOADON_DATVE" Association="Self.FK_HOADON_DATVE">
+            <End Role="DATVE" EntitySet="DATVEs" />
+            <End Role="HOADON" EntitySet="HOADONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MAYBAY_HANGMAYBAY" Association="Self.FK_MAYBAY_HANGMAYBAY">
+            <End Role="HANGMAYBAY" EntitySet="HANGMAYBAYs" />
+            <End Role="MAYBAY" EntitySet="MAYBAYs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VEMAYBAY_LOAIVE" Association="Self.FK_VEMAYBAY_LOAIVE">
+            <End Role="LOAIVE" EntitySet="LOAIVEs" />
+            <End Role="VEMAYBAY" EntitySet="VEMAYBAYs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLHeThongDatVeMayBayModelStoreContainer" CdmEntityContainer="DBEntities_QLHeThongDatVeMayBay">
+          <EntitySetMapping Name="ACCOUNTs">
+            <EntityTypeMapping TypeName="QLHeThongDatVeMayBayModel.ACCOUNT">
+              <MappingFragment StoreEntitySet="ACCOUNT">
+                <ScalarProperty Name="idAccount" ColumnName="idAccount" />
+                <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="idQuyen" ColumnName="idQuyen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CHUYENBAYs">
+            <EntityTypeMapping TypeName="QLHeThongDatVeMayBayModel.CHUYENBAY">
+              <MappingFragment StoreEntitySet="CHUYENBAY">
+                <ScalarProperty Name="idChuyenBay" ColumnName="idChuyenBay" />
+                <ScalarProperty Name="NgayBay" ColumnName="NgayBay" />
+                <ScalarProperty Name="GioBay" ColumnName="GioBay" />
+                <ScalarProperty Name="GioDen" ColumnName="GioDen" />
+                <ScalarProperty Name="NoiDi" ColumnName="NoiDi" />
+                <ScalarProperty Name="NoiDen" ColumnName="NoiDen" />
+                <ScalarProperty Name="idMayBay" ColumnName="idMayBay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DATVEs">
+            <EntityTypeMapping TypeName="QLHeThongDatVeMayBayModel.DATVE">
+              <MappingFragment StoreEntitySet="DATVE">
+                <ScalarProperty Name="idDatVe" ColumnName="idDatVe" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="NgayDatVe" ColumnName="NgayDatVe" />
+                <ScalarProperty Name="idVe" ColumnName="idVe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DOANHTHUs">
+            <EntityTypeMapping TypeName="QLHeThongDatVeMayBayModel.DOANHTHU">
+              <MappingFragment StoreEntitySet="DOANHTHU">
+                <ScalarProperty Name="idDoanhThu" ColumnName="idDoanhThu" />
+                <ScalarProperty Name="ThangNamTK" ColumnName="ThangNamTK" />
+                <ScalarProperty Name="TongSoHD" ColumnName="TongSoHD" />
+                <ScalarProperty Name="TongDT" ColumnName="TongDT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HANGMAYBAYs">
+            <EntityTypeMapping TypeName="QLHeThongDatVeMayBayModel.HANGMAYBAY">
+              <MappingFragment StoreEntitySet="HANGMAYBAY">
+                <ScalarProperty Name="idHang" ColumnName="idHang" />
+                <ScalarProperty Name="TenHang" ColumnName="TenHang" />
+                <ScalarProperty Name="SdtHang" ColumnName="SdtHang" />
+                <ScalarProperty Name="EmailHang" ColumnName="EmailHang" />
+                <ScalarProperty Name="idAccount" ColumnName="idAccount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HOADONs">
+            <EntityTypeMapping TypeName="QLHeThongDatVeMayBayModel.HOADON">
+              <MappingFragment StoreEntitySet="HOADON">
+                <ScalarProperty Name="idHoaDon" ColumnName="idHoaDon" />
+                <ScalarProperty Name="NgayXuatHoaDon" ColumnName="NgayXuatHoaDon" />
+                <ScalarProperty Name="TongTienHD" ColumnName="TongTienHD" />
+                <ScalarProperty Name="idDatVe" ColumnName="idDatVe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KHUYENMAIs">
+            <EntityTypeMapping TypeName="QLHeThongDatVeMayBayModel.KHUYENMAI">
+              <MappingFragment StoreEntitySet="KHUYENMAI">
+                <ScalarProperty Name="idKhuyenMai" ColumnName="idKhuyenMai" />
+                <ScalarProperty Name="MaKhuyenMai" ColumnName="MaKhuyenMai" />
+                <ScalarProperty Name="NgayBatDauKM" ColumnName="NgayBatDauKM" />
+                <ScalarProperty Name="NgayKetThucKM" ColumnName="NgayKetThucKM" />
+                <ScalarProperty Name="ChiTietMoTaKM" ColumnName="ChiTietMoTaKM" />
+                <ScalarProperty Name="GiaTriKM" ColumnName="GiaTriKM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOAIQUYENs">
+            <EntityTypeMapping TypeName="QLHeThongDatVeMayBayModel.LOAIQUYEN">
+              <MappingFragment StoreEntitySet="LOAIQUYEN">
+                <ScalarProperty Name="idQuyen" ColumnName="idQuyen" />
+                <ScalarProperty Name="TenQuyen" ColumnName="TenQuyen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOAIVEs">
+            <EntityTypeMapping TypeName="QLHeThongDatVeMayBayModel.LOAIVE">
+              <MappingFragment StoreEntitySet="LOAIVE">
+                <ScalarProperty Name="idLoaiVe" ColumnName="idLoaiVe" />
+                <ScalarProperty Name="TenLoaiVe" ColumnName="TenLoaiVe" />
+                <ScalarProperty Name="ThemSoKg" ColumnName="ThemSoKg" />
+                <ScalarProperty Name="TienTraThem" ColumnName="TienTraThem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MAYBAYs">
+            <EntityTypeMapping TypeName="QLHeThongDatVeMayBayModel.MAYBAY">
+              <MappingFragment StoreEntitySet="MAYBAY">
+                <ScalarProperty Name="idMayBay" ColumnName="idMayBay" />
+                <ScalarProperty Name="TenMayBay" ColumnName="TenMayBay" />
+                <ScalarProperty Name="SoLuongKhach" ColumnName="SoLuongKhach" />
+                <ScalarProperty Name="idHang" ColumnName="idHang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERs">
+            <EntityTypeMapping TypeName="QLHeThongDatVeMayBayModel.USER">
+              <MappingFragment StoreEntitySet="USER">
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="Sdt" ColumnName="Sdt" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Cmnd" ColumnName="Cmnd" />
+                <ScalarProperty Name="QuocTich" ColumnName="QuocTich" />
+                <ScalarProperty Name="idAccount" ColumnName="idAccount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VEMAYBAYs">
+            <EntityTypeMapping TypeName="QLHeThongDatVeMayBayModel.VEMAYBAY">
+              <MappingFragment StoreEntitySet="VEMAYBAY">
+                <ScalarProperty Name="idVe" ColumnName="idVe" />
+                <ScalarProperty Name="idChuyenBay" ColumnName="idChuyenBay" />
+                <ScalarProperty Name="idLoaiVe" ColumnName="idLoaiVe" />
+                <ScalarProperty Name="SoKgHanhLy" ColumnName="SoKgHanhLy" />
+                <ScalarProperty Name="GiaVe" ColumnName="GiaVe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

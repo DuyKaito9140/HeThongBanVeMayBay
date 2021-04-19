@@ -1,0 +1,94 @@
+﻿@using HeThongQuanLyDatVeMayBay.Models
+@model HeThongQuanLyDatVeMayBay.Models.MAYBAY
+
+@{
+    ViewBag.Title = "Create";
+    DBEntities_QLHeThongDatVeMayBay db = new DBEntities_QLHeThongDatVeMayBay();
+    var listhang = db.HANGMAYBAYs.ToList();
+}
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Home</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous" />
+    <style>
+        form label{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <img src="~/Image/logo_hethongbig.png" width="220" height="70" style="margin-left: 30px;">
+        <a class="navbar-brand text-white setfont" style="margin-left: 30px; font-size: 35px;">ADMIN</a>
+
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" style="margin-left: 20px; font-size: 18px; color: white;" href="/admin/home/index">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="margin-left: 20px; font-size: 18px; color: white;" href="/admin/ticket/index">Ticket</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="margin-left: 20px; font-size: 18px; color: white;" href="/admin/flight/index">Flight</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="margin-left: 20px; font-size: 18px; color: black;" href="/admin/plane/index">Plane</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="margin-left: 20px; font-size: 18px; color: white;" href="/admin/news/index">News</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="margin-left: 20px; font-size: 18px; color: white;" href="/admin/promotion/index">Promotion</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="margin-left: 20px; font-size: 18px; color: white;" href="/admin/bill/index">Bill</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="margin-left: 20px; font-size: 18px; color: white" href="/admin/user/index">User</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" style="width: 250px;" placeholder="Search" aria-label="Search">
+                <button type="button" class="btn btn-danger">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+        </div>
+    </nav>
+    <br />
+    <div class="container mt-3">
+        <h3 class="text-center">Thêm Máy Bay mới</h3>
+        <form>
+            <label for="tenmaybay">Tên máy bay</label>
+            <input type="text" name="tenmaybay" class="form-control">
+            <label for="hangmaybay">Hãng máy bay</label>
+            <select class="form-select form-control" aria-label=".form-select-sm example" name="idHang">
+                @foreach (var items in listhang)
+                {
+                    <option>@items.idHang @items.TenHang</option>
+                }
+            </select>
+            <label for="soluongkhach">Số lượng khách tối đa</label>
+            <input type="text" name="soluongkhach" class="form-control">
+            <br />
+            <input type="submit" value="Thêm mới" class="btn btn-success mt-2">
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        </form>
+    </div>
+}
+
+

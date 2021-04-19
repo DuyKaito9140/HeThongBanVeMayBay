@@ -1,0 +1,94 @@
+﻿@using HeThongQuanLyDatVeMayBay.Models
+@model HeThongQuanLyDatVeMayBay.Models.CHUYENBAY
+@{
+    ViewBag.Title = "Edit";
+    DBEntities_QLHeThongDatVeMayBay db = new DBEntities_QLHeThongDatVeMayBay();
+    var listmaybay = db.MAYBAYs.ToList();
+}
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Home</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous" />
+</head>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <img src="~/Image/logo_hethongbig.png" width="220" height="70" style="margin-left: 30px;">
+        <a class="navbar-brand text-white setfont" style="margin-left: 30px; font-size: 35px;">ADMIN</a>
+
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" style="margin-left: 20px; font-size: 18px; color: white;" href="/admin/home/index">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="margin-left: 20px; font-size: 18px; color: white;" href="/admin/ticket/index">Ticket</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="margin-left: 20px; font-size: 18px; color: black;" href="/admin/flight/index">Flight</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="margin-left: 20px; font-size: 18px; color: white;" href="/admin/plane/index">Plane</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="margin-left: 20px; font-size: 18px; color: white;" href="/admin/news/index">News</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="margin-left: 20px; font-size: 18px; color: white;" href="/admin/promotion/index">Promotion</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="margin-left: 20px; font-size: 18px; color: white;" href="/admin/bill/index">Bill</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="margin-left: 20px; font-size: 18px; color: white" href="/admin/user/index">User</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" style="width: 250px;" placeholder="Search" aria-label="Search">
+                <button type="button" class="btn btn-danger">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+        </div>
+    </nav>
+    <br />
+    <div class="container mt-3">
+        <h3 class="text-center">Cập nhật Chuyến Bay</h3>
+        <form method="post">
+            <label for="idchuyenbay">ID Chuyến bay</label>
+            <input type="text" name="idchuyenbay" value="@Model.idChuyenBay" class="form-control" readonly>
+            <label for="ngaybay">Ngày bay</label>
+            <input type="text" name="ngaybay" value="@Model.NgayBay" class="form-control">
+            <label for="giobay">Giờ bay</label>
+            <input type="text" name="giobay" value="@Model.GioBay" class="form-control">
+            <label for="gioden">Giờ đến</label>
+            <input type="text" name="gioden" value="@Model.GioDen" class="form-control">
+            <label for="noidi">Nơi đi</label>
+            <input type="text" name="noidi" value="@Model.NoiDi" class="form-control">
+            <label for="noiden">Nơi đến</label>
+            <input type="text" name="noiden" value="@Model.NoiDen" class="form-control">
+            <label for="noiden">Máy bay</label>
+            <select class="form-select form-control" aria-label=".form-select-sm example" name="idmaybay">
+                <option selected readonly style="background-color: silver">@Model.idMayBay @Model.MAYBAY.TenMayBay @Model.MAYBAY.HANGMAYBAY.TenHang</option>
+                @foreach (var items in listmaybay)
+                 {
+                    <option>@items.idMayBay @items.TenMayBay @items.HANGMAYBAY.TenHang</option>
+                 }
+            </select>
+            <input type="submit" value="Cập nhật" class="btn btn-primary mt-2"> <br>
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        </form>
+    </div>
+}
+

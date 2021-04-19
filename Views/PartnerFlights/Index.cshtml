@@ -1,0 +1,104 @@
+﻿@model List<HeThongQuanLyDatVeMayBay.Models.CHUYENBAY>
+@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous" />
+
+    <style>
+        .btn-primary {
+            width: 80px;
+            margin-bottom: 3px;
+        }
+    </style>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <img src="~/Image/logo_hethongbig.png" width="220" height="70" style="margin-left: 30px;">
+        <a class="navbar-brand text-white setfont" style="margin-left: 30px; font-size: 35px;">ADMIN</a>
+
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" style="margin-left: 20px; font-size: 18px; color: white;" href="/PartnerHome/Index">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="margin-left: 20px; font-size: 18px; color: white;" href="/PartnerTickets/Index">Ticket</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="margin-left: 20px; font-size: 18px; color: black;" href="/PartnerFlights/Index">Flight</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="margin-left: 20px; font-size: 18px; color: white;" href="/PartnerPlanes/Index">Plane</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="margin-left: 20px; font-size: 18px; color: white;">News</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="margin-left: 20px; font-size: 18px; color: white;">Promotion</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="margin-left: 20px; font-size: 18px; color: white;">Bill</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="margin-left: 20px; font-size: 18px; color: white">User</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" style="width: 250px;" placeholder="Search" aria-label="Search">
+                <button type="button" class="btn btn-danger">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+        </div>
+    </nav>
+    <br />
+    <div class="container mt-3">
+        @Html.ActionLink("Create a flight", "Create", "PartnerFlights", new { @class = "btn btn-success" })
+        <table class="table">
+            <tr>
+                <th>ID Chuyến bay</th>
+                <th>Ngày bay</th>
+                <th>Giờ bay</th>
+                <th>Giờ đến</th>
+                <th>Nơi đi</th>
+                <th>Nới đến</th>
+                <th>Tên máy bay</th>
+                <th>Hãng máy bay</th>
+                <th></th>
+            </tr>
+            <tbody>
+                @foreach (var chuyenbay in Model)
+                {
+                    <tr>
+                        <td>@chuyenbay.idChuyenBay</td>
+                        <td>@chuyenbay.NgayBay</td>
+                        <td>@chuyenbay.GioBay</td>
+                        <td>@chuyenbay.GioDen</td>
+                        <td>@chuyenbay.NoiDi</td>
+                        <td>@chuyenbay.NoiDen</td>
+                        <td>@chuyenbay.MAYBAY.TenMayBay</td>
+                        <td>@chuyenbay.MAYBAY.HANGMAYBAY.TenHang</td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = chuyenbay.idChuyenBay.Trim() }, new { @class = "btn btn-primary" })
+                            @Html.ActionLink("Delete", "Delete", new { id = chuyenbay.idChuyenBay.Trim() }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+
