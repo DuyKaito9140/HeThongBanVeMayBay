@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@{
+    ViewBag.Title = "Home Page";
+    string check = HeThongQuanLyDatVeMayBay.Models.Content.QuyenUser;
+
+}
+<!DOCTYPE html>
 <html>
 <head>
     <base href="/">
@@ -46,8 +51,86 @@
 
 
 </head>
-<body>   
+<body>    
     @RenderBody()
+    <!--menu top start-->
+    <header class="overlay-white">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="menu">
+                        <div class="brand-logo">
+                            <a href="../index.html">
+                                <img src="~/Image/logo_hethongbig.png" alt=""
+                                     class="img-fluid blur-up lazyload">
+                            </a>
+                        </div>
+                        <nav>
+                            <div class="main-navbar">
+                                <div id="mainnav">
+                                    <div class="toggle-nav"><i class="fa fa-bars sidebar-bar"></i></div>
+                                    <div class="menu-overlay"></div>
+                                    <ul class="nav-menu">
+                                        <li class="back-btn">
+                                            <div class="mobile-back text-end">
+                                                <span>Back</span>
+                                                <i aria-hidden="true" class="fa fa-angle-right ps-2"></i>
+                                            </div>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="/" class="nav-link menu-title">Home</a>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a class="nav-link menu-title">Flight</a>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a class="nav-link menu-title">News</a>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a class="nav-link menu-title">About</a>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a class="nav-link menu-title">Contact</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                        <ul class="header-right">
+
+                            @if (check != "")
+                            {
+                                <li class="user rounded5" onclick="myuserout()" style="cursor: pointer;">
+                                    <span>@HeThongQuanLyDatVeMayBay.Models.Content.HoTen</span>
+                                </li>
+
+                                <li class="user rounded5">
+                                    <a href="Home/Logout">
+                                        <i class="fas fa-sign-out-alt">&nbsp;Log Out</i>
+                                    </a>
+                                </li>
+
+                            }
+                            else
+                            {
+                                <li class="user rounded5">
+                                    <a href="Home/Login">
+                                        <i class="fas fa-user">&nbsp;Login</i>
+                                    </a>
+                                </li>
+                                <li class="user rounded5">
+                                    <a href="Home/Signin">
+                                        <i class="fas fa-sign-in-alt">&nbsp;Sigin</i>
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--menu top end-->
     <hr />
     <!-- footer section start -->
     <footer>
@@ -264,6 +347,25 @@
         </div>
     </footer>
     <!-- footer section end -->
+    <!-- tap to top -->
+    <div class="tap-top">
+        <div>
+            <i class="fas fa-angle-up"></i>
+        </div>
+    </div>
+    <!-- tap to top end -->
+    <!-- setting start -->
+    <div class="theme-setting" style="z-index: 9">
+        <div class="dark">
+            <input class="tgl tgl-skewed" id="dark" type="checkbox">
+            <label class="tgl-btn" data-tg-off="Dark" data-tg-on="Light" for="dark"></label>
+        </div>
+        <div class="rtl">
+            <input class="tgl tgl-skewed" id="rtl" type="checkbox">
+            <label class="tgl-btn" data-tg-off="RTL" data-tg-on="LTR" for="rtl"></label>
+        </div>
+    </div>
+    <!-- setting end -->
     <!-- latest jquery-->
     <script src="~/Scripts/jquery-3.5.1.min.js"></script>
 

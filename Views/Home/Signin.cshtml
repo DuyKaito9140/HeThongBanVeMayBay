@@ -1,0 +1,123 @@
+﻿
+@{
+    ViewBag.Title = "Signin";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/fonts/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/fonts/fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/css/main.css">
+    <!--===============================================================================================-->
+    <style>
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            cursor: pointer;
+            color: white;
+            filter: invert(0.8);
+        }
+        option{
+            background-color: darkslategrey;
+        }
+        body{
+            overflow-y: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-login100" style="z-index: 10">
+        <img src="~/Image/flights/bg_sigin.jpg" width="100%" height="100%" style="opacity: 0.9; filter: brightness(70%); position: absolute;" />
+        <div class="wrap-login100" style="margin-top: -8px; width: 600px;">
+            <form class="login100-form validate-form" method="post">
+                <img src="~/Image/logo_hethongbig.png" style="display: block; margin-left: auto; margin-right: auto; margin-top: -50px; height: 110px; width: 390px;" />
+                <span class="login100-form-title p-b-10 p-t-10">
+                    Sign in
+                </span>
+
+                <div class="wrap-input100 validate-input" data-validate="Enter username">
+                    <input class="input100" type="text" name="HoTen" placeholder="Họ tên">
+                    <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate="Enter password" style="width: 50%; float: right;">
+                    <input class="input100" type="date" name="NgaySinh" placeholder="Ngày sinh" style="color: white">
+                    <span class="focus-input100" data-placeholder="&#xf331;"></span>
+                </div>
+                <div class="wrap-input100 validate-input" data-validate="Enter password" style="width: 50%; ">
+                    <select class="input100" name="GioiTinh" style="border: none;">
+                        <option>Nam</option>
+                        <option>Nữ</option>
+                        <option>Khác</option>
+                    </select>
+                    <span class="focus-input100" data-placeholder="&#xf211;"></span>
+                </div>
+                <div class="wrap-input100 validate-input" data-validate="Enter password" style="width: 50%; float: right;">
+                    <input class="input100" type="tel" name="Sdt" placeholder="Số điện thoại">
+                    <span class="focus-input100" data-placeholder="&#xf2bc;"></span>
+                </div>
+                <div class="wrap-input100 validate-input" data-validate="Enter username" style="width: 50%;">
+                    <input class="input100" type="email" name="Email" placeholder="Email">
+                    <span class="focus-input100" data-placeholder="&#xf34e;"></span>
+                </div>
+                <div class="wrap-input100 validate-input" data-validate="Enter password">
+                    <input class="input100" type="text" name="DiaChi" placeholder="Địa chỉ">
+                    <span class="focus-input100" data-placeholder="&#xf1ab;"></span>
+                </div>
+                <div class="wrap-input100 validate-input" data-validate="Enter password" style="width: 50%; float: right;">
+                    <input class="input100" type="tel" name="Cmnd" placeholder="CMNN">
+                    <span class="focus-input100" data-placeholder="&#xf129;"></span>
+                </div>
+                <div class="wrap-input100 validate-input" data-validate="Enter username" style="width: 50%;">
+                    <input class="input100" type="text" name="QuocTich" placeholder="Quốc tịch">
+                    <span class="focus-input100" data-placeholder="&#xf173;"></span>
+                </div>
+                <div class="wrap-input100 validate-input" data-validate="Enter password">
+                    <input class="input100" type="text" name="TenDangNhap" placeholder="Tên đăng nhập">
+                    <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                </div>
+                <div class="wrap-input100 validate-input" data-validate="Enter username">
+                    <input class="input100" type="text" name="Password" placeholder="Mật khẩu">
+                    <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                </div>
+                <div class="container-login100-form-btn">
+                    <input class="login100-form-btn" type="submit" placeholder="Login" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="dropDownSelect1"></div>
+
+    <!--===============================================================================================-->
+    <script src="~/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/bootstrap/js/popper.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/daterangepicker/moment.min.js"></script>
+    <script src="~/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Scripts/js/main.js"></script>
+
+</body>
+</html>

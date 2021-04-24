@@ -1,107 +1,26 @@
-﻿@{
+﻿@model HeThongQuanLyDatVeMayBay.Models.USER
+@using HeThongQuanLyDatVeMayBay.Models
+@{
     ViewBag.Title = "Home Page";
+    DBEntities_QLHeThongDatVeMayBay db = new DBEntities_QLHeThongDatVeMayBay();
+    var listnoidi = db.CHUYENBAYs.Select(p => p.NoiDi).Distinct().ToList();
+    var listnoiden = db.CHUYENBAYs.Select(p => p.NoiDen).Distinct().ToList();
+    var listloaive = db.LOAIVEs.ToList();
 }
-
+<link type="text/css" rel="stylesheet" href="~/Content/styte.css" />
+<div class="sidenav123">
+    <span class="btnclose123" onclick="myuserin()">&times;</span>
+    <div class="sidenav-item">
+        <a href="">Home</a>
+        <a href="">About</a>
+        <a href="">Contact</a>
+    </div>
+</div>
 <!-- pre-loader start -->
 <div class="loader-wrapper img-gif">
     <img src="~/Image/loader.gif" alt="">
 </div>
 <!--pre-loader end -->
-<!--menu top start-->
-<header class="overlay-white">
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="menu">
-                    <div class="brand-logo">
-                        <a href="../index.html">
-                            <img src="~/Image/logo_hethongbig.png" alt=""
-                                 class="img-fluid blur-up lazyload">
-                        </a>
-                    </div>
-                    <nav>
-                        <div class="main-navbar">
-                            <div id="mainnav">
-                                <div class="toggle-nav"><i class="fa fa-bars sidebar-bar"></i></div>
-                                <div class="menu-overlay"></div>
-                                <ul class="nav-menu">
-                                    <li class="back-btn">
-                                        <div class="mobile-back text-end">
-                                            <span>Back</span>
-                                            <i aria-hidden="true" class="fa fa-angle-right ps-2"></i>
-                                        </div>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a href="/" class="nav-link menu-title">Home</a>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a class="nav-link menu-title">Flight</a>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a class="nav-link menu-title">News</a>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a class="nav-link menu-title">About</a>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a class="nav-link menu-title">Contact</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </nav>
-                    <ul class="header-right">
-                        <li class="front-setting rounded5">
-                            <select>
-                                <option value="volvo">USD</option>
-                                <option value="saab">EUR</option>
-                                <option value="opel">INR</option>
-                                <option value="audi">AUD</option>
-                            </select>
-                        </li>
-                        <li class="front-setting rounded5">
-                            <select>
-                                <option value="volvo">ENG</option>
-                                <option value="saab">FRE</option>
-                                <option value="opel">SPA</option>
-                                <option value="audi">DUT</option>
-                            </select>
-                        </li>
-                        <li class="user rounded5">
-                            <a href="#">
-                                <i class="fas fa-user"></i>
-                            </a>
-                        </li>
-                        <li class="setting">
-                            <a href="#">
-                                <i class="fas fa-cog"></i>
-                            </a>
-                            <ul class="setting-open">
-                                <li class="front-setting">
-                                    <select>
-                                        <option value="volvo">USD</option>
-                                        <option value="saab">EUR</option>
-                                        <option value="opel">INR</option>
-                                        <option value="audi">AUD</option>
-                                    </select>
-                                </li>
-                                <li class="front-setting">
-                                    <select>
-                                        <option value="volvo">ENG</option>
-                                        <option value="saab">FRE</option>
-                                        <option value="opel">SPA</option>
-                                        <option value="audi">DUT</option>
-                                    </select>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-<!--menu top end-->
 <!-- home section start -->
 <section class="cab-section flight-section p-0">
     <div class="cloud">
@@ -117,31 +36,96 @@
                         </div>
                         <h2>great journey begins</h2>
                         <h3>with a small step</h3>
-                        <form action="/setbody/home" method="POST">
+                        <form action="booknow" method="POST">
                             <div class="form-group">
                                 <img src="~/Image/icon/from.png" class="img-fluid blur-up lazyload" alt="">
                                 <select class="form-select form-select-lg mb-3" aria-label="Default select example" name="chuyenbaynoidi" style="height: 54px;">
-                                    <option selected readonly>From...</option>
-                                    <% print.forEach(function (chuyenbay) { %>
-                                    <option><%= chuyenbay.noidi %><hr /> </option>
-                                    <% }) %>
+                                    <option selected disabled>From...</option>
+                                    @foreach (var noidi in listnoidi)
+                                    {
+                                        <option>@noidi</option>
+                                    }
                                 </select>
                             </div>
                             <div class="form-group">
                                 <img src="~/Image/icon/location.png" class="img-fluid blur-up lazyload" alt="">
-                                <select class="form-select form-select-lg mb-3" aria-label="Default select example" name="chuyenbaynoiden" style="height: 54px;">
-                                    <option selected readonly>To...</option>
-                                    <% print.forEach(function (chuyenbay) { %>
-                                    <option><%= chuyenbay.noidi %></option>
-                                    <% }) %>
+                                <select class="form-select form-select-lg mb-3" aria-label="Default select example" name="chuyenbaynoiden" style="height: 54px">
+                                    <option selected disabled>To...</option>
+                                    @foreach (var noiden in listnoiden)
+                                     {
+                                        <option>@noiden</option>
+                                     }
                                 </select>
                             </div>
-                            <div class="form-group">
+
+                            <div class="form-group row mb-0">
                                 <div class="col">
-                                    <input placeholder="Day..." type="date" aria-label="Default select example" id="datepicker" name="chuyenbayngaybay" class="form-control" />
+                                    <input type="date" id="datepicker" class="form-control" style="font-size: 18px; height: 53px; border-radius: 3px"/>
+                                </div>
+                                <div class="col">
+                                    <select class="form-select form-select-lg mb-3" aria-label="Default select example" name="chuyenbaynoiden" style="height: 54px; font-size: 18px">
+                                        <option selected disabled>Hour...</option>
+                                        <option>0:00</option>
+                                        <option>0:30</option>
+                                        <option>1:00</option>
+                                        <option>1:30</option>
+                                        <option>2:00</option>
+                                        <option>2:30</option>
+                                        <option>3:00</option>
+                                        <option>3:30</option>
+                                        <option>4:00</option>
+                                        <option>4:30</option>
+                                        <option>5:00</option>
+                                        <option>5:30</option>
+                                        <option>6:00</option>
+                                        <option>6:30</option>
+                                        <option>7:00</option>
+                                        <option>7:30</option>
+                                        <option>8:00</option>
+                                        <option>8:30</option>
+                                        <option>9:00</option>
+                                        <option>9:30</option>
+                                        <option>10:00</option>
+                                        <option>10:30</option>
+                                        <option>11:00</option>
+                                        <option>11:30</option>
+                                        <option>12:00</option>
+                                        <option>12:30</option>
+                                        <option>13:00</option>
+                                        <option>13:30</option>
+                                        <option>14:00</option>
+                                        <option>14:30</option>
+                                        <option>15:00</option>
+                                        <option>15:30</option>
+                                        <option>16:00</option>
+                                        <option>16:30</option>
+                                        <option>17:00</option>
+                                        <option>17:30</option>
+                                        <option>18:00</option>
+                                        <option>18:30</option>
+                                        <option>19:00</option>
+                                        <option>19:30</option>
+                                        <option>20:00</option>
+                                        <option>20:30</option>
+                                        <option>21:00</option>
+                                        <option>21:30</option>
+                                        <option>22:00</option>
+                                        <option>22:30</option>
+                                        <option>23:00</option>
+                                        <option>23:30</option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <select class="form-select form-select-lg mb-3" aria-label="Default select example" name="chuyenbaynoiden" style="height: 54px; font-size: 18px">
+                                        <option selected disabled>Type of ticket...</option>
+                                        @foreach (var items in listloaive)
+                                        {
+                                            <option>@items.TenLoaiVe</option>
+                                        }
+                                    </select>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-rounded color1">book now</button></br>
+                                <button type="submit" class="btn btn-rounded color1">book now</button>
                         </form>
                         <form class="radio-form" style="margin-top: 12px;">
                             <input id="radio-1" type="radio" name="gender" value="in city" checked>
@@ -1035,21 +1019,7 @@
     s8.1-18.1,18.1-18.1h30.1c10,0,18.1,8.1,18.1,18.1S278.25,452,268.25,452z M437.95,274.9c0,22.9-18.6,41.5-41.5,41.5h-24.9V204.8
     h24.9c22.9,0,41.5,18.6,41.5,41.5V274.9z" />
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                        </g>
+                                    </g>
                                     </svg>
                                 </div>
                                 <div class="detail">
@@ -1089,8 +1059,232 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                     <path d="M326.925,161.913l-147.4,147.3c-4.7,4.7-4.7,12.3,0,17c2.3,2.3,5.4,3.5,8.5,3.5s6.1-1.2,8.5-3.5l147.4-147.4
         c4.7-4.7,4.7-12.3,0-17C339.225,157.213,331.625,157.213,326.925,161.913z" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1125,10 +1319,234 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                     <path d="M207.925,151.213c-11.5,0-22.3,4.5-30.4,12.6s-12.6,18.9-12.6,30.4s4.5,22.3,12.6,30.4s18.9,12.6,30.4,12.6
         s22.3-4.5,30.4-12.6c8.1-8.1,12.6-18.9,12.6-30.4s-4.5-22.3-12.6-30.4C230.125,155.713,219.425,151.213,207.925,151.213z
          M221.325,207.613c-3.6,3.6-8.3,5.5-13.4,5.5s-9.8-2-13.4-5.5c-3.6-3.6-5.5-8.3-5.5-13.4c0-5.1,2-9.8,5.5-13.4
         c3.6-3.6,8.3-5.5,13.4-5.5s9.8,2,13.4,5.5c3.6,3.6,5.5,8.3,5.5,13.4C226.825,199.213,224.925,204.013,221.325,207.613z" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1183,10 +1601,234 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                     <path d="M304.8,238.55l118.2-106c5.5-5,6-13.5,1-19.1c-5-5.5-13.5-6-19.1-1l-163,146.3l-31.8-28.4c-0.1-0.1-0.2-0.2-0.2-0.3
         c-0.7-0.7-1.4-1.3-2.2-1.9L78.3,112.35c-5.6-5-14.1-4.5-19.1,1.1c-5,5.6-4.5,14.1,1.1,19.1l119.6,106.9L60.8,350.95
         c-5.4,5.1-5.7,13.6-0.6,19.1c2.7,2.8,6.3,4.3,9.9,4.3c3.3,0,6.6-1.2,9.2-3.6l120.9-113.1l32.8,29.3c2.6,2.3,5.8,3.4,9,3.4
         c3.2,0,6.5-1.2,9-3.5l33.7-30.2l120.2,114.2c2.6,2.5,6,3.7,9.3,3.7c3.6,0,7.1-1.4,9.8-4.2c5.1-5.4,4.9-14-0.5-19.1L304.8,238.55z" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1230,22 +1872,11 @@
     </div>
 </section>
 <!-- subscribe section end -->
-<!-- tap to top -->
-<div class="tap-top">
-    <div>
-        <i class="fas fa-angle-up"></i>
-    </div>
-</div>
-<!-- tap to top end -->
-<!-- setting start -->
-<div class="theme-setting">
-    <div class="dark">
-        <input class="tgl tgl-skewed" id="dark" type="checkbox">
-        <label class="tgl-btn" data-tg-off="Dark" data-tg-on="Light" for="dark"></label>
-    </div>
-    <div class="rtl">
-        <input class="tgl tgl-skewed" id="rtl" type="checkbox">
-        <label class="tgl-btn" data-tg-off="RTL" data-tg-on="LTR" for="rtl"></label>
-    </div>
-</div>
-<!-- setting end -->
+<script type="text/javascript">
+    function myuserout() {
+        $('.sidenav123').addClass('show123');
+    }
+    function myuserin() {
+        $('.sidenav123').removeClass('show123');
+    }
+</script>
