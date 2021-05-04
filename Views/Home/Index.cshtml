@@ -1,5 +1,4 @@
-﻿@model HeThongQuanLyDatVeMayBay.Models.USER
-@using HeThongQuanLyDatVeMayBay.Models
+﻿@using HeThongQuanLyDatVeMayBay.Models 
 @{
     ViewBag.Title = "Home Page";
     DBEntities_QLHeThongDatVeMayBay db = new DBEntities_QLHeThongDatVeMayBay();
@@ -7,15 +6,6 @@
     var listnoiden = db.CHUYENBAYs.Select(p => p.NoiDen).Distinct().ToList();
     var listloaive = db.LOAIVEs.ToList();
 }
-<link type="text/css" rel="stylesheet" href="~/Content/styte.css" />
-<div class="sidenav123">
-    <span class="btnclose123" onclick="myuserin()">&times;</span>
-    <div class="sidenav-item">
-        <a href="">Home</a>
-        <a href="">About</a>
-        <a href="">Contact</a>
-    </div>
-</div>
 <!-- pre-loader start -->
 <div class="loader-wrapper img-gif">
     <img src="~/Image/loader.gif" alt="">
@@ -24,7 +14,7 @@
 <!-- home section start -->
 <section class="cab-section flight-section p-0">
     <div class="cloud">
-        <img src="~/Image/flights/cloud.png" alt="" class="bg-img">
+        <img src="~/Image/flights/cloud.png" alt="" class="bg-img"> 
     </div>
     <div class="container">
         <div class="row">
@@ -41,7 +31,7 @@
                                 <img src="~/Image/icon/from.png" class="img-fluid blur-up lazyload" alt="">
                                 <select class="form-select form-select-lg mb-3" aria-label="Default select example" name="chuyenbaynoidi" style="height: 54px;">
                                     <option selected disabled>From...</option>
-                                    @foreach (var noidi in listnoidi)
+                                    @foreach (var noidi in listnoidi) 
                                     {
                                         <option>@noidi</option>
                                     }
@@ -63,7 +53,7 @@
                                     <input type="date" id="datepicker" class="form-control" style="font-size: 18px; height: 53px; border-radius: 3px"/>
                                 </div>
                                 <div class="col">
-                                    <select class="form-select form-select-lg mb-3" aria-label="Default select example" name="chuyenbaynoiden" style="height: 54px; font-size: 18px">
+                                    <select class="form-select form-select-lg mb-3" aria-label="Default select example" name="chuyenbaygiobay" style="height: 54px; font-size: 18px">
                                         <option selected disabled>Hour...</option>
                                         <option>0:00</option>
                                         <option>0:30</option>
@@ -116,7 +106,7 @@
                                     </select>
                                 </div>
                                 <div class="col">
-                                    <select class="form-select form-select-lg mb-3" aria-label="Default select example" name="chuyenbaynoiden" style="height: 54px; font-size: 18px">
+                                    <select class="form-select form-select-lg mb-3" aria-label="Default select example" name="chuyenbayloaive" style="height: 54px; font-size: 18px">
                                         <option selected disabled>Type of ticket...</option>
                                         @foreach (var items in listloaive)
                                         {
@@ -1872,11 +1862,3 @@
     </div>
 </section>
 <!-- subscribe section end -->
-<script type="text/javascript">
-    function myuserout() {
-        $('.sidenav123').addClass('show123');
-    }
-    function myuserin() {
-        $('.sidenav123').removeClass('show123');
-    }
-</script>

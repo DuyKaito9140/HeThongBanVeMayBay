@@ -1,42 +1,64 @@
-﻿@model List<HeThongQuanLyDatVeMayBay.Models.CHUYENBAY>
+﻿@model PagedList.IPagedList<HeThongQuanLyDatVeMayBay.Models.CHUYENBAY> 
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "Index";
 }
 
-<div class="container mt-3">
-    @Html.ActionLink("Create a flight", "Create", "PartnerFlights", new { @class = "btn btn-success" })
-    <table class="table">
-        <tr>
-            <th>ID Chuyến bay</th>
-            <th>Ngày bay</th>
-            <th>Giờ bay</th>
-            <th>Giờ đến</th>
-            <th>Nơi đi</th>
-            <th>Nới đến</th>
-            <th>Tên máy bay</th>
-            <th>Hãng máy bay</th>
-            <th></th>
-        </tr>
-        <tbody>
-            @foreach (var chuyenbay in Model)
-            {
-                <tr>
-                    <td>@chuyenbay.idChuyenBay</td>
-                    <td>@chuyenbay.NgayBay</td>
-                    <td>@chuyenbay.GioBay</td>
-                    <td>@chuyenbay.GioDen</td>
-                    <td>@chuyenbay.NoiDi</td>
-                    <td>@chuyenbay.NoiDen</td>
-                    <td>@chuyenbay.MAYBAY.TenMayBay</td>
-                    <td>@chuyenbay.MAYBAY.HANGMAYBAY.TenHang</td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = chuyenbay.idChuyenBay.Trim() }, new { @class = "btn btn-primary" })
-                        @Html.ActionLink("Delete", "Delete", new { id = chuyenbay.idChuyenBay.Trim() }, new { @class = "btn btn-danger" })
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</div>
+<div class="container mt-5">
+    <div class="create-refesh">
+        @Html.ActionLink("Create a flight", "Create", "PartnerFlights", new { @class = "btn btn-success" })
+        @using (Html.BeginForm())
+        {
+            <button type="submit" class="btn btn-warning" style="width: 60px; margin-bottom: 0px;">
+                <i class="fas fa-sync-alt"></i>
+            </button>
+        }
+    </div>
+        <table class="table">
+            <tr>
+                <th>ID Chuyến bay</th>
+                <th>Ngày bay</th>
+                <th>Giờ bay</th>
+                <th>Giờ đến</th>
+                <th>Nơi đi</th>
+                <th>Nới đến</th>
+                <th>Tên máy bay</th>
+                <th>Hãng máy bay</th>
+                <th></th>
+            </tr>
+            <tbody>
+                @foreach (var chuyenbay in Model)
+                {
+                    <tr>
+                        <td>@chuyenbay.idChuyenBay</td>
+                        <td>@chuyenbay.NgayBay</td>
+                        <td>@chuyenbay.GioBay</td>
+                        <td>@chuyenbay.GioDen</td>
+                        <td>@chuyenbay.NoiDi</td>
+                        <td>@chuyenbay.NoiDen</td>
+                        <td>@chuyenbay.MAYBAY.TenMayBay</td>
+                        <td>@chuyenbay.MAYBAY.HANGMAYBAY.TenHang</td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = chuyenbay.idChuyenBay.Trim() }, new { @class = "btn btn-primary" })
+                            @Html.ActionLink("Delete", "Delete", new { id = chuyenbay.idChuyenBay.Trim() }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <nav aria-label="Page navigation example" class="pagination-section mt-0">
+            <span class="fontbold">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</span>
+            <ul class="pagination">
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
+               new PagedListRenderOptions
+               {
+                   DisplayLinkToIndividualPages = true,
+                   DisplayPageCountAndCurrentLocation = false,
+                   MaximumPageNumbersToDisplay = 10,
+                   LiElementClasses = new string[] { "myclassed" }
+               })
+            </ul>
+        </nav>
+    </div>
 
 

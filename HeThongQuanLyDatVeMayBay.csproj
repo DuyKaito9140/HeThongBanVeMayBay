@@ -134,6 +134,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminUserController.cs" />
     <Compile Include="Controllers\BooknowController.cs" />
     <Compile Include="Controllers\PartnerFlightsController.cs" />
     <Compile Include="Controllers\PartnerPlanesController.cs" />
@@ -145,6 +146,7 @@
     <Compile Include="Models\ACCOUNT.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AdminUser.cs" />
     <Compile Include="Models\BooknowModel.cs" />
     <Compile Include="Models\CHUYENBAY.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
@@ -191,7 +193,6 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PartnerFlightsModel.cs" />
-    <Compile Include="Models\PartnerHomeController.cs" />
     <Compile Include="Models\PartnerPlanesModel.cs" />
     <Compile Include="Models\PartnerTicketsModel.cs" />
     <Compile Include="Models\SigninModel.cs" />
@@ -275,6 +276,7 @@
     <Content Include="Image\flights\blog\1.jpg" />
     <Content Include="Image\flights\blog\2.jpg" />
     <Content Include="Image\flights\blog\3.jpg" />
+    <Content Include="Image\flights\chuyenbay12345.jpg" />
     <Content Include="Image\flights\cloud.png" />
     <Content Include="Image\flights\cockpit.png" />
     <Content Include="Image\flights\destination\1.jpg" />
@@ -292,6 +294,7 @@
     <Content Include="Image\flights\flight-breadcrumb3.jpg" />
     <Content Include="Image\flights\flight-breadcrumb4.jpg" />
     <Content Include="Image\flights\footer-bg.jpg" />
+    <Content Include="Image\flights\JPA.jpg" />
     <Content Include="Image\flights\logo.png" />
     <Content Include="Image\flights\logo2.png" />
     <Content Include="Image\flights\place.png" />
@@ -310,6 +313,7 @@
     <Content Include="Image\icon\time\sun.png" />
     <Content Include="Image\icon\time\sunrise.png" />
     <Content Include="Image\icon\user.png" />
+    <Content Include="Image\icon\userlogo.png" />
     <Content Include="Image\loader.gif" />
     <Content Include="Image\logo_hethongbig.png" />
     <Content Include="Image\Plain-Black-Wallpaper.png" />
@@ -477,7 +481,7 @@
     <Content Include="Views\PartnerFlights\Index.cshtml" />
     <Content Include="Views\PartnerFlights\Create.cshtml" />
     <Content Include="Views\PartnerFlights\Edit.cshtml" />
-    <Content Include="Views\PartnerHome\Index.cshtml" />
+    <Content Include="Views\Home\IndexPartner.cshtml" />
     <Content Include="Views\PartnerTickets\Create.cshtml" />
     <Content Include="Views\PartnerTickets\Index.cshtml" />
     <Content Include="Views\PartnerTickets\Edit.cshtml" />
@@ -491,6 +495,10 @@
     <Content Include="Views\Shared\_Layout_Partner.cshtml" />
     <Content Include="Views\Home\Signin.cshtml" />
     <Content Include="Views\Booknow\Index.cshtml" />
+    <Content Include="Views\Booknow\booking.cshtml" />
+    <Content Include="Views\AdminUser\Index.cshtml" />
+    <Content Include="Views\AdminUser\Create.cshtml" />
+    <Content Include="Views\AdminUser\Role.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

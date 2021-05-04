@@ -8,28 +8,25 @@ using PagedList;
 
 namespace HeThongQuanLyDatVeMayBay.Controllers
 {
-    public class PartnerTicketsController : Controller
+    public class AdminUserController : Controller
     {
         DBEntities_QLHeThongDatVeMayBay db = new DBEntities_QLHeThongDatVeMayBay();
-        PartnerTicketsModel vmbm = new PartnerTicketsModel(); 
+        AdminUser amm = new AdminUser();
         public ActionResult Index(int? page, string mysearch)
         {
             if (page == null) page = 1;
-            var links = new List<VEMAYBAY>();
+            var links = new List<USER>();
             if (!String.IsNullOrEmpty(mysearch))
             {
-                links = (from l in db.VEMAYBAYs
-                         select l).OrderBy(x => x.idVe).Where(m => m.CHUYENBAY.MAYBAY.HANGMAYBAY.TenHang.Contains(mysearch)
-                         || m.CHUYENBAY.NoiDi.Contains(mysearch) || m.CHUYENBAY.NoiDen.Contains(mysearch)
-                         || m.CHUYENBAY.GioBay.Contains(mysearch) || m.CHUYENBAY.GioDen.Contains(mysearch)
-                         || m.CHUYENBAY.MAYBAY.TenMayBay.Contains(mysearch) || m.LOAIVE.TenLoaiVe.Contains(mysearch)).ToList();
+                links = (from l in db.USERs
+                         select l).OrderBy(x => x.idUser).Where(m => m.HoTen.Contains(mysearch)
+                         || m.QuocTich.Contains(mysearch) || m.ACCOUNT.LOAIQUYEN.TenQuyen.Contains(mysearch) || m.GioiTinh.ToString().Contains(mysearch)).ToList();
             }
             else
             {
-                links = (from l in db.VEMAYBAYs
-                             select l).OrderBy(x => x.idVe).ToList();
+                links = (from l in db.USERs
+                         select l).OrderBy(x => x.idUser).ToList();
             }
-            
             int pageSize = 8;
 
             int pageNumber = (page ?? 1);
@@ -46,25 +43,29 @@ namespace HeThongQuanLyDatVeMayBay.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Create(VEMAYBAY v)
+        public ActionResult Create(USER us, ACCOUNT ac)
         {
-            vmbm.them_vemaybay(v);
+            amm.them_user(us, ac);
             return RedirectToAction("Index");
         }
-        public ActionResult Edit(string id)
+        public ActionResult Role(string id)
         {
-            return View(vmbm.layOnevemaybay(id));
+            return View(amm.layOneuser(id));
         }
         [HttpPost]
-        public ActionResult Edit(VEMAYBAY v)
+        public ActionResult Role(USER us, ACCOUNT ac, HANGMAYBAY ha)
         {
-            vmbm.sua_vemaybay(v);
+            amm.role_user(us, ac);
+            if(HeThongQuanLyDatVeMayBay.Models.Content.idquyen == "q002")
+            {
+                amm.them_hang(us, ha);
+            }
             return RedirectToAction("Index");
         }
 
         public ActionResult Delete(string id)
         {
-            vmbm.xoa_vemaybay(id);
+            amm.xoa_user(id);
             return RedirectToAction("Index");
         }
     }

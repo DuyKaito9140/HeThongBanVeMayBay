@@ -13,5 +13,9 @@ namespace HeThongQuanLyDatVeMayBay.Models
         {
             return db.VEMAYBAYs.ToList();
         }
+        public VEMAYBAY NhanOneVBM(string idVe)
+        {
+            return db.VEMAYBAYs.First(m => m.idVe == idVe);
+        }
     }
 }

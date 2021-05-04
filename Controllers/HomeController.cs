@@ -13,11 +13,24 @@ namespace HeThongQuanLyDatVeMayBay.Controllers
         SigninModel sg = new SigninModel();
         public ActionResult Index()
         {
-            return View(lg.GETuser(HeThongQuanLyDatVeMayBay.Models.Content.TenDangNhap, HeThongQuanLyDatVeMayBay.Models.Content.Password));
+            return View(lg.GETuser(HeThongQuanLyDatVeMayBay.Models.Content.TenDangNhap, HeThongQuanLyDatVeMayBay.Models.Content.Password));           
+        }
+        public ActionResult IndexPartner()
+        {
+            if(HeThongQuanLyDatVeMayBay.Models.Content.QuyenUser == "Admin")
+            {
+                return View(lg.GETuser(HeThongQuanLyDatVeMayBay.Models.Content.TenDangNhap, HeThongQuanLyDatVeMayBay.Models.Content.Password));
+            }
+            else
+            {
+                return View(lg.HangAccount(HeThongQuanLyDatVeMayBay.Models.Content.TenDangNhap, HeThongQuanLyDatVeMayBay.Models.Content.Password));
+            }            
         }
         public ActionResult Logout() 
-        {
+        {            
             HeThongQuanLyDatVeMayBay.Models.Content.QuyenUser = "";
+            HeThongQuanLyDatVeMayBay.Models.Content.TenDangNhap = "";
+            HeThongQuanLyDatVeMayBay.Models.Content.Password = ""; 
             return RedirectToAction("Index");
         }
         public ActionResult Login() 
@@ -30,9 +43,25 @@ namespace HeThongQuanLyDatVeMayBay.Controllers
             if(lg.checkuser(ac.TenDangNhap, ac.Password))
             {
                 lg.GETuser(ac.TenDangNhap, ac.Password);
-                HeThongQuanLyDatVeMayBay.Models.Content.TenDangNhap = ac.TenDangNhap;
-                HeThongQuanLyDatVeMayBay.Models.Content.Password = ac.Password;
-                return RedirectToAction("Index");
+                if(HeThongQuanLyDatVeMayBay.Models.Content.QuyenUser == "Hãng")
+                {
+                    lg.HangAccount(ac.TenDangNhap, ac.Password);
+                    HeThongQuanLyDatVeMayBay.Models.Content.TenDangNhap = ac.TenDangNhap;
+                    HeThongQuanLyDatVeMayBay.Models.Content.Password = ac.Password;
+                    return RedirectToAction("IndexPartner");
+                }
+                else if(HeThongQuanLyDatVeMayBay.Models.Content.QuyenUser == "Admin")
+                {
+                    HeThongQuanLyDatVeMayBay.Models.Content.TenDangNhap = ac.TenDangNhap;
+                    HeThongQuanLyDatVeMayBay.Models.Content.Password = ac.Password;
+                    return RedirectToAction("IndexPartner");
+                }
+                else
+                {
+                    HeThongQuanLyDatVeMayBay.Models.Content.TenDangNhap = ac.TenDangNhap;
+                    HeThongQuanLyDatVeMayBay.Models.Content.Password = ac.Password;
+                    return RedirectToAction("Index");
+                }               
             }
             else
             {                
@@ -57,9 +86,9 @@ namespace HeThongQuanLyDatVeMayBay.Controllers
             }
         }
         [HttpPost]
-        public ActionResult booknow()
+        public ActionResult booknow(string chuyenbaynoidi, string chuyenbaynoiden, string chuyenbayngaybay, string chuyenbaygiobay, string chuyenbayloaive)
         {
-             return RedirectToAction("Signin");
+             return RedirectToAction("Booknow/Index");
         }
     }
 }

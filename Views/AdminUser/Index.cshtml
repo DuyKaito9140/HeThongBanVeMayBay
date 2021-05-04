@@ -1,0 +1,69 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<HeThongQuanLyDatVeMayBay.Models.USER>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container mt-5" style="margin-left: 30px">
+    <div class="create-refesh">
+        @Html.ActionLink("Create a Account", "Create", "AdminUser", new { @class = "btn btn-success" })
+        @using (Html.BeginForm())
+        {
+            <button type="submit" class="btn btn-warning" name="mysearch" style="width: 60px; margin-bottom: 0px;">
+                <i class="fas fa-sync-alt"></i>
+            </button>
+        }
+    </div>
+    <table class="table">
+        <tr>
+            <th>ID user</th>
+            <th>Họ tên</th>
+            <th>Ngày sinh</th>
+            <th>Giới tính</th>
+            <th>CMND</th>
+            <th>Email</th>
+            <th>Số điện thoại</th>
+            <th>Địa chỉ</th>
+            <th>Quốc tịch</th>
+            <th>Quyền</th>
+            <th></th>
+        </tr>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.idUser</td>
+                    <td>@user.HoTen</td>
+                    <td>@user.NgaySinh</td>
+                    <td>@user.GioiTinh</td>
+                    <td>@user.Cmnd</td>
+                    <td>@user.Email</td>
+                    <td>@user.Sdt</td>
+                    <td>@user.DiaChi</td>
+                    <td>@user.QuocTich</td>
+                    <td>@user.ACCOUNT.LOAIQUYEN.TenQuyen</td>
+                    <td>
+                        @Html.ActionLink("Role", "Role", new { id = user.idUser.Trim() }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Delete", "Delete", new { id = user.idUser.Trim() }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <nav aria-label="Page navigation example" class="pagination-section mt-0">
+        <span class="fontbold">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</span>
+        <ul class="pagination">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
+           new PagedListRenderOptions
+           {
+               ClassToApplyToFirstListItemInPager = null,
+               ClassToApplyToLastListItemInPager = null,
+               DisplayLinkToIndividualPages = true,
+               DisplayPageCountAndCurrentLocation = false,
+               MaximumPageNumbersToDisplay = 10,
+               LiElementClasses = new string[] { "myclassed" },
+           })
+        </ul>
+    </nav>
+</div>
+

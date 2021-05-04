@@ -11,11 +11,27 @@ namespace HeThongQuanLyDatVeMayBay.Models
 {
     public class Content
     {
-        public static string QuyenUser = "";
-        public static string HoTen = ""; 
+        //ACCOUNT
+        public static string QuyenUser = "";        
         public static string TenDangNhap = "";
-        public static string Password = ""; 
+        public static string Password = "";
+
+        //USER
+        public static string HoTen = "";
+        public static string Ngaysinh ;
+        public static string Gioitinh = "";
+        public static string cmnd = "";
+        public static string email = "";
+        public static string sdt = "";
+        public static string Diachi = "";
+        public static string Quoctich = "";
+        //HÃNG
+        public static string TenHang = ""; 
+        public static string EmailHang = ""; 
+        public static string SdtHang = "";  
         private static Random random = new Random();
+
+        public static string idquyen = ""; 
         public static string RandomString(int length)
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";

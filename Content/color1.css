@@ -155,7 +155,7 @@ section,
   padding-bottom: 80px; }
 
 .small-section {
-  padding-top: 70px;
+  padding-top: 25px;
   padding-bottom: 70px; }
 
 .xs-section {
@@ -7692,7 +7692,7 @@ section .black-layer {
 .breadcrumb-section {
   background-position: center;
   background-size: cover;
-  height: 500px;
+  height: 340px;
   position: relative;
   overflow: hidden;
   z-index: 1; }
@@ -11352,7 +11352,7 @@ section .black-layer {
       .review-section .review_box .flight_detail .airport-part .airport-name.arrival {
         margin-left: auto; }
       .review-section .review_box .flight_detail .airport-part .airport-progress {
-        width: 45%;
+        width: 100%;
         padding: 0 25px;
         position: relative;
         margin: 0 auto; }
@@ -11365,7 +11365,7 @@ section .black-layer {
           font-size: calc(12px + (14 - 12) * ((100vw - 320px) / (1920 - 320)));
           width: 100%; }
         .review-section .review_box .flight_detail .airport-part .airport-progress i {
-          color: rgba(0, 0, 0, 0.17); }
+          color: red; }
         .review-section .review_box .flight_detail .airport-part .airport-progress:after {
           content: "";
           position: absolute;
@@ -11773,7 +11773,7 @@ section .black-layer {
         margin-bottom: 10px;
         font-size: calc(14px + (16 - 14) * ((100vw - 320px) / (1920 - 320))); }
   .review-section .review_box + .review_box {
-    margin-top: 20px; }
+    margin-top: 28px; }
 
 .res-margin .single-section {
   margin-top: 20px; }

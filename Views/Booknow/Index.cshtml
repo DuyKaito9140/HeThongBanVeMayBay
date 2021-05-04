@@ -1,6 +1,5 @@
 ﻿@model PagedList.IPagedList<HeThongQuanLyDatVeMayBay.Models.VEMAYBAY>
 @using PagedList.Mvc;
-@using PagedList;
 @{
     ViewBag.Title = "Index";
 }
@@ -24,6 +23,13 @@
         padding-top: 7px;
         text-align: center;
         vertical-align: central;
+    }
+    .myclassed:hover {
+        background-color: #ffe75b;
+        cursor: pointer;
+    }
+    .fontbold {
+        font-weight: 600;
     }
 </style>
 <!-- pre-loader start -->
@@ -1082,10 +1088,12 @@
                     <div class="detail-bar">
                         @foreach (var vemaybay in Model)
                         {
+
                             int sokg = vemaybay.SoKgHanhLy.Value + vemaybay.LOAIVE.ThemSoKg.Value;
                             int giave = vemaybay.GiaVe.Value + vemaybay.LOAIVE.TienTraThem.Value;
                             string tenhang = vemaybay.CHUYENBAY.MAYBAY.HANGMAYBAY.TenHang.ToString();
                             <div class="detail-wrap wow fadeInUp">
+
                                 <div class="row">
                                     <div class="col-md-2">
                                         <div class="logo-sec">
@@ -1117,7 +1125,7 @@
                                                 <div class="typeticket">
                                                     @vemaybay.LOAIVE.TenLoaiVe
                                                 </div>
-                                                <a name="idmaybay"></a>
+                                                <a name=""></a>
                                                 <i class="fas fa-plane-departure float-start"></i>
                                                 <i class="fas fa-plane-arrival float-end"></i>
                                                 <div class="stop" name="">
@@ -1133,6 +1141,7 @@
                                     <div class="col-md-2">
                                         <div class="price">
                                             <div>
+                                                <span style="font-size: 3px; color: white" name="idVe">@vemaybay.idVe</span>
                                                 <h4 name="">@giave VNĐ</h4>
                                                 <h6 name="">@sokg Kg</h6>
                                             </div>
@@ -1140,17 +1149,19 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="book-flight">
-                                            <a href="" class="btn btn-solid color1 ">book now</a>
+                                            @Html.ActionLink("book now", "booking", new { idVe = vemaybay.idVe.Trim() }, new { @class = "btn btn-solid color1 " })
+                                            <!--<button type="submit" class="btn btn-solid color1 ">book now</button>-->
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
-                        }
+                         }
                     </div>
                 </form>
                 <br />
                 <nav aria-label="Page navigation example" class="pagination-section mt-0">
-                    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+                    <span class="fontbold">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</span>
                     <ul class="pagination">
                         @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
                        new PagedListRenderOptions

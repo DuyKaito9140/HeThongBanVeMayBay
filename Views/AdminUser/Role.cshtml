@@ -1,0 +1,113 @@
+﻿@model HeThongQuanLyDatVeMayBay.Models.USER
+@using HeThongQuanLyDatVeMayBay.Models
+@{
+    ViewBag.Title = "Edit";
+    DBEntities_QLHeThongDatVeMayBay db = new DBEntities_QLHeThongDatVeMayBay();
+    var listquyen = db.LOAIQUYENs.ToList();
+}
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Home</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous" />  
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <style>
+        .olalahang{
+            display: none;
+        }
+        .ola123{
+            display: block;
+        }
+    </style>
+</head>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container mt-3">
+        <h3 class="text-center">Cập nhật quyền của tài khoản</h3>
+        <form>
+            <div class="form002" style="width: 49%; float: right;">
+                <label for="NgaySinh">Ngày sinh: </label>
+                <input type="text" readonly name="NgaySinh" value="@Model.NgaySinh" class="form-control">
+            </div>
+            <div class="form002" style="width: 49%;">
+                <label for="HoTen">Họ tên: </label>
+                <input type="text" readonly name="HoTen" value="@Model.HoTen" class="form-control">
+            </div>
+            <div class="form002" style="width: 49%; float: right;">
+                <label for="GioiTinh">Giới tính: </label>
+                <input type="text" readonly name="GioiTinh" value="@Model.GioiTinh" class="form-control">
+            </div>
+            <div class="form002" style="width: 49%;">
+                <label for="DiaChi">Địa chỉ: </label>
+                <input type="text" readonly name="DiaChi" value="@Model.DiaChi" class="form-control">
+            </div>
+            <div class="form002" style="width: 49%; float: right;">
+                <label for="Email">Email: </label>
+                <input type="text" readonly name="Email" value="@Model.Email" class="form-control">
+            </div>
+            <div class="form002" style="width: 49%;">
+                <label for="Sdt">Số điện thoại: </label>
+                <input type="text" readonly name="Sdt" value="@Model.Sdt" class="form-control">
+            </div>
+            <div class="form002" style="width: 49%; float: right;">
+                <label for="QuocTich">Quốc tịch: </label>
+                <input type="text" readonly name="QuocTich" value="@Model.QuocTich" class="form-control">
+            </div>
+            <div class="form002" style="width: 49%;">
+                <label for="Cmnd">CMND: </label>
+                <input type="text" readonly name="Cmnd" value="@Model.Cmnd" class="form-control">
+            </div>
+            <div class="form002">
+                <label for="idAccount">Id Account: </label>
+                <input type="text" readonly name="idAccount" value="@Model.idAccount" class="form-control">
+            </div>
+
+            <label for="idQuyen">Quyền: </label>
+            <select class="form-select form-control selectquyen" style="border: 2px solid red" aria-label=".form-select-sm example" name="idQuyen">
+                <option selected="selected" readOnly style="background-color: silver">@Model.ACCOUNT.LOAIQUYEN.idQuyen @Model.ACCOUNT.LOAIQUYEN.TenQuyen</option>
+                @foreach (var items in listquyen)
+                {
+                    <option>@items.idQuyen @items.TenQuyen</option>
+                }
+            </select>
+            <br />
+            <div class="olalahang">
+                <div class="form002">
+                    <label for="TenHang">Tên Hãng: </label>
+                    <input type="text" name="TenHang" class="form-control">
+                </div>
+                <div class="form002">
+                    <label for="EmailHang">Email Hãng: </label>
+                    <input type="text" name="EmailHang" class="form-control">
+                </div>
+                <div class="form002">
+                    <label for="SdtHang">Số điện thoại Hãng: </label>
+                    <input type="text" name="SdtHang" class="form-control">
+                </div>
+            </div>
+            <br />
+            <input type="submit" value="Save" class="btn btn-primary mt-2" style="width: 100px"><br />
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        </form>
+    </div>
+}
+<script>
+        $(".selectquyen").change(function () {
+            var str = "";
+            $("select option:selected").each(function () {
+                str = $(this).text();
+                if (str == "q002 Hãng") {
+                    $(".olalahang").addClass('ola123');
+                }
+            });
+        });
+        
+</script>
+

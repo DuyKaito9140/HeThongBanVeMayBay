@@ -4,17 +4,40 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using HeThongQuanLyDatVeMayBay.Models;
+using PagedList;
 
 namespace HeThongQuanLyDatVeMayBay.Controllers
 {
     public class PartnerPlanesController : Controller
     {
+        DBEntities_QLHeThongDatVeMayBay db = new DBEntities_QLHeThongDatVeMayBay();
         PartnerPlanesModel mbm = new PartnerPlanesModel();
-        public ActionResult Index()
+        public ActionResult Index(int? page, string mysearch)
         {
-            return View(mbm.ListMayBay());
-        }
+            if (page == null) page = 1;
+            var links = new List<MAYBAY>();
+            if (!String.IsNullOrEmpty(mysearch))
+            {
+                links = (from l in db.MAYBAYs
+                             select l).OrderBy(x => x.idMayBay).Where(m=>m.TenMayBay.Contains(mysearch) 
+                             || m.HANGMAYBAY.TenHang.Contains(mysearch) || m.SoLuongKhach.ToString().Contains(mysearch)).ToList();
+            }
+            else
+            {
+                links = (from l in db.MAYBAYs
+                             select l).OrderBy(x => x.idMayBay).ToList();
+            }            
+            int pageSize = 8;
 
+            int pageNumber = (page ?? 1);
+            return View(links.ToPagedList(pageNumber, pageSize));
+        }
+        [HttpPost]
+        public ActionResult Index(string mysearch)
+        {
+            mysearch = "";
+            return RedirectToAction("Index");
+        }
         public ActionResult Create()
         {
             return View();

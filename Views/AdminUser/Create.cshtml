@@ -1,0 +1,67 @@
+﻿@using HeThongQuanLyDatVeMayBay.Models
+@model HeThongQuanLyDatVeMayBay.Models.USER
+
+@{
+    ViewBag.Title = "Create";
+    DBEntities_QLHeThongDatVeMayBay db = new DBEntities_QLHeThongDatVeMayBay();
+}
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Home</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous" />
+    <style>
+        form label{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container mt-3">
+        <h3 class="text-center">Thêm tài khoản mới</h3>
+        <form>
+            <label for="HoTen">Họ tên: </label>
+            <input type="text" name="HoTen" class="form-control">
+            <label for="NgaySinh">Ngày sinh: </label>
+            <input type="date" name="NgaySinh" class="form-control">
+            <label for="GioiTinh">Giới tính: </label>
+            <select class="form-select form-control" aria-label=".form-select-sm example" name="GioiTinh">
+                <option>Nam</option>
+                <option>Nữ</option>
+                <option>Khác</option>
+            </select>
+            <label for="DiaChi">Địa chỉ: </label>
+            <input type="text" name="DiaChi" class="form-control">
+            <label for="Sdt">Số điện thoại: </label>
+            <input type="text" name="Sdt" class="form-control">
+            <label for="Email">Email: </label>
+            <input type="text" name="Email" class="form-control">
+            <label for="Cmnd">CMND: </label>
+            <input type="text" name="Cmnd" class="form-control">
+            <label for="QuocTich">Họ tên: </label>
+            <input type="text" name="QuocTich" class="form-control">
+
+            <label for="TenDangNhap">Tên đăng nhập: </label>
+            <input type="text" name="TenDangNhap" class="form-control">
+            <label for="Password">Mật khẩu: </label>
+            <input type="text" name="Password" class="form-control">
+
+            <label for="">Quyền: </label>
+            <input type="text" readonly class="form-control" placeholder="Khách hàng thành viên">
+            <br />
+            <input type="submit" value="Thêm mới" class="btn btn-success mt-2">
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        </form>
+    </div>
+}
+
+
