@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using HeThongQuanLyDatVeMayBay.Models;
 
 namespace HeThongQuanLyDatVeMayBay.Models
 {
@@ -9,21 +10,25 @@ namespace HeThongQuanLyDatVeMayBay.Models
     {
         DBEntities_QLHeThongDatVeMayBay db = new DBEntities_QLHeThongDatVeMayBay();
 
+        public USER layOneuser(string id)
+        {
+            return db.USERs.First(m => m.idUser == id);
+        }
         public bool checkuser(string tendangnhap, string pass)
         {
             List<USER> listuser = db.USERs.ToList();
-            foreach(var item in listuser)
+            foreach (var item in listuser)
             {
                 if (item.ACCOUNT.TenDangNhap == tendangnhap && item.ACCOUNT.Password == pass)
-                {                   
-                     return true;
+                {
+                    return true;
                 }
             }
             return false;
         }
         public USER GETuser(string tendangnhap, string pass)
         {
-            if(tendangnhap == "" || pass == "")
+            if (tendangnhap == "" || pass == "")
             {
                 return null;
             }
@@ -35,8 +40,9 @@ namespace HeThongQuanLyDatVeMayBay.Models
             }
             else
             {
+                Content.idUser = user.idUser;
                 Content.HoTen = user.HoTen;
-                Content.Ngaysinh = user.NgaySinh.ToString();
+                Content.Ngaysinh = user.NgaySinh.Value.Day.ToString() + "/" + user.NgaySinh.Value.Month.ToString() + "/" + user.NgaySinh.Value.Year.ToString();
                 Content.Gioitinh = user.GioiTinh;
                 Content.cmnd = user.Cmnd;
                 Content.sdt = user.Sdt;
@@ -44,7 +50,7 @@ namespace HeThongQuanLyDatVeMayBay.Models
                 Content.Diachi = user.DiaChi;
                 Content.Quoctich = user.QuocTich;
                 return user;
-            }            
+            }
         }
 
         public HANGMAYBAY HangAccount(string tendangnhap, string pass)
@@ -60,5 +66,6 @@ namespace HeThongQuanLyDatVeMayBay.Models
             Content.EmailHang = hang.EmailHang;
             return hang;
         }
+        
     }
 }

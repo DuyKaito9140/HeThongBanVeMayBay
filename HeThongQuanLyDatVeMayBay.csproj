@@ -173,6 +173,7 @@
     <Compile Include="Models\DOANHTHU.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\EditInfomation.cs" />
     <Compile Include="Models\HANGMAYBAY.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -499,6 +500,7 @@
     <Content Include="Views\AdminUser\Index.cshtml" />
     <Content Include="Views\AdminUser\Create.cshtml" />
     <Content Include="Views\AdminUser\Role.cshtml" />
+    <Content Include="Views\Home\EditInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

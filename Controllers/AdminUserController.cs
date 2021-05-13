@@ -56,7 +56,7 @@ namespace HeThongQuanLyDatVeMayBay.Controllers
         public ActionResult Role(USER us, ACCOUNT ac, HANGMAYBAY ha)
         {
             amm.role_user(us, ac);
-            if(HeThongQuanLyDatVeMayBay.Models.Content.idquyen == "q002")
+            if (HeThongQuanLyDatVeMayBay.Models.Content.idquyen == "q002")
             {
                 amm.them_hang(us, ha);
             }

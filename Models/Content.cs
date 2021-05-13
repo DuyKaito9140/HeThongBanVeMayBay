@@ -17,8 +17,9 @@ namespace HeThongQuanLyDatVeMayBay.Models
         public static string Password = "";
 
         //USER
-        public static string HoTen = "";
-        public static string Ngaysinh ;
+        public static string idUser = ""; 
+        public static string HoTen = ""; 
+        public static string Ngaysinh = "";
         public static string Gioitinh = "";
         public static string cmnd = "";
         public static string email = "";

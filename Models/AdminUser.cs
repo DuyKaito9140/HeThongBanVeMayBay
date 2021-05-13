@@ -21,10 +21,10 @@ namespace HeThongQuanLyDatVeMayBay.Models
         {
             return db.ACCOUNTs.First(m => m.idAccount == id);
         }
-        public void them_user(USER us, ACCOUNT ac) 
+        public void them_user(USER us, ACCOUNT ac)
         {
             //account
-            ac.idAccount = Content.RandomString(12); 
+            ac.idAccount = Content.RandomString(12);
             ac.idQuyen = "q003";
 
             //user
@@ -34,16 +34,16 @@ namespace HeThongQuanLyDatVeMayBay.Models
             db.USERs.Add(us);
             db.SaveChanges();
         }
-        public void them_hang(USER us , HANGMAYBAY ha)
+        public void them_hang(USER us, HANGMAYBAY ha)
         {
             ha.idHang = Content.RandomString(8);
             ha.idAccount = us.idAccount;
             db.HANGMAYBAYs.Add(ha);
             db.SaveChanges();
         }
-        public void role_user(USER us, ACCOUNT ac) 
+        public void role_user(USER us, ACCOUNT ac)
         {
-            string[] idq = ac.idQuyen.Split(' ');              
+            string[] idq = ac.idQuyen.Split(' ');
             ACCOUNT x = layOneaccount(us.idAccount);
             x.idQuyen = idq[0];
             if (x.idQuyen == "q002")
@@ -51,8 +51,7 @@ namespace HeThongQuanLyDatVeMayBay.Models
                 HeThongQuanLyDatVeMayBay.Models.Content.idquyen = "q002";
             }
             db.SaveChanges();
-        }
-
+        }        
         public void xoa_user(string id)
         {
             USER x = layOneuser(id);
@@ -60,4 +59,4 @@ namespace HeThongQuanLyDatVeMayBay.Models
             db.SaveChanges();
         }
     }
-}
+}      
