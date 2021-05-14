@@ -1,0 +1,71 @@
+﻿@model PagedList.IPagedList<HeThongQuanLyDatVeMayBay.Models.KHUYENMAI>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container mt-5">
+    <div class="create-refesh">
+        @Html.ActionLink("Create a promotion", "Create", "PartnerPlanes", new { @class = "btn btn-success" })
+        @using (Html.BeginForm())
+        {
+            <button type="submit" class="btn btn-warning" name="mysearch" style="width: 60px; margin-bottom: 0px;">
+                <i class="fas fa-sync-alt"></i>
+            </button>
+        }
+    </div>
+    <table class="table">
+        <tr>
+            <th>ID khuyến mãi</th>
+            <th>Mã khuyến mãi</th>
+            <th>Ngày bắt đầu</th>
+            <th>Ngày kết thúc</th>
+            <th>Giá trị khuyến mãi</th>
+            <th>Chi tiết mô tả</th>
+            <th></th>
+        </tr>
+        <tbody>
+            @foreach (var promo in Model)
+            {
+                <tr>
+                    <td>@promo.idKhuyenMai</td>
+                    <td>@promo.MaKhuyenMai</td>
+                    <td>@promo.NgayBatDauKM.Value.Day/@promo.NgayBatDauKM.Value.Month/@promo.NgayBatDauKM.Value.Year</td>
+                    <td>@promo.NgayKetThucKM.Value.Day/@promo.NgayKetThucKM.Value.Month/@promo.NgayKetThucKM.Value.Year</td>
+                    @if (promo.GiaTriKM < 1000)
+                    {
+                        <td style="padding-left: 35px">-@promo.GiaTriKM %</td>
+                    }
+                    else
+                    {
+                        <td>-@promo.GiaTriKM VNĐ</td>
+                    }
+                    <td>@promo.ChiTietMoTaKM</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = promo.idKhuyenMai.Trim() }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Delete", "Delete", new { id = promo.idKhuyenMai.Trim() }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <nav aria-label="Page navigation example" class="pagination-section mt-0">
+        <span class="fontbold">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</span>
+        <ul class="pagination">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
+           new PagedListRenderOptions
+           {
+               ClassToApplyToFirstListItemInPager = null,
+               ClassToApplyToLastListItemInPager = null,
+               DisplayLinkToIndividualPages = true,
+               DisplayPageCountAndCurrentLocation = false,
+               MaximumPageNumbersToDisplay = 10,
+               LiElementClasses = new string[] { "myclassed" },
+           })
+        </ul>
+    </nav>
+</div>
+
+
+
+

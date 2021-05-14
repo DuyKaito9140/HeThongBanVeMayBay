@@ -1,0 +1,58 @@
+﻿@model HeThongQuanLyDatVeMayBay.Models.KHUYENMAI
+@{
+    ViewBag.Title = "Create";
+}
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Home</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous" />
+    <style>
+        form label{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container mt-3">
+        <h3 class="text-center">Thêm Khuyến Mãi mới</h3>
+        <form>
+            <label for="MaKhuyenMai">Mã khuyến mãi: </label>
+            <input type="text" name="MaKhuyenMai" class="form-control">
+            <label for="NgayBatDauKM">Ngày bắt đầu: </label>
+            <div class="form-group">
+                <input type="date" name="NgayBatDauKM" max="3000-12-31"
+                       min="1000-01-01" class="form-control">
+            </div>
+            <label for="NgayKetThucKM">Ngày kết thúc: </label>
+            <div class="form-group">
+                <input type="date" name="NgayKetThucKM" max="3000-12-31"
+                       min="1000-01-01" class="form-control">
+            </div>
+            <label for="soluongkhach">Giá trị khuyến mãi </label>
+            <div style="display: flex">
+                <input type="number" name="GiaTriKM" class="form-control" style="width: 90%">
+                <select style="width: 10%">
+                    <option>VNĐ</option>
+                    <option>%</option>
+                </select>
+            </div>            
+            <label for="ChiTietMoTaKM">Mô tả khuyến mãi:  </label>
+            <textarea name="ChiTietMoTaKM" class="form-control"></textarea>
+            <br />
+            <input type="submit" value="Thêm mới" class="btn btn-success mt-2">
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        </form>
+    </div>
+}
+
+

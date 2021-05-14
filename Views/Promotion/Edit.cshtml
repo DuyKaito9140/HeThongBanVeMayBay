@@ -1,0 +1,95 @@
+﻿@model HeThongQuanLyDatVeMayBay.Models.KHUYENMAI
+@{
+    ViewBag.Title = "Edit";
+}
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Home</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous" />
+</head>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container mt-3">
+        <h3 class="text-center">Cập nhật khuyến mãi</h3>
+        <form>
+            <label for="idKhuyenMai">ID khuyến mãi</label>
+            <input type="text" name="idKhuyenMai" value="@Model.idKhuyenMai" class="form-control" readonly><br />
+            <label for="MaKhuyenMai">Mã khuyến mãi: </label>
+            <input type="text" name="MaKhuyenMai" value="@Model.MaKhuyenMai" class="form-control"><br />
+            <label for="NgayBatDauKM">Ngày bắt đầu: </label>
+            <div class="form-group">
+                @{ 
+                    string ys = Model.NgayBatDauKM.Value.Year.ToString();
+                    string ms;
+                    if (int.Parse(Model.NgayBatDauKM.Value.Month.ToString()) < 10)
+                    {
+                        ms = "0" + Model.NgayBatDauKM.Value.Month.ToString();
+                    }
+                    else
+                    {
+                        ms = Model.NgayBatDauKM.Value.Month.ToString();
+                    }
+                    string ds;
+                    if (int.Parse(Model.NgayBatDauKM.Value.Day.ToString()) < 10)
+                    {
+                        ds = "0" + Model.NgayBatDauKM.Value.Day.ToString();
+                    }
+                    else
+                    {
+                        ds = Model.NgayBatDauKM.Value.Day.ToString();
+                    }
+                }
+                <input type="date" name="NgayBatDauKM" value="@ys-@ms-@ds" max="3000-12-31"
+                       min="1000-01-01" class="form-control">
+            </div>
+            <label for="NgayKetThucKM">Ngày kết thúc: </label>
+            <div class="form-group">
+                @{
+                    string ye = Model.NgayKetThucKM.Value.Year.ToString();
+                    string me;
+                    if (int.Parse(Model.NgayKetThucKM.Value.Month.ToString()) < 10)
+                    {
+                        me = "0" + Model.NgayKetThucKM.Value.Month.ToString();
+                    }
+                    else
+                    {
+                        me = Model.NgayKetThucKM.Value.Month.ToString();
+                    }
+                    string de;
+                    if (int.Parse(Model.NgayKetThucKM.Value.Day.ToString()) < 10)
+                    {
+                        de = "0" + Model.NgayKetThucKM.Value.Day.ToString();
+                    }
+                    else
+                    {
+                        de = Model.NgayKetThucKM.Value.Day.ToString();
+                    }
+                }
+                <input type="date" name="NgayKetThucKM" value="@ye-@me-@de" max="3000-12-31"
+                       min="1000-01-01" class="form-control">
+            </div>
+            <label for="soluongkhach">Giá trị khuyến mãi </label>
+            <div style="display: flex">
+                <input type="number" name="GiaTriKM" value="@Model.GiaTriKM" class="form-control" style="width: 90%">
+                <select style="width: 10%">
+                    <option>VNĐ</option>
+                    <option>%</option>
+                </select>
+            </div><br />
+            <label for="ChiTietMoTaKM">Mô tả khuyến mãi:  </label>
+            <textarea name="ChiTietMoTaKM" class="form-control">@Model.ChiTietMoTaKM</textarea>
+            <br />
+            <input type="submit" value="Cập nhật" class="btn btn-primary mt-2" style="width: 120px"> <br>
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        </form>
+    </div>
+}
+

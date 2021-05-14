@@ -140,6 +140,7 @@
     <Compile Include="Controllers\PartnerPlanesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PartnerTicketsController.cs" />
+    <Compile Include="Controllers\PromotionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -196,6 +197,7 @@
     <Compile Include="Models\PartnerFlightsModel.cs" />
     <Compile Include="Models\PartnerPlanesModel.cs" />
     <Compile Include="Models\PartnerTicketsModel.cs" />
+    <Compile Include="Models\PromotionModel.cs" />
     <Compile Include="Models\SigninModel.cs" />
     <Compile Include="Models\USER.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
@@ -501,6 +503,9 @@
     <Content Include="Views\AdminUser\Create.cshtml" />
     <Content Include="Views\AdminUser\Role.cshtml" />
     <Content Include="Views\Home\EditInfo.cshtml" />
+    <Content Include="Views\Promotion\Index.cshtml" />
+    <Content Include="Views\Promotion\Edit.cshtml" />
+    <Content Include="Views\Promotion\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
