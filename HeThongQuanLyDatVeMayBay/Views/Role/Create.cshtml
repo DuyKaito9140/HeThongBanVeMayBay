@@ -1,0 +1,56 @@
+﻿@using HeThongQuanLyDatVeMayBay.Models
+@model HeThongQuanLyDatVeMayBay.Models.LOAIQUYEN
+
+@{
+    ViewBag.Title = "Create";
+}
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Home</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous" />
+    <style>
+        form label{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container mt-3">
+        <h3 class="text-center">Thêm Máy Bay mới</h3>
+        <form>
+            <label for="TenQuyen">Tên quyền</label>
+            <input type="text" name="TenQuyen" class="form-control" required>
+            <br>
+            <hr />
+            <br>
+            <h3>Chọn các quyền mà User được phép: </h3>
+            <input type="checkbox" class="check" value="1">
+            <label for="vehicle3">Khách hàng - không có quyền truy cập vào hệ thống quản trị</label><br>
+            <input type="checkbox" class="check" value="2">
+            <label for="vehicle1">Quản lý User</label><br>
+            <input type="checkbox" class="check" value="3">
+            <label for="vehicle2">Quản lý Vé</label><br>
+            <input type="checkbox" class="check" value="4">
+            <label for="vehicle3">Quản lý Chuyến Bay</label><br>
+            <input type="checkbox" class="check" value="5">
+            <label for="vehicle2">Quản lý khuyến mãi</label><br>
+            <input type="checkbox" class="check" value="6">
+            <label for="vehicle3">Quản lý Quyền</label><br><br>
+            <br />
+            <input type="submit" id="btn" value="Thêm mới" class="btn btn-success mt-2">
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        </form>
+    </div>
+}
+
+

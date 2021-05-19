@@ -1,0 +1,55 @@
+﻿@model PagedList.IPagedList<HeThongQuanLyDatVeMayBay.Models.LOAIQUYEN>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container mt-5">
+    <div class="create-refesh">
+        @Html.ActionLink("Create a Role", "Create", "Role", new { @class = "btn btn-success" })
+        @using (Html.BeginForm())
+        {
+            <button type="submit" class="btn btn-warning" name="mysearch" style="width: 60px; margin-bottom: 0px;">
+                <i class="fas fa-sync-alt"></i>
+            </button>
+        }
+    </div>
+    <table class="table">
+        <tr>
+            <th>ID máy bay</th>
+            <th>Tên quyền</th>
+            <th></th>
+        </tr>
+        <tbody>
+            @foreach (var quyen in Model)
+            {
+                <tr>
+                    <td>@quyen.idQuyen</td>
+                    <td>@quyen.TenQuyen</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = quyen.idQuyen.Trim() }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Delete", "Delete", new { id = quyen.idQuyen.Trim() }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <nav aria-label="Page navigation example" class="pagination-section mt-0">
+        <span class="fontbold">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</span>
+        <ul class="pagination">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
+           new PagedListRenderOptions
+           {
+               ClassToApplyToFirstListItemInPager = null,
+               ClassToApplyToLastListItemInPager = null,
+               DisplayLinkToIndividualPages = true,
+               DisplayPageCountAndCurrentLocation = false,
+               MaximumPageNumbersToDisplay = 10,
+               LiElementClasses = new string[] { "myclassed" },
+           })
+        </ul>
+    </nav>
+</div>
+
+
+

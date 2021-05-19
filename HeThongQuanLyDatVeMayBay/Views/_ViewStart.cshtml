@@ -1,0 +1,12 @@
+﻿@using HeThongQuanLyDatVeMayBay.Models;
+@{
+    if(Content.QuyenUser == "" || Content.QuyenUser == "Khách hàng thành viên" || Content.QuyenUser == "khach")
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout_Partner.cshtml";
+    }
+
+}

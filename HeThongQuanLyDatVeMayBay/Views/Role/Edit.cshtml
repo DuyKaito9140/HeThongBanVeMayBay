@@ -1,0 +1,45 @@
+﻿@model HeThongQuanLyDatVeMayBay.Models.MAYBAY
+@using HeThongQuanLyDatVeMayBay.Models
+@{
+    ViewBag.Title = "Edit";
+    DBEntities_QLHeThongDatVeMayBay db = new DBEntities_QLHeThongDatVeMayBay();
+    var listhang = db.HANGMAYBAYs.ToList();
+}
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Home</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous" />
+</head>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container mt-3">
+        <h3 class="text-center">Cập nhật Máy Bay</h3>
+        <form>
+            <label for="idMayBay">ID máy bay</label>
+            <input type="text" name="idMayBay" value="@Model.idMayBay" class="form-control" readonly>
+            <label for="tenmaybay">Tên máy bay</label>
+            <input type="text" name="TenMayBay" value="@Model.TenMayBay" class="form-control">
+            <label for="hangmaybay">Hãng máy bay</label>
+            <select class="form-select form-control" aria-label=".form-select-sm example" name="idHang">
+                <option selected readOnly style="background-color: silver">@Model.idHang @Model.HANGMAYBAY.TenHang</option>
+                @foreach (var items in listhang)
+                {
+                    <option>@items.idHang @items.TenHang</option>
+                }
+            </select>
+            <label for="soluongkhach">Số lượng khách tối đa</label>
+            <input type="number" name="SoLuongKhach" value="@Model.SoLuongKhach" class="form-control">
+            <input type="submit" value="Cập nhật" class="btn btn-primary mt-2"> <br>
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        </form>
+    </div>
+}
+
