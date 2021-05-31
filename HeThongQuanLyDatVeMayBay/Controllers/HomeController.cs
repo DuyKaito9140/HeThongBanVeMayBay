@@ -4,14 +4,17 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using HeThongQuanLyDatVeMayBay.Models;
+using PagedList;
 
 namespace HeThongQuanLyDatVeMayBay.Controllers
 {
     public class HomeController : Controller
     {
+        DBEntities_QLHeThongDatVeMayBay db = new DBEntities_QLHeThongDatVeMayBay();
         LoginModel lg = new LoginModel();
         SigninModel sg = new SigninModel();
         EditInfomation ei = new EditInfomation();
+        PromotionModel pr = new PromotionModel();
         public ActionResult Index()
         {            
             return View(lg.GETuser(HeThongQuanLyDatVeMayBay.Models.Content.TenDangNhap, HeThongQuanLyDatVeMayBay.Models.Content.Password));
@@ -52,6 +55,12 @@ namespace HeThongQuanLyDatVeMayBay.Controllers
                     return RedirectToAction("IndexPartner");
                 }
                 else if (HeThongQuanLyDatVeMayBay.Models.Content.QuyenUser == "Admin")
+                {
+                    HeThongQuanLyDatVeMayBay.Models.Content.TenDangNhap = ac.TenDangNhap;
+                    HeThongQuanLyDatVeMayBay.Models.Content.Password = ac.Password;
+                    return RedirectToAction("IndexPartner");
+                }
+                else if (HeThongQuanLyDatVeMayBay.Models.Content.QuyenUser == "Thuky")
                 {
                     HeThongQuanLyDatVeMayBay.Models.Content.TenDangNhap = ac.TenDangNhap;
                     HeThongQuanLyDatVeMayBay.Models.Content.Password = ac.Password;
@@ -100,6 +109,18 @@ namespace HeThongQuanLyDatVeMayBay.Controllers
         public ActionResult booknow(string chuyenbaynoidi, string chuyenbaynoiden, string chuyenbayngaybay, string chuyenbaygiobay, string chuyenbayloaive)
         {
             return RedirectToAction("Booknow/Index");
+        }
+        public ActionResult Promotion() 
+        {            
+            return View(pr.Listkhuyenmai());
+        }
+        public ActionResult About()
+        {
+            return View();
+        }
+        public ActionResult Contact() 
+        {
+            return View();
         }
     }
 }

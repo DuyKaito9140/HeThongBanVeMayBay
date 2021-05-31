@@ -58,3 +58,12 @@ span.btnclose123 {
     margin-left: 250px;
     transition: 0.6s cubic-bezier(0, 1.16, 0, 1.23);
 }
+
+<!-- -->
+.breadcrumbs-section {
+    background-color: #e9ecef;
+}
+
+.clients-section {
+    background-color: #f0f0f0;
+}

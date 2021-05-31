@@ -18,6 +18,7 @@ namespace HeThongQuanLyDatVeMayBay.Models
         public VEMAYBAY()
         {
             this.DATVEs = new HashSet<DATVE>();
+            this.DATVEKOLOGINs = new HashSet<DATVEKOLOGIN>();
         }
     
         public string idVe { get; set; }
@@ -25,10 +26,13 @@ namespace HeThongQuanLyDatVeMayBay.Models
         public string idLoaiVe { get; set; }
         public Nullable<int> SoKgHanhLy { get; set; }
         public Nullable<int> GiaVe { get; set; }
+        public string TrangThai { get; set; }
     
         public virtual CHUYENBAY CHUYENBAY { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DATVE> DATVEs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DATVEKOLOGIN> DATVEKOLOGINs { get; set; }
         public virtual LOAIVE LOAIVE { get; set; }
     }
 }

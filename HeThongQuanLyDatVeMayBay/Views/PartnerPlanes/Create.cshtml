@@ -34,7 +34,10 @@
             <select class="form-select form-control" aria-label=".form-select-sm example" name="idHang">
                 @foreach (var items in listhang)
                 {
-                    <option>@items.idHang @items.TenHang</option>
+                    if (items.TenHang == Content.TenHang)
+                    {
+                        <option>@items.idHang @items.TenHang</option>
+                    }
                 }
             </select>
             <label for="soluongkhach">Số lượng khách tối đa</label>

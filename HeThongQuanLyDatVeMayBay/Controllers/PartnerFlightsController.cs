@@ -11,22 +11,22 @@ namespace HeThongQuanLyDatVeMayBay.Controllers
     public class PartnerFlightsController : Controller
     {
         DBEntities_QLHeThongDatVeMayBay db = new DBEntities_QLHeThongDatVeMayBay();
-        PartnerFlightsModel cbm = new PartnerFlightsModel(); 
+        PartnerFlightsModel cbm = new PartnerFlightsModel();
         public ActionResult Index(int? page, string mysearch)
         {
             if (page == null) page = 1;
-            var links = new List<CHUYENBAY>();
+            var links = new List<CHUYENBAY>();                      
             if (!String.IsNullOrEmpty(mysearch))
             {
                 links = (from l in db.CHUYENBAYs
-                         select l).OrderBy(x => x.idChuyenBay).Where(m => m.MAYBAY.HANGMAYBAY.TenHang.Contains(mysearch)
+                         select l).OrderBy(x => x.idChuyenBay).Where(m => (m.MAYBAY.HANGMAYBAY.TenHang.Contains(mysearch)
                          || m.NoiDi.Contains(mysearch) || m.NoiDen.Contains(mysearch)
-                         || m.GioBay.Contains(mysearch) || m.GioDen.Contains(mysearch)).ToList();
+                         || m.GioBay.Contains(mysearch) || m.GioDen.Contains(mysearch)) && m.MAYBAY.HANGMAYBAY.TenHang.Contains(HeThongQuanLyDatVeMayBay.Models.Content.TenHang)).ToList();
             }
             else
             {
                 links = (from l in db.CHUYENBAYs
-                         select l).OrderBy(x => x.idChuyenBay).ToList();
+                         select l).Where(m => m.MAYBAY.HANGMAYBAY.TenHang.Contains(HeThongQuanLyDatVeMayBay.Models.Content.TenHang)).OrderBy(x => x.idChuyenBay).ToList();
             }
             
             int pageSize = 8;

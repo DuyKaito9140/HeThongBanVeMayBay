@@ -22,7 +22,8 @@ namespace HeThongQuanLyDatVeMayBay.Models
         {           
             int soVe = int.Parse(vmb.idVe);
             string[] idmb = vmb.idChuyenBay.Split(' ');
-            vmb.idChuyenBay = idmb[0];           
+            vmb.idChuyenBay = idmb[0];
+            vmb.TrangThai = "Còn vé";
             for (int i = 0; i < soVe; i++)
             {
                 VEMAYBAY x = new VEMAYBAY();
@@ -31,6 +32,7 @@ namespace HeThongQuanLyDatVeMayBay.Models
                 x.idChuyenBay = vmb.idChuyenBay;
                 x.SoKgHanhLy = vmb.SoKgHanhLy;
                 x.GiaVe = vmb.GiaVe;
+                x.TrangThai = vmb.TrangThai;
                 if (i < 16)
                 {
                     x.idLoaiVe = "lv004";

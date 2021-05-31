@@ -84,9 +84,20 @@ namespace HeThongQuanLyDatVeMayBay.Controllers
             return View(bn.NhanOneVBM(idVe));
         }
         [HttpPost]
-        public ActionResult booking(VEMAYBAY v) 
-        {
+        public ActionResult booking(VEMAYBAY v)  
+        {            
             return RedirectToAction("Booknow/booking");
+        }
+
+        public ActionResult Datvenologin()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Datvenologin(DATVEKOLOGIN v)
+        {
+            bn.dat_ve_nologin(v);
+            return RedirectToAction("Datvenologin");
         }
     }
 }

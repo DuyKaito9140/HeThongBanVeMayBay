@@ -8,7 +8,7 @@ namespace HeThongQuanLyDatVeMayBay.Models
     public class PromotionModel
     {
         DBEntities_QLHeThongDatVeMayBay db = new DBEntities_QLHeThongDatVeMayBay();
-        public IEnumerable<KHUYENMAI> ListMayBay()
+        public IEnumerable<KHUYENMAI> Listkhuyenmai()  
         {
             return db.KHUYENMAIs.ToList();
         }
@@ -43,5 +43,7 @@ namespace HeThongQuanLyDatVeMayBay.Models
             db.KHUYENMAIs.Remove(x);
             db.SaveChanges();
         }
+
+
     }
 }

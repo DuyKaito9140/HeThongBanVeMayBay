@@ -30,7 +30,10 @@
                 <option selected readOnly style="background-color: silver">@Model.idHang @Model.HANGMAYBAY.TenHang</option>
                 @foreach (var items in listhang)
                 {
-                    <option>@items.idHang @items.TenHang</option>
+                    if (items.TenHang == Content.TenHang)
+                    {
+                         <option>@items.idHang @items.TenHang</option>
+                    }                    
                 }
             </select>
             <label for="soluongkhach">Số lượng khách tối đa</label>

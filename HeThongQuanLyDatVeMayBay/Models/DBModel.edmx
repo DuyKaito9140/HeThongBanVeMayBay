@@ -34,6 +34,20 @@
           <Property Name="idUser" Type="nvarchar" MaxLength="50" />
           <Property Name="NgayDatVe" Type="date" />
           <Property Name="idVe" Type="nvarchar" MaxLength="50" />
+          <Property Name="TienThanhToan" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="DATVEKOLOGIN">
+          <Key>
+            <PropertyRef Name="idUser2" />
+          </Key>
+          <Property Name="idUser2" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HoTen2" Type="ntext" />
+          <Property Name="GioiTinh2" Type="nvarchar" MaxLength="12" />
+          <Property Name="Sdt2" Type="nvarchar" MaxLength="12" />
+          <Property Name="Email2" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgayDat2" Type="date" />
+          <Property Name="idVe" Type="nvarchar" MaxLength="50" />
+          <Property Name="tienthanhtoan" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="DOANHTHU">
           <Key>
@@ -99,6 +113,16 @@
           <Property Name="SoLuongKhach" Type="int" />
           <Property Name="idHang" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="USER">
           <Key>
             <PropertyRef Name="idUser" />
@@ -123,6 +147,7 @@
           <Property Name="idLoaiVe" Type="nvarchar" MaxLength="50" />
           <Property Name="SoKgHanhLy" Type="int" />
           <Property Name="GiaVe" Type="int" />
+          <Property Name="TrangThai" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <Association Name="FK_ACCOUNT_LOAIQUYEN">
           <End Role="LOAIQUYEN" Type="Self.LOAIQUYEN" Multiplicity="0..1" />
@@ -168,6 +193,18 @@
               <PropertyRef Name="idVe" />
             </Principal>
             <Dependent Role="DATVE">
+              <PropertyRef Name="idVe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DATVEKOLOGIN_VEMAYBAY">
+          <End Role="VEMAYBAY" Type="Self.VEMAYBAY" Multiplicity="0..1" />
+          <End Role="DATVEKOLOGIN" Type="Self.DATVEKOLOGIN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VEMAYBAY">
+              <PropertyRef Name="idVe" />
+            </Principal>
+            <Dependent Role="DATVEKOLOGIN">
               <PropertyRef Name="idVe" />
             </Dependent>
           </ReferentialConstraint>
@@ -248,6 +285,7 @@
           <EntitySet Name="ACCOUNT" EntityType="Self.ACCOUNT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CHUYENBAY" EntityType="Self.CHUYENBAY" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DATVE" EntityType="Self.DATVE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DATVEKOLOGIN" EntityType="Self.DATVEKOLOGIN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DOANHTHU" EntityType="Self.DOANHTHU" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HANGMAYBAY" EntityType="Self.HANGMAYBAY" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HOADON" EntityType="Self.HOADON" Schema="dbo" store:Type="Tables" />
@@ -255,6 +293,7 @@
           <EntitySet Name="LOAIQUYEN" EntityType="Self.LOAIQUYEN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LOAIVE" EntityType="Self.LOAIVE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MAYBAY" EntityType="Self.MAYBAY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USER" EntityType="Self.USER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VEMAYBAY" EntityType="Self.VEMAYBAY" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_ACCOUNT_LOAIQUYEN" Association="Self.FK_ACCOUNT_LOAIQUYEN">
@@ -272,6 +311,10 @@
           <AssociationSet Name="FK_DATVE_VEMAYBAY" Association="Self.FK_DATVE_VEMAYBAY">
             <End Role="VEMAYBAY" EntitySet="VEMAYBAY" />
             <End Role="DATVE" EntitySet="DATVE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DATVEKOLOGIN_VEMAYBAY" Association="Self.FK_DATVEKOLOGIN_VEMAYBAY">
+            <End Role="VEMAYBAY" EntitySet="VEMAYBAY" />
+            <End Role="DATVEKOLOGIN" EntitySet="DATVEKOLOGIN" />
           </AssociationSet>
           <AssociationSet Name="FK_HANGMAYBAY_ACCOUNT" Association="Self.FK_HANGMAYBAY_ACCOUNT">
             <End Role="ACCOUNT" EntitySet="ACCOUNT" />
@@ -337,9 +380,24 @@
           <Property Name="idUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NgayDatVe" Type="DateTime" Precision="0" />
           <Property Name="idVe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TienThanhToan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="USER" Relationship="Self.FK_DATVE_USER" FromRole="DATVE" ToRole="USER" />
           <NavigationProperty Name="VEMAYBAY" Relationship="Self.FK_DATVE_VEMAYBAY" FromRole="DATVE" ToRole="VEMAYBAY" />
           <NavigationProperty Name="HOADONs" Relationship="Self.FK_HOADON_DATVE" FromRole="DATVE" ToRole="HOADON" />
+        </EntityType>
+        <EntityType Name="DATVEKOLOGIN">
+          <Key>
+            <PropertyRef Name="idUser2" />
+          </Key>
+          <Property Name="idUser2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HoTen2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GioiTinh2" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="Sdt2" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="Email2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NgayDat2" Type="DateTime" Precision="0" />
+          <Property Name="idVe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tienthanhtoan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="VEMAYBAY" Relationship="Self.FK_DATVEKOLOGIN_VEMAYBAY" FromRole="DATVEKOLOGIN" ToRole="VEMAYBAY" />
         </EntityType>
         <EntityType Name="DOANHTHU">
           <Key>
@@ -412,6 +470,16 @@
           <NavigationProperty Name="CHUYENBAYs" Relationship="Self.FK_CHUYENBAY_MAYBAY" FromRole="MAYBAY" ToRole="CHUYENBAY" />
           <NavigationProperty Name="HANGMAYBAY" Relationship="Self.FK_MAYBAY_HANGMAYBAY" FromRole="MAYBAY" ToRole="HANGMAYBAY" />
         </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         <EntityType Name="USER">
           <Key>
             <PropertyRef Name="idUser" />
@@ -438,8 +506,10 @@
           <Property Name="idLoaiVe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SoKgHanhLy" Type="Int32" />
           <Property Name="GiaVe" Type="Int32" />
+          <Property Name="TrangThai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CHUYENBAY" Relationship="Self.FK_VEMAYBAY_CHUYENBAY" FromRole="VEMAYBAY" ToRole="CHUYENBAY" />
           <NavigationProperty Name="DATVEs" Relationship="Self.FK_DATVE_VEMAYBAY" FromRole="VEMAYBAY" ToRole="DATVE" />
+          <NavigationProperty Name="DATVEKOLOGINs" Relationship="Self.FK_DATVEKOLOGIN_VEMAYBAY" FromRole="VEMAYBAY" ToRole="DATVEKOLOGIN" />
           <NavigationProperty Name="LOAIVE" Relationship="Self.FK_VEMAYBAY_LOAIVE" FromRole="VEMAYBAY" ToRole="LOAIVE" />
         </EntityType>
         <Association Name="FK_ACCOUNT_LOAIQUYEN">
@@ -538,6 +608,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_DATVEKOLOGIN_VEMAYBAY">
+          <End Role="VEMAYBAY" Type="Self.VEMAYBAY" Multiplicity="0..1" />
+          <End Role="DATVEKOLOGIN" Type="Self.DATVEKOLOGIN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VEMAYBAY">
+              <PropertyRef Name="idVe" />
+            </Principal>
+            <Dependent Role="DATVEKOLOGIN">
+              <PropertyRef Name="idVe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_MAYBAY_HANGMAYBAY">
           <End Role="HANGMAYBAY" Type="Self.HANGMAYBAY" Multiplicity="0..1" />
           <End Role="MAYBAY" Type="Self.MAYBAY" Multiplicity="*" />
@@ -566,6 +648,7 @@
           <EntitySet Name="ACCOUNTs" EntityType="Self.ACCOUNT" />
           <EntitySet Name="CHUYENBAYs" EntityType="Self.CHUYENBAY" />
           <EntitySet Name="DATVEs" EntityType="Self.DATVE" />
+          <EntitySet Name="DATVEKOLOGINs" EntityType="Self.DATVEKOLOGIN" />
           <EntitySet Name="DOANHTHUs" EntityType="Self.DOANHTHU" />
           <EntitySet Name="HANGMAYBAYs" EntityType="Self.HANGMAYBAY" />
           <EntitySet Name="HOADONs" EntityType="Self.HOADON" />
@@ -573,6 +656,7 @@
           <EntitySet Name="LOAIQUYENs" EntityType="Self.LOAIQUYEN" />
           <EntitySet Name="LOAIVEs" EntityType="Self.LOAIVE" />
           <EntitySet Name="MAYBAYs" EntityType="Self.MAYBAY" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="USERs" EntityType="Self.USER" />
           <EntitySet Name="VEMAYBAYs" EntityType="Self.VEMAYBAY" />
           <AssociationSet Name="FK_ACCOUNT_LOAIQUYEN" Association="Self.FK_ACCOUNT_LOAIQUYEN">
@@ -606,6 +690,10 @@
           <AssociationSet Name="FK_HOADON_DATVE" Association="Self.FK_HOADON_DATVE">
             <End Role="DATVE" EntitySet="DATVEs" />
             <End Role="HOADON" EntitySet="HOADONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DATVEKOLOGIN_VEMAYBAY" Association="Self.FK_DATVEKOLOGIN_VEMAYBAY">
+            <End Role="VEMAYBAY" EntitySet="VEMAYBAYs" />
+            <End Role="DATVEKOLOGIN" EntitySet="DATVEKOLOGINs" />
           </AssociationSet>
           <AssociationSet Name="FK_MAYBAY_HANGMAYBAY" Association="Self.FK_MAYBAY_HANGMAYBAY">
             <End Role="HANGMAYBAY" EntitySet="HANGMAYBAYs" />
@@ -652,6 +740,21 @@
                 <ScalarProperty Name="idUser" ColumnName="idUser" />
                 <ScalarProperty Name="NgayDatVe" ColumnName="NgayDatVe" />
                 <ScalarProperty Name="idVe" ColumnName="idVe" />
+                <ScalarProperty Name="TienThanhToan" ColumnName="TienThanhToan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DATVEKOLOGINs">
+            <EntityTypeMapping TypeName="QLHeThongDatVeMayBayModel.DATVEKOLOGIN">
+              <MappingFragment StoreEntitySet="DATVEKOLOGIN">
+                <ScalarProperty Name="idUser2" ColumnName="idUser2" />
+                <ScalarProperty Name="HoTen2" ColumnName="HoTen2" />
+                <ScalarProperty Name="GioiTinh2" ColumnName="GioiTinh2" />
+                <ScalarProperty Name="Sdt2" ColumnName="Sdt2" />
+                <ScalarProperty Name="Email2" ColumnName="Email2" />
+                <ScalarProperty Name="NgayDat2" ColumnName="NgayDat2" />
+                <ScalarProperty Name="idVe" ColumnName="idVe" />
+                <ScalarProperty Name="tienthanhtoan" ColumnName="tienthanhtoan" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -726,6 +829,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="QLHeThongDatVeMayBayModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="USERs">
             <EntityTypeMapping TypeName="QLHeThongDatVeMayBayModel.USER">
               <MappingFragment StoreEntitySet="USER">
@@ -750,6 +864,7 @@
                 <ScalarProperty Name="idLoaiVe" ColumnName="idLoaiVe" />
                 <ScalarProperty Name="SoKgHanhLy" ColumnName="SoKgHanhLy" />
                 <ScalarProperty Name="GiaVe" ColumnName="GiaVe" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -59,7 +59,10 @@
                 <option selected readonly style="background-color: silver">@Model.idMayBay @Model.MAYBAY.TenMayBay @Model.MAYBAY.HANGMAYBAY.TenHang</option>
                 @foreach (var items in listmaybay)
                 {
-                    <option>@items.idMayBay @items.TenMayBay @items.HANGMAYBAY.TenHang</option>
+                    if (items.HANGMAYBAY.TenHang == Content.TenHang)
+                    {
+                        <option>@items.idMayBay @items.TenMayBay @items.HANGMAYBAY.TenHang</option>
+                    }
                 }
             </select>
             <input type="submit" value="Cập nhật" class="btn btn-primary mt-2" style="width: 120px"> <br>

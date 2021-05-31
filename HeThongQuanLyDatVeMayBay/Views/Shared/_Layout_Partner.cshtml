@@ -98,7 +98,7 @@
         .create-refesh {
             display: flex;
         }
-    </style>    
+    </style>     
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-primary">
@@ -112,15 +112,15 @@
         }
         else if (Content.QuyenUser == "thuky")
         {
-        <a class="navbar-brand text-white setfont" style="margin-left: 15px; font-size: 35px;">THUKY</a>
+            <a class="navbar-brand text-white setfont" style="margin-left: 15px; font-size: 35px;">THUKY</a>
         }
         else
         {
-        <a class="navbar-brand text-white setfont" style="margin-left: 15px; font-size: 35px;">PARTNER</a>
+            <a class="navbar-brand text-white setfont" style="margin-left: 15px; font-size: 35px;">PARTNER</a>
         }
 
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            @if (Content.QuyenUser == "Admin" || Content.QuyenUser == "thuky")
+            @if (Content.QuyenUser == "Admin" || Content.QuyenUser == "Thuky")
             {
                 <span style="background-color: white; margin-right: 10px; font-size: 18px; border-radius: 5px; padding: 7px; font-weight: 600;">@Content.HoTen</span>
                 <span style="background-color: white; margin-right: 10px; font-size: 18px; border-radius: 5px; padding: 7px; font-weight: 600;">Email: @Content.email</span>
@@ -159,7 +159,7 @@
                 <li><a href="/Promotion/Index">Promotion Management</a></li>
                 <li><a href="/Role/Index">Role Management </a></li>
             }
-            else if (Content.QuyenUser == "thuky")
+            else if (Content.QuyenUser == "Thuky")
             {
                 <li><a href="/Promotion/Index">Promotion Management</a></li>
             }
@@ -169,15 +169,48 @@
                 <li><a href="/PartnerFlights/Index">Flight Management</a></li>
                 <li><a href="/PartnerPlanes/Index">Plane Management</a></li>
             }
-            <li><a>About</a></li>
-            <li><a>Contact</a></li>
+            <li><a href="/Home/About">About</a></li>
+            <li><a href="/Home/Contact">Contact</a></li>
         </ul>
     </div>
     <br />
     <div class="contrainer-home">
         @RenderBody()
     </div>
-    <hr />    
+    <hr />
+    <script src="~/Scripts/jquery-3.5.1.min.js"></script>
+    <script src="~/Scripts/date-picker.js"></script>
+    <script src="~/Scripts/wow.min.js"></script>
+    <script src="~/Scripts/slick.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    <script src="~/Scripts/lazysizes.min.js"></script>
+    <script src="~/Scripts/script.js"></script>
+    <script src="~/Scripts/filter.js"></script>
+    <script src="~/Scripts/isotope.min.js"></script>
+    <script src="~/Scripts/fare-calender/main.js"></script>
+    <script src="~/Scripts/fare-calender/main_1.js"></script>
+    <script src="~/Scripts/fare-calender/calender-data.js"></script>
+    <script src="~/Scripts/price-range.js"></script>
+    <script src='~/Scripts/sticky-kit.js'></script>
+    <script>
+        $(document).ready(function () {
+            $("input[type='radio']").click(function () {
+                var radioValue = $("input[name='HienThi']:checked").val();
+                if (radioValue == "1") {
+                    $('tbody tr').filter('.conve').show();
+                    $('tbody tr').filter('.hetve').hide();          
+                }
+                else if (radioValue == "2") {
+                    $('tbody tr').filter('.hetve').show();
+                    $('tbody tr').filter('.conve').hide();
+                }
+                else if (radioValue == "3") {
+                    $('tbody tr').filter('.hetve').show();
+                    $('tbody tr').filter('.conve').show();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
 

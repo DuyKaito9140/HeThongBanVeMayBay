@@ -28,6 +28,7 @@ namespace HeThongQuanLyDatVeMayBay.Models
         public virtual DbSet<ACCOUNT> ACCOUNTs { get; set; }
         public virtual DbSet<CHUYENBAY> CHUYENBAYs { get; set; }
         public virtual DbSet<DATVE> DATVEs { get; set; }
+        public virtual DbSet<DATVEKOLOGIN> DATVEKOLOGINs { get; set; }
         public virtual DbSet<DOANHTHU> DOANHTHUs { get; set; }
         public virtual DbSet<HANGMAYBAY> HANGMAYBAYs { get; set; }
         public virtual DbSet<HOADON> HOADONs { get; set; }
@@ -35,6 +36,7 @@ namespace HeThongQuanLyDatVeMayBay.Models
         public virtual DbSet<LOAIQUYEN> LOAIQUYENs { get; set; }
         public virtual DbSet<LOAIVE> LOAIVEs { get; set; }
         public virtual DbSet<MAYBAY> MAYBAYs { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<USER> USERs { get; set; }
         public virtual DbSet<VEMAYBAY> VEMAYBAYs { get; set; }
     }

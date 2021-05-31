@@ -29,7 +29,11 @@
                 <option selected readonly style="background-color: silver">@Model.idChuyenBay @Model.CHUYENBAY.NgayBay.Value.Day&#47;@Model.CHUYENBAY.NgayBay.Value.Month&#47;@Model.CHUYENBAY.NgayBay.Value.Year &#124; @Model.CHUYENBAY.NoiDi &rarr; @Model.CHUYENBAY.NoiDen &#124; @Model.CHUYENBAY.GioBay &rarr; @Model.CHUYENBAY.GioDen &#124; @Model.CHUYENBAY.MAYBAY.TenMayBay &#124; @Model.CHUYENBAY.MAYBAY.HANGMAYBAY.TenHang &#124; @Model.CHUYENBAY.MAYBAY.SoLuongKhach Khách</option>
                 @foreach (var items in listchuyenbay)
                 {
-                    <option>@items.idChuyenBay &#124; @items.NgayBay.Value.Day&#47;@items.NgayBay.Value.Month&#47;@items.NgayBay.Value.Year &#124; @items.NoiDi &rarr; @items.NoiDen &#124; @items.GioBay &rarr; @items.GioDen &#124; @items.MAYBAY.TenMayBay &#124; @items.MAYBAY.HANGMAYBAY.TenHang &#124; @items.MAYBAY.SoLuongKhach Khách</option>
+                    if (items.MAYBAY.HANGMAYBAY.TenHang == Content.TenHang)
+                    {
+                        <option>@items.idChuyenBay &#124; @items.NgayBay.Value.Day&#47;@items.NgayBay.Value.Month&#47;@items.NgayBay.Value.Year &#124; @items.NoiDi &rarr; @items.NoiDen &#124; @items.GioBay &rarr; @items.GioDen &#124; @items.MAYBAY.TenMayBay &#124; @items.MAYBAY.HANGMAYBAY.TenHang &#124; @items.MAYBAY.SoLuongKhach Khách</option>
+                    }
+                    
                 }
             </select>
             <label for="idLoaiVe">Loại Vé: </label>
@@ -37,7 +41,7 @@
                 <option selected readonly style="background-color: silver">@Model.idLoaiVe @Model.LOAIVE.TenLoaiVe &#124; Số Kg hành lý thêm:  @Model.LOAIVE.ThemSoKg &#124; Tiền trả thêm: @Model.LOAIVE.TienTraThem VNĐ</option>
                 @foreach (var items in listloaive)
                 {
-            <option>@items.idLoaiVe @items.TenLoaiVe &#124; Số Kg hành lý thêm:  @items.ThemSoKg &#124; Tiền trả thêm: @items.TienTraThem VNĐ</option>
+                    <option>@items.idLoaiVe @items.TenLoaiVe &#124; Số Kg hành lý thêm:  @items.ThemSoKg &#124; Tiền trả thêm: @items.TienTraThem VNĐ</option>
                 }
             </select>
             <label for="SoKgHanhLy">Số Kg hành lý</label>

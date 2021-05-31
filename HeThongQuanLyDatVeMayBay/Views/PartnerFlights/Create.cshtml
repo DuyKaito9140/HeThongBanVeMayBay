@@ -45,9 +45,12 @@
             <select class="form-select form-control" aria-label=".form-select-sm example" name="idMayBay">
                 <option selected disabled="disabled">...</option>
                 @foreach (var items in listmaybay)
-                 {
-                    <option>@items.idMayBay @items.TenMayBay &#124; @items.HANGMAYBAY.TenHang &#124; @items.SoLuongKhach Khách</option>
-                 }
+                {
+                    if (items.HANGMAYBAY.TenHang == Content.TenHang)
+                    {
+                        <option>@items.idMayBay @items.TenMayBay &#124; @items.HANGMAYBAY.TenHang &#124; @items.SoLuongKhach Khách</option>
+                    }                    
+                }
             </select>
             <input type="submit" value="Thêm mới" class="btn btn-success mt-2"> <br>
             <div>

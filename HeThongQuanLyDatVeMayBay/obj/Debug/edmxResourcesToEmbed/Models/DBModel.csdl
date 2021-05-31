@@ -34,9 +34,24 @@
     <Property Name="idUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="NgayDatVe" Type="DateTime" Precision="0" />
     <Property Name="idVe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TienThanhToan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="USER" Relationship="Self.FK_DATVE_USER" FromRole="DATVE" ToRole="USER" />
     <NavigationProperty Name="VEMAYBAY" Relationship="Self.FK_DATVE_VEMAYBAY" FromRole="DATVE" ToRole="VEMAYBAY" />
     <NavigationProperty Name="HOADONs" Relationship="Self.FK_HOADON_DATVE" FromRole="DATVE" ToRole="HOADON" />
+  </EntityType>
+  <EntityType Name="DATVEKOLOGIN">
+    <Key>
+      <PropertyRef Name="idUser2" />
+    </Key>
+    <Property Name="idUser2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HoTen2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="GioiTinh2" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="Sdt2" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="Email2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NgayDat2" Type="DateTime" Precision="0" />
+    <Property Name="idVe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="tienthanhtoan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="VEMAYBAY" Relationship="Self.FK_DATVEKOLOGIN_VEMAYBAY" FromRole="DATVEKOLOGIN" ToRole="VEMAYBAY" />
   </EntityType>
   <EntityType Name="DOANHTHU">
     <Key>
@@ -109,6 +124,16 @@
     <NavigationProperty Name="CHUYENBAYs" Relationship="Self.FK_CHUYENBAY_MAYBAY" FromRole="MAYBAY" ToRole="CHUYENBAY" />
     <NavigationProperty Name="HANGMAYBAY" Relationship="Self.FK_MAYBAY_HANGMAYBAY" FromRole="MAYBAY" ToRole="HANGMAYBAY" />
   </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
   <EntityType Name="USER">
     <Key>
       <PropertyRef Name="idUser" />
@@ -135,8 +160,10 @@
     <Property Name="idLoaiVe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="SoKgHanhLy" Type="Int32" />
     <Property Name="GiaVe" Type="Int32" />
+    <Property Name="TrangThai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="CHUYENBAY" Relationship="Self.FK_VEMAYBAY_CHUYENBAY" FromRole="VEMAYBAY" ToRole="CHUYENBAY" />
     <NavigationProperty Name="DATVEs" Relationship="Self.FK_DATVE_VEMAYBAY" FromRole="VEMAYBAY" ToRole="DATVE" />
+    <NavigationProperty Name="DATVEKOLOGINs" Relationship="Self.FK_DATVEKOLOGIN_VEMAYBAY" FromRole="VEMAYBAY" ToRole="DATVEKOLOGIN" />
     <NavigationProperty Name="LOAIVE" Relationship="Self.FK_VEMAYBAY_LOAIVE" FromRole="VEMAYBAY" ToRole="LOAIVE" />
   </EntityType>
   <Association Name="FK_ACCOUNT_LOAIQUYEN">
@@ -235,6 +262,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_DATVEKOLOGIN_VEMAYBAY">
+    <End Role="VEMAYBAY" Type="Self.VEMAYBAY" Multiplicity="0..1" />
+    <End Role="DATVEKOLOGIN" Type="Self.DATVEKOLOGIN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VEMAYBAY">
+        <PropertyRef Name="idVe" />
+      </Principal>
+      <Dependent Role="DATVEKOLOGIN">
+        <PropertyRef Name="idVe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_MAYBAY_HANGMAYBAY">
     <End Role="HANGMAYBAY" Type="Self.HANGMAYBAY" Multiplicity="0..1" />
     <End Role="MAYBAY" Type="Self.MAYBAY" Multiplicity="*" />
@@ -263,6 +302,7 @@
     <EntitySet Name="ACCOUNTs" EntityType="Self.ACCOUNT" />
     <EntitySet Name="CHUYENBAYs" EntityType="Self.CHUYENBAY" />
     <EntitySet Name="DATVEs" EntityType="Self.DATVE" />
+    <EntitySet Name="DATVEKOLOGINs" EntityType="Self.DATVEKOLOGIN" />
     <EntitySet Name="DOANHTHUs" EntityType="Self.DOANHTHU" />
     <EntitySet Name="HANGMAYBAYs" EntityType="Self.HANGMAYBAY" />
     <EntitySet Name="HOADONs" EntityType="Self.HOADON" />
@@ -270,6 +310,7 @@
     <EntitySet Name="LOAIQUYENs" EntityType="Self.LOAIQUYEN" />
     <EntitySet Name="LOAIVEs" EntityType="Self.LOAIVE" />
     <EntitySet Name="MAYBAYs" EntityType="Self.MAYBAY" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="USERs" EntityType="Self.USER" />
     <EntitySet Name="VEMAYBAYs" EntityType="Self.VEMAYBAY" />
     <AssociationSet Name="FK_ACCOUNT_LOAIQUYEN" Association="Self.FK_ACCOUNT_LOAIQUYEN">
@@ -303,6 +344,10 @@
     <AssociationSet Name="FK_HOADON_DATVE" Association="Self.FK_HOADON_DATVE">
       <End Role="DATVE" EntitySet="DATVEs" />
       <End Role="HOADON" EntitySet="HOADONs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATVEKOLOGIN_VEMAYBAY" Association="Self.FK_DATVEKOLOGIN_VEMAYBAY">
+      <End Role="VEMAYBAY" EntitySet="VEMAYBAYs" />
+      <End Role="DATVEKOLOGIN" EntitySet="DATVEKOLOGINs" />
     </AssociationSet>
     <AssociationSet Name="FK_MAYBAY_HANGMAYBAY" Association="Self.FK_MAYBAY_HANGMAYBAY">
       <End Role="HANGMAYBAY" EntitySet="HANGMAYBAYs" />

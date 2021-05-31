@@ -24,6 +24,7 @@ namespace HeThongQuanLyDatVeMayBay.Models
         public string idUser { get; set; }
         public Nullable<System.DateTime> NgayDatVe { get; set; }
         public string idVe { get; set; }
+        public string TienThanhToan { get; set; }
     
         public virtual USER USER { get; set; }
         public virtual VEMAYBAY VEMAYBAY { get; set; }

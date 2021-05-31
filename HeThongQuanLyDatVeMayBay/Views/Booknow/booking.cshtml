@@ -1,6 +1,9 @@
 ﻿@model HeThongQuanLyDatVeMayBay.Models.VEMAYBAY
+@using HeThongQuanLyDatVeMayBay.Models
 @{
     ViewBag.Title = "booking";
+    DBEntities_QLHeThongDatVeMayBay db = new DBEntities_QLHeThongDatVeMayBay();
+    var listkm = db.KHUYENMAIs.ToList();
 }
 <style>
     .typeticket {
@@ -18,7 +21,7 @@
     }
 </style>
 <!-- breadcrumb start -->
-<section class="breadcrumb-section">
+<section class="breadcrumb-section">    
     <img src="~/Image/flights/JPA.jpg" class="" alt="" style="height: 300px; width: 100%; margin-top: -100px">
     <div class="content-bottom">
         <div class="container">
@@ -39,344 +42,222 @@
 <!-- breadcrumb end -->
 <!-- booking section start -->
 <section class="small-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8">
-                <div class="review-section">
-                    <div class="review_box">
-                        <div class="title-top">
-                            <h5>Ticket</h5>
-                        </div>
-                        <div class="flight_detail">
-                            @{
-                                int sokg = Model.SoKgHanhLy.Value + Model.LOAIVE.ThemSoKg.Value;
-                                int giave = Model.GiaVe.Value + Model.LOAIVE.TienTraThem.Value;
-                                string tenhang = Model.CHUYENBAY.MAYBAY.HANGMAYBAY.TenHang.ToString();
-                                <div class="row">
-                                    <div class="col-md-3" style="width: 22%">
-                                        <div class="logo-sec" style="text-align: center">
-                                            @if (tenhang == "BamBoo Airways")
-                                            {
-                                                <img src="~/Image/flights/airlines/bamboo_airway.jpg"
-                                                     class="img-fluid blur-up lazyload" alt="">
-                                            }
-                                            else if (tenhang == "VietNam Airlines")
-                                            {
-                                                <img src="~/Image/flights/airlines/vietnam_airline.png"
-                                                     class="img-fluid blur-up lazyload" alt="" width="290" height="290">
-                                            }
-                                            else if (tenhang == "VietJet Air")
-                                            {
-                                                <img src="~/Image/flights/airlines/vietject_logo.jpg"
-                                                     class="img-fluid blur-up lazyload" alt="" width="290" height="290">
-                                            }<br />
-                                            <span class="title" name="">@tenhang</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="airport-part">
-                                            <div class="airport-name">
-                                                <h4 name="">@Model.CHUYENBAY.GioBay</h4>
-                                                <h6 name="" style="width: 95px">@Model.CHUYENBAY.NoiDi</h6>
-                                            </div>
-                                            <div class="airport-progress">
-                                                <div class="typeticket">
-                                                    @Model.LOAIVE.TenLoaiVe
-                                                </div>
-                                                <a name="idmaybay"></a>
-                                                <i class="fas fa-plane-departure float-start"></i>
-                                                <i class="fas fa-plane-arrival float-end"></i>
-                                                <div class="stop" name="">
-                                                    @Model.CHUYENBAY.NgayBay.Value.Day&#47;@Model.CHUYENBAY.NgayBay.Value.Month&#47;@Model.CHUYENBAY.NgayBay.Value.Year
-                                                </div>
-                                            </div>
-                                            <div class="airport-name arrival">
-                                                <h4 name="">@Model.CHUYENBAY.GioDen</h4>
-                                                <h6 name="" style="width: 95px">@Model.CHUYENBAY.NoiDen</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="price">
-                                            <div style="text-align: center">
-                                                <h6 style="font-size: 5px; color: white">@Model.idVe</h6>
-                                                <h3><b>@giave VNĐ</b></h3>
-                                                <h6>@sokg Kg</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            }
-                        </div>
-                    </div>
-                    <div class="review_box">
-                        <div class="title-top">
-                            <h5>Flight Details</h5>
-                        </div>
-                        <div class="flight_detail">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="boxes">
-                                        <h6>Hãng máy bay: </h6>
-                                        <table>
-                                            <tr>
-                                                <td style="width: 130px;">Hãng :</td>
-                                                <td>@Model.CHUYENBAY.MAYBAY.HANGMAYBAY.TenHang</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Máy bay :</td>
-                                                <td>@Model.CHUYENBAY.MAYBAY.TenMayBay 	&nbsp;&nbsp;&#124;&nbsp; Số lượng hành khách: @Model.CHUYENBAY.MAYBAY.SoLuongKhach</td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                    <div class="boxes">
-                                        <h6>Chi tiết vé: </h6>
-                                        <table>
-                                            <tr>
-                                                <td style="width: 130px;">Loại vé  :</td>
-                                                <td>
-                                                    @Model.LOAIVE.TenLoaiVe
-                                                    @if (Model.LOAIVE.TenLoaiVe == "Vé Basic")
-                                                    {
-                                                      <span>(Loại ghế: phổ thông &#124; Hành lý: +0kg )</span>
-                                                    }
-                                                    else if (Model.LOAIVE.TenLoaiVe == "Vé Pro")
-                                                    {
-                                                      <span>(Loại ghế: phổ thông đặc biệt &#124; Hành lý: +3kg )</span>
-                                                    }
-                                                    else if (Model.LOAIVE.TenLoaiVe == "Vé Pro+")
-                                                    {
-                                                      <span>(Loại ghế: thương gia &#124; Hành lý: +5kg )</span>
-                                                    }
-                                                    else if (Model.LOAIVE.TenLoaiVe == "Vé Premium")
-                                                    {
-                                                      <span>(Loại ghế: hạng nhất &#124; Hành lý: +7kg )</span>
-                                                    }
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ngày bay :</td>
-                                                <td>@Model.CHUYENBAY.NgayBay.Value.Day&#47;@Model.CHUYENBAY.NgayBay.Value.Month&#47;@Model.CHUYENBAY.NgayBay.Value.Year</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Giờ bay  :</td>
-                                                <td>@Model.CHUYENBAY.GioBay giờ (GMT +7 Đông Dương)</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Giờ đến  :</td>
-                                                <td>@Model.CHUYENBAY.GioDen giờ (GMT +7 Đông Dương)</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Nơi đi	 :</td>
-                                                <td>@Model.CHUYENBAY.NoiDi</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Nơi đến  :</td>
-                                                <td>@Model.CHUYENBAY.NoiDen</td>
-                                            </tr>
-                                        </table>                     
-                                    </div>
-                                    <div class="boxes">
-                                        <h6>Hành lý: </h6>
-                                        <table>
-                                            <tr>
-                                                <td style="width: 130px;">Số Kg cho phép :</td>
-                                                <td>@Model.SoKgHanhLy kg</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Số Kg thêm :</td>
-                                                <td>@Model.LOAIVE.ThemSoKg kg</td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="review_box">
-                        <div class="title-top">
-                            <h5>traveller details</h5>
-                        </div>
-                        <div class="flight_detail">
-                            <div class="row form_flight">
-                                <div class="col-md-12">
-                                    <form>
-                                        <h6>adult 1</h6>
-                                        <div class="row">
-                                            <div class="form-group col-md-2">
-                                                <label for="inputState">title</label>
-                                                <select id="inputState" class="form-control">
-                                                    <option selected>Choose...</option>
-                                                    <option>Mr.</option>
-                                                    <option>Ms.</option>
-                                                    <option>Mrs.</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group col-md-5">
-                                                <label for="first">first name</label>
-                                                <input type="text" class="form-control" id="firstt">
-                                            </div>
-                                            <div class="form-group col-md-5">
-                                                <label for="last">last name</label>
-                                                <input type="text" class="form-control" id="lastt">
-                                            </div>
-                                        </div>
-                                    </form>
-                                    <form>
-                                        <h6>adult 2</h6>
-                                        <div class="row">
-                                            <div class="form-group col-md-2">
-                                                <label for="input">title</label>
-                                                <select id="input" class="form-control">
-                                                    <option selected>Choose...</option>
-                                                    <option>Mr.</option>
-                                                    <option>Ms.</option>
-                                                    <option>Mrs.</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group col-md-5">
-                                                <label for="first">first name</label>
-                                                <input type="text" class="form-control" id="first">
-                                            </div>
-                                            <div class="form-group col-md-5">
-                                                <label for="last">last name</label>
-                                                <input type="text" class="form-control" id="last">
-                                            </div>
-                                        </div>
-                                    </form>
-                                    <form>
-                                        <h6>contact details</h6>
-                                        <div class="row">
-                                            <div class="form-group col-md-6">
-                                                <label for="inputEmail4">Email</label>
-                                                <input type="email" class="form-control" id="inputEmail4">
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="inputnumber">Phone no:</label>
-                                                <input type="number" class="form-control" id="inputnumber">
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="review_box">
-                        <div class="title-top">
-                            <h5>Travel Insurance</h5>
-                        </div>
-                        <div class="flight_detail">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="boxes">
-                                        <h6>secure your travel with travel insurance for $25/person</h6>
-                                        <div class="form-check">
-                                            <input class="form-check-input radio_animated" type="radio"
-                                                   name="exampleRadios1" id="exampleRadios1" value="option1" checked>
-                                            <label class="form-check-label" for="exampleRadios1">
-                                                yes, i want to secure my travel with insurance
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input radio_animated" type="radio"
-                                                   name="exampleRadios1" id="exampleRadios2" value="option2">
-                                            <label class="form-check-label" for="exampleRadios2">
-                                                no, i do not want to secure my travel with insurance
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 res-margin">
-                <div class="sticky-cls-top">
+    @using (Html.BeginForm("Datvenologin", "Booknow", FormMethod.Post))
+    {
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
                     <div class="review-section">
                         <div class="review_box">
                             <div class="title-top">
-                                <h5>booking summery</h5>
+                                <h5>Ticket</h5>
                             </div>
                             <div class="flight_detail">
-                                <div class="summery_box">
-                                    <table class="table table-borderless">
-                                        <tbody>
-                                            <tr>
-                                                <td>adults (3 X $2501)</td>
-                                                <td>$250</td>
-                                            </tr>
-                                            <tr>
-                                                <td>total taxes</td>
-                                                <td>$25</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Insurance</td>
-                                                <td>$15</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Convenience fee</td>
-                                                <td>$18</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <div class="grand_total">
-                                        <h5>grand total: <span>$2500</span></h5>
+                                @{
+                                    int sokg = Model.SoKgHanhLy.Value + Model.LOAIVE.ThemSoKg.Value;
+                                    int giave = Model.GiaVe.Value + Model.LOAIVE.TienTraThem.Value;
+                                    string getgiavevnd = giave.ToString();
+                                    string tenhang = Model.CHUYENBAY.MAYBAY.HANGMAYBAY.TenHang.ToString();
+                                    <div class="row">
+                                        <div class="col-md-3" style="width: 22%">
+                                            <div class="logo-sec" style="text-align: center">
+                                                @if (tenhang == "BamBoo Airways")
+                                                {
+                                                    <img src="~/Image/flights/airlines/bamboo_airway.png"
+                                                         class="img-fluid blur-up lazyload" alt="">
+                                                }
+                                                else if (tenhang == "VietNam Airlines")
+                                                {
+                                                    <img src="~/Image/flights/airlines/vietnam_airline.png"
+                                                         class="img-fluid blur-up lazyload" alt="" width="290" height="290">
+                                                }
+                                                else if (tenhang == "VietJet Air")
+                                                {
+                                                    <img src="~/Image/flights/airlines/vietject_logo.jpg"
+                                                         class="img-fluid blur-up lazyload" alt="" width="290" height="290">
+                                                }<br />
+                                                <span class="title" name="">@tenhang</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="airport-part">
+                                                <div class="airport-name">
+                                                    <h4 name="">@Model.CHUYENBAY.GioBay</h4>
+                                                    <h6 name="" style="width: 95px">@Model.CHUYENBAY.NoiDi</h6>
+                                                </div>
+                                                <div class="airport-progress">
+                                                    <div class="typeticket">
+                                                        @Model.LOAIVE.TenLoaiVe
+                                                    </div>
+                                                    <a name="idmaybay"></a>
+                                                    <i class="fas fa-plane-departure float-start"></i>
+                                                    <i class="fas fa-plane-arrival float-end"></i>
+                                                    <div class="stop" name="">
+                                                        @Model.CHUYENBAY.NgayBay.Value.Day&#47;@Model.CHUYENBAY.NgayBay.Value.Month&#47;@Model.CHUYENBAY.NgayBay.Value.Year
+                                                    </div>
+                                                </div>
+                                                <div class="airport-name arrival">
+                                                    <h4 name="">@Model.CHUYENBAY.GioDen</h4>
+                                                    <h6 name="" style="width: 95px">@Model.CHUYENBAY.NoiDen</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="price">
+                                                <div style="text-align: center">
+                                                    <h6 style="font-size: 5px; color: white">@Model.idVe</h6>
+                                                    <h3><b>@Content.TienByString(getgiavevnd) VNĐ</b></h3>
+                                                    <h6>@sokg Kg</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <div class="review_box">
+                            <div class="title-top">
+                                <h5>Flight Details</h5>
+                            </div>
+                            <div class="flight_detail">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="boxes">
+                                            <h6>Hãng máy bay: </h6>
+                                            <table>
+                                                <tr>
+                                                    <td style="width: 130px;">Hãng :</td>
+                                                    <td>@Model.CHUYENBAY.MAYBAY.HANGMAYBAY.TenHang</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Máy bay :</td>
+                                                    <td>@Model.CHUYENBAY.MAYBAY.TenMayBay 	&nbsp;&nbsp;&#124;&nbsp; Số lượng hành khách: @Model.CHUYENBAY.MAYBAY.SoLuongKhach</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="boxes">
+                                            <h6>Chi tiết vé: </h6>
+                                            <table>
+                                                <tr>
+                                                    <td style="width: 130px;">Loại vé  :</td>
+                                                    <td>
+                                                        @Model.LOAIVE.TenLoaiVe
+                                                        @if (Model.LOAIVE.TenLoaiVe == "Vé Basic")
+                                                        {
+                                                            <span>(Loại ghế: phổ thông &#124; Hành lý: +0kg )</span>
+                                                        }
+                                                        else if (Model.LOAIVE.TenLoaiVe == "Vé Pro")
+                                                        {
+                                                            <span>(Loại ghế: phổ thông đặc biệt &#124; Hành lý: +3kg )</span>
+                                                        }
+                                                        else if (Model.LOAIVE.TenLoaiVe == "Vé Pro+")
+                                                        {
+                                                            <span>(Loại ghế: thương gia &#124; Hành lý: +5kg )</span>
+                                                        }
+                                                        else if (Model.LOAIVE.TenLoaiVe == "Vé Premium")
+                                                        {
+                                                            <span>(Loại ghế: hạng nhất &#124; Hành lý: +7kg )</span>
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Ngày bay :</td>
+                                                    <td>@Model.CHUYENBAY.NgayBay.Value.Day&#47;@Model.CHUYENBAY.NgayBay.Value.Month&#47;@Model.CHUYENBAY.NgayBay.Value.Year</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Giờ bay  :</td>
+                                                    <td>@Model.CHUYENBAY.GioBay giờ (GMT +7 Đông Dương)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Giờ đến  :</td>
+                                                    <td>@Model.CHUYENBAY.GioDen giờ (GMT +7 Đông Dương)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Nơi đi	 :</td>
+                                                    <td>@Model.CHUYENBAY.NoiDi</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Nơi đến  :</td>
+                                                    <td>@Model.CHUYENBAY.NoiDen</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="boxes">
+                                            <h6>Hành lý: </h6>
+                                            <table>
+                                                <tr>
+                                                    <td style="width: 130px;">Số Kg cho phép :</td>
+                                                    <td>@Model.SoKgHanhLy kg</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Số Kg thêm :</td>
+                                                    <td>@Model.LOAIVE.ThemSoKg kg</td>
+                                                </tr>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        @{
+                            var gve = Model.GiaVe;
+                            var gvethem = Model.LOAIVE.TienTraThem;
+                            var vat = Model.GiaVe * 0.1;
+                            var dichvu = Model.GiaVe * 0.05;
+
+                            string sumgiave = gve.ToString();
+                            string sumgiavethem = gvethem.ToString();
+                            string sumvat = vat.ToString();
+                            string sumdv = dichvu.ToString();
+
+                            var tongtien = Model.GiaVe + Model.LOAIVE.TienTraThem + vat + dichvu;
+                            string sum = tongtien.ToString();
+
+                        }
                         <div class="review_box">
+                            <div class="title-top">
+                                <h5>Information Payment</h5>
+                            </div>
                             <div class="flight_detail">
-                                <div class="promo-section">
-                                    <div class="form-group mb-0">
-                                        <label>have a coupon code?</label>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Promo Code">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">apply</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="promos">
+                                <div class="row form_flight">
+                                    <div class="col-md-12">
                                         <form>
-                                            <div class="form-check">
-                                                <input class="form-check-input radio_animated" type="radio"
-                                                       name="exampleRadios2" id="exampleRadios3" value="option1"
-                                                       checked>
-                                                <div>
-                                                    <label class="form-check-label title" for="exampleRadios3">
-                                                        RICA500
-                                                    </label>
-                                                    <label class="form-check-label" for="exampleRadios3">
-                                                        Use RICA50, and get $50 off on first booking
-                                                    </label>
+                                            <h6>Nhập thông tin: </h6>
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="first">Fullname: </label>
+                                                    <input type="text" name="HoTen2" class="form-control" id="first" required>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="last">Gender:</label>
+                                                    <select id="input" class="form-control" name="GioiTinh2">
+                                                        <option selected>Choose...</option>
+                                                        <option>Nam</option>
+                                                        <option>Nữ</option>
+                                                    </select>
                                                 </div>
                                             </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input radio_animated" type="radio"
-                                                       name="exampleRadios2" id="exampleRadios4" value="option2">
-                                                <div>
-                                                    <label class="form-check-label title" for="exampleRadios4">
-                                                        FLY10
-                                                    </label>
-                                                    <label class="form-check-label" for="exampleRadios4">
-                                                        Use FLY10, and get 10% off upto $50 on flight ticket
-                                                        bookings.
-                                                    </label>
+                                            <br />
+                                            <h6>contact details</h6>
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputEmail4">Email</label>
+                                                    <input type="email" name="Email2" class="form-control" id="inputEmail4" required>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputnumber">Phone no:</label>
+                                                    <input type="tel" name="Sdt2" class="form-control" id="inputnumber" required>
                                                 </div>
                                             </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input radio_animated" type="radio"
-                                                       name="exampleRadios2" id="exampleRadios5" value="option2">
-                                                <div>
-                                                    <label class="form-check-label title" for="exampleRadios5">
-                                                        FLIGHT80
-                                                    </label>
-                                                    <label class="form-check-label" for="exampleRadios5">
-                                                        Upto 80% Off + Upto 40% Cashback on Flight booking & more +
-                                                        Extra 10% off via ICICI Cards (10th-13th Oct)
-                                                    </label>
+                                            <br />
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputEmail4">ID Vé: </label>
+                                                    <input type="text" name="idVe" class="form-control" value="@Model.idVe" required readonly>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputnumber">Pay (VNĐ):</label>
+                                                    <input type="text" name="tienthanhtoan" class="form-control" value="@Content.TienByString(sum)" required readonly>
                                                 </div>
                                             </div>
                                         </form>
@@ -386,15 +267,79 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-4 res-margin">
+                    <div class="sticky-cls-top">
+                        <div class="review-section">
+                            <div class="review_box">
+                                <div class="title-top">
+                                    <h5>Chi tiết thanh toán</h5>
+                                </div>
+                                <div class="flight_detail">
+                                    <div class="summery_box">
+                                        <table class="table table-borderless">
+                                            <tbody>                                                
+                                                <tr>
+                                                    <td>Giá vé mặc định: </td>
+                                                    <td>@Content.TienByString(sumgiave) VNĐ</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Giá loại vé:</td>
+                                                    <td>@Content.TienByString(sumgiavethem) VNĐ</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>VAT: </td>
+                                                    <td>@Content.TienByString(sumvat) VNĐ</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Dịch vụ: </td>
+                                                    <td>@Content.TienByString(sumdv) VNĐ</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <br />
+                                        <div class="form-group mb-0">
+                                            <h5>have a coupon code?</h5>
+                                            <div class="input-group">
+                                                <input type="text" id="macode" name="khuyenmai" class="form-control" placeholder="Promo Code">
+                                                <div class="input-group-prepend">
+                                                    <button onclick="applycode()" class="input-group-text" style="background-color: #b7f6f6;">Apply</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="tryoh">
+                                            @foreach (var km in listkm)
+                                            {
+                                                <div class="form-group getrow234 @km.MaKhuyenMai">
+                                                    @if (km.GiaTriKM < 1000)
+                                                    {
+                                                        <div id="getkm" style="margin: 10px 0 0 10px; color: #004eff;font-size: 16px;"> Đã áp dụng voucher : -<b class="kmcode">@km.GiaTriKM</b> %</div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div id="getkm" style="margin: 10px 0 0 10px; color: #004eff;font-size: 16px;"> Đã áp dụng voucher : -<b class="kmcode">@km.GiaTriKM</b> VNĐ</div>
+                                                    }
+
+                                                </div>
+                                            }
+
+                                        </div>
+                                        
+                                        <div class="grand_total">
+                                            <h5>Tổng tiền:  <span style="color: brown;"><b id="tongtientrukm">@Content.TienByString(sum)</b> <b>VNĐ</b></span></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="continue-btn">
-            <button onclick="window.location.href='flight-booking-addons.html'" class="btn btn-solid"
-                    type="submit">
-                continue booking
-            </button>
-        </div>
-    </div>
+            <div class="continue-btn">
+                <input type="submit" class="btn btn-solid" value="Payment" />
+            </div>
+        </div>       
+     }
 </section>
 <!-- booking section end -->
 <!-- book now section start -->

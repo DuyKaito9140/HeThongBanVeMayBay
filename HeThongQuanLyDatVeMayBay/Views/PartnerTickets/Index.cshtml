@@ -8,37 +8,98 @@
         @Html.ActionLink("Create list ticket for a flight", "Create", "PartnerTickets", new { @class = "btn btn-success" })
         @using (Html.BeginForm())
         {
-            <button type="submit" class="btn btn-warning" style="width: 60px; margin-bottom: 0px;">
+            <button type="submit" class="btn btn-warning" style="width: 60px; margin-bottom: 0px; height: 43px">
                 <i class="fas fa-sync-alt"></i>
             </button>
         }
+        <input type="radio" name="HienThi" value="3" style=" height: 20px; width: 50px; margin: 2px 0px 0px 100px;" />
+        <label>Tất cả</label><br /><br />
+        <input type="radio" name="HienThi" value="1" style=" height: 20px; width: 50px; margin: 2px 0px 0px 50px;" />
+        <label>Còn vé</label> <br />
+        <input type="radio" name="HienThi" value="2" style=" height: 20px; width: 50px; margin: 2px 0px 0px 40px;" />
+        <label>Hết vé</label><br /><br />
     </div>
-        <table class="table">
-            <tr>
-                <th>Image</th>
-                <th>Ngày bay</th>
-                <th>Giờ bay</th>
-                <th>Giờ đến</th>
-                <th>Nơi đi</th>
-                <th>Nới đến</th>
-                <th>Tên máy bay</th>
-                <th>Hãng máy bay</th>
-                <th>Loại vé</th>
-                <th>Tổng Số kg hành lý</th>
-                <th>Tổng giá vé</th>
-                <th></th>
-            </tr>
-            <tbody>
-                @foreach (var vemaybay in Model)
+    <table class="table">
+        <tr>
+            <th>Image</th>
+            <th>Ngày bay</th>
+            <th>Giờ bay</th>
+            <th>Giờ đến</th>
+            <th>Nơi đi</th>
+            <th>Nới đến</th>
+            <th>Tên máy bay</th>
+            <th>Hãng máy bay</th>
+            <th>Loại vé</th>
+            <th>Tổng Số kg hành lý</th>
+            <th>Tổng giá vé</th>
+            <th>Trạng thái</th>
+            <th></th>
+        </tr>
+        <tbody>
+            @foreach (var vemaybay in Model)
+            {
+                int sokg = vemaybay.SoKgHanhLy.Value + vemaybay.LOAIVE.ThemSoKg.Value;
+                int giave = vemaybay.GiaVe.Value + vemaybay.LOAIVE.TienTraThem.Value;
+                string tenhang = vemaybay.CHUYENBAY.MAYBAY.HANGMAYBAY.TenHang.ToString();
+
+                if (vemaybay.TrangThai == "Còn vé")
                 {
-                    int sokg = vemaybay.SoKgHanhLy.Value + vemaybay.LOAIVE.ThemSoKg.Value;
-                    int giave = vemaybay.GiaVe.Value + vemaybay.LOAIVE.TienTraThem.Value;
-                    string tenhang = vemaybay.CHUYENBAY.MAYBAY.HANGMAYBAY.TenHang.ToString();
-                    <tr>
+                    <tr class="conve">
+                        <td>
+                            @if (tenhang == "BamBoo Airways")
+                             {
+                                <img src = "~/Image/flights/airlines/bamboo_airway.png"
+                                     class="img-fluid blur-up lazyload" alt="" style="width: 110px;">
+                             }
+                            else if (tenhang == "VietNam Airlines")
+                            {
+                                <img src="~/Image/flights/airlines/vietnam_airline.png"
+                                     class="img-fluid blur-up lazyload" alt="" style="width: 110px;">
+                            }
+                            else if (tenhang == "VietJet Air")
+                            {
+                                <img src="~/Image/flights/airlines/vietject_logo.jpg"
+                                     class="img-fluid blur-up lazyload" alt="" style="width: 160px; margin-top: 15px">
+                            }
+                        </td>
+                        <td>@vemaybay.CHUYENBAY.NgayBay.Value.Day.ToString()/@vemaybay.CHUYENBAY.NgayBay.Value.Month.ToString()/@vemaybay.CHUYENBAY.NgayBay.Value.Year.ToString()</td>
+                        <td>@vemaybay.CHUYENBAY.GioBay</td>
+                        <td>@vemaybay.CHUYENBAY.GioDen</td>
+                        <td>@vemaybay.CHUYENBAY.NoiDi</td>
+                        <td>@vemaybay.CHUYENBAY.NoiDen</td>
+                        <td>@vemaybay.CHUYENBAY.MAYBAY.TenMayBay</td>
+                        <td>@vemaybay.CHUYENBAY.MAYBAY.HANGMAYBAY.TenHang</td>
+                        <td>@vemaybay.LOAIVE.TenLoaiVe</td>
+                        <td>@sokg Kg</td>
+                        <td>@giave VNĐ</td>
+                        @if (vemaybay.TrangThai == "Còn vé")
+                        {
+                            <td style="text-align: center"><span style="color: #28a745">@vemaybay.TrangThai</span></td>
+                        }
+                        else if (vemaybay.TrangThai == "Hết vé")
+                        {
+                            <td style="text-align: center"><span style="color: red">@vemaybay.TrangThai</span></td>
+                        }
+                        @if (vemaybay.TrangThai == "Còn vé")
+                        {
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = vemaybay.idVe.Trim() }, new { @class = "btn btn-primary" })
+                                @Html.ActionLink("Delete", "Delete", new { id = vemaybay.idVe.Trim() }, new { @class = "btn btn-danger" })
+                            </td>
+                        }
+                        else if (vemaybay.TrangThai == "Hết vé")
+                        {
+                            <td></td>
+                        }
+                    </tr>
+                }
+                else if (vemaybay.TrangThai == "Hết vé")
+                {
+                    <tr class="hetve">
                         <td>
                             @if (tenhang == "BamBoo Airways")
                             {
-                                <img src="~/Image/flights/airlines/bamboo_airway.jpg"
+                                <img src="~/Image/flights/airlines/bamboo_airway.png"
                                      class="img-fluid blur-up lazyload" alt="" style="width: 110px;">
                             }
                             else if (tenhang == "VietNam Airlines")
@@ -62,26 +123,41 @@
                         <td>@vemaybay.LOAIVE.TenLoaiVe</td>
                         <td>@sokg Kg</td>
                         <td>@giave VNĐ</td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = vemaybay.idVe.Trim() }, new { @class = "btn btn-primary" })
-                            @Html.ActionLink("Delete", "Delete", new { id = vemaybay.idVe.Trim() }, new { @class = "btn btn-danger" })
-                        </td>
+                        @if (vemaybay.TrangThai == "Còn vé")
+                        {
+                            <td style="text-align: center" class="conve"><span style="color: #28a745">@vemaybay.TrangThai</span></td>
+                        }
+                        else if (vemaybay.TrangThai == "Hết vé")
+                        {
+                            <td style="text-align: center" class="hetve"><span style="color: red">@vemaybay.TrangThai</span></td>
+                        }
+                        @if (vemaybay.TrangThai == "Còn vé")
+                        {
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = vemaybay.idVe.Trim() }, new { @class = "btn btn-primary" })
+                                @Html.ActionLink("Delete", "Delete", new { id = vemaybay.idVe.Trim() }, new { @class = "btn btn-danger" })
+                            </td>
+                        }
+                        else if (vemaybay.TrangThai == "Hết vé")
+                        {
+                            <td></td>
+                        }
                     </tr>
-                }
+                }                
+             }
             </tbody>
         </table>
-        <nav aria-label="Page navigation example" class="pagination-section mt-0">
-            <span class="fontbold">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</span>
-            <ul class="pagination">
-                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
-               new PagedListRenderOptions
-               {
-                   DisplayLinkToIndividualPages = true,
-                   DisplayPageCountAndCurrentLocation = false,
-                   MaximumPageNumbersToDisplay = 10,
-                   LiElementClasses = new string[] { "myclassed" }
-               })
-            </ul>
-        </nav>
-    </div>
-
+    <nav aria-label="Page navigation example" class="pagination-section mt-0">
+        <span class="fontbold">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</span>
+        <ul class="pagination">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
+           new PagedListRenderOptions
+           {
+               DisplayLinkToIndividualPages = true,
+               DisplayPageCountAndCurrentLocation = false,
+               MaximumPageNumbersToDisplay = 10,
+               LiElementClasses = new string[] { "myclassed" }
+           })
+        </ul>
+    </nav>
+</div>

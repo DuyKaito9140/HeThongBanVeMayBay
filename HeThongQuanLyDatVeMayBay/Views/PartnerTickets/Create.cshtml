@@ -33,7 +33,10 @@
                 <option selected disabled="disabled">...</option>
                 @foreach (var items in listchuyenbay)
                 {
-                    <option>@items.idChuyenBay &#124; @items.NgayBay.Value.Day&#47;@items.NgayBay.Value.Month&#47;@items.NgayBay.Value.Year &#124; @items.NoiDi &rarr; @items.NoiDen &#124; @items.GioBay &rarr; @items.GioDen &#124; @items.MAYBAY.TenMayBay &#124; @items.MAYBAY.HANGMAYBAY.TenHang &#124; @items.MAYBAY.SoLuongKhach Khách</option>
+                    if (items.MAYBAY.HANGMAYBAY.TenHang == Content.TenHang)
+                    {
+                        <option>@items.idChuyenBay &#124; @items.NgayBay.Value.Day&#47;@items.NgayBay.Value.Month&#47;@items.NgayBay.Value.Year &#124; @items.NoiDi &rarr; @items.NoiDen &#124; @items.GioBay &rarr; @items.GioDen &#124; @items.MAYBAY.TenMayBay &#124; @items.MAYBAY.HANGMAYBAY.TenHang &#124; @items.MAYBAY.SoLuongKhach Khách</option>
+                    }
                 }
             </select>
             <label for="idVe">Số lượng vé: </label>

@@ -57,8 +57,8 @@ E:\ASP.NET_MVC\HeThongQuanLyDatVeMayBay\HeThongQuanLyDatVeMayBay\bin\EntityFrame
 E:\ASP.NET_MVC\HeThongQuanLyDatVeMayBay\HeThongQuanLyDatVeMayBay\bin\EntityFramework.SqlServer.dll
 E:\ASP.NET_MVC\HeThongQuanLyDatVeMayBay\HeThongQuanLyDatVeMayBay\bin\EntityFramework.xml
 E:\ASP.NET_MVC\HeThongQuanLyDatVeMayBay\HeThongQuanLyDatVeMayBay\bin\EntityFramework.SqlServer.xml
-E:\ASP.NET_MVC\HeThongQuanLyDatVeMayBay\HeThongQuanLyDatVeMayBay\obj\Debug\HeThongQuanLyDatVeMayBay.csprojAssemblyReference.cache
 E:\ASP.NET_MVC\HeThongQuanLyDatVeMayBay\HeThongQuanLyDatVeMayBay\bin\PagedList.dll
 E:\ASP.NET_MVC\HeThongQuanLyDatVeMayBay\HeThongQuanLyDatVeMayBay\bin\PagedList.Mvc.dll
 E:\ASP.NET_MVC\HeThongQuanLyDatVeMayBay\HeThongQuanLyDatVeMayBay\bin\PagedList.xml
 E:\ASP.NET_MVC\HeThongQuanLyDatVeMayBay\HeThongQuanLyDatVeMayBay\bin\PagedList.Mvc.xml
+E:\ASP.NET_MVC\HeThongQuanLyDatVeMayBay\HeThongQuanLyDatVeMayBay\obj\Debug\HeThongQuanLyDatVeMayBay.csprojAssemblyReference.cache

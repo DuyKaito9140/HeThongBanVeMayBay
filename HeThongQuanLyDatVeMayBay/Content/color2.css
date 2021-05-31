@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /*-----------------------------------------------------------------------------------
 
 Template Name:Rica
@@ -11338,7 +11338,7 @@ section .black-layer {
           font-size: calc(12px + (14 - 12) * ((100vw - 320px) / (1920 - 320)));
           width: 100%; }
         .review-section .review_box .flight_detail .airport-part .airport-progress i {
-          color: rgba(0, 0, 0, 0.17); }
+          color: #ef3f3e; }
         .review-section .review_box .flight_detail .airport-part .airport-progress:after {
           content: "";
           position: absolute;

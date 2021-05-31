@@ -19,15 +19,15 @@ namespace HeThongQuanLyDatVeMayBay.Controllers
             if (!String.IsNullOrEmpty(mysearch))
             {
                 links = (from l in db.VEMAYBAYs
-                         select l).OrderBy(x => x.idVe).Where(m => m.CHUYENBAY.MAYBAY.HANGMAYBAY.TenHang.Contains(mysearch)
-                         || m.CHUYENBAY.NoiDi.Contains(mysearch) || m.CHUYENBAY.NoiDen.Contains(mysearch)
-                         || m.CHUYENBAY.GioBay.Contains(mysearch) || m.CHUYENBAY.GioDen.Contains(mysearch)
-                         || m.CHUYENBAY.MAYBAY.TenMayBay.Contains(mysearch) || m.LOAIVE.TenLoaiVe.Contains(mysearch)).ToList();
+                         select l).OrderBy(x => x.idVe).Where(m => (m.CHUYENBAY.MAYBAY.HANGMAYBAY.TenHang.Contains(mysearch)
+                         || m.CHUYENBAY.NoiDi.Contains(mysearch) || m.CHUYENBAY.NoiDen.Contains(mysearch) || m.SoKgHanhLy.ToString().Contains(mysearch) || m.GiaVe.ToString().Contains(mysearch)
+                         || m.CHUYENBAY.GioBay.Contains(mysearch) || m.CHUYENBAY.GioDen.Contains(mysearch) || m.TrangThai.Contains(mysearch)
+                         || m.CHUYENBAY.MAYBAY.TenMayBay.Contains(mysearch) || m.LOAIVE.TenLoaiVe.Contains(mysearch)) && m.CHUYENBAY.MAYBAY.HANGMAYBAY.TenHang.Contains(HeThongQuanLyDatVeMayBay.Models.Content.TenHang)).ToList();
             }
             else
             {
                 links = (from l in db.VEMAYBAYs
-                             select l).OrderBy(x => x.idVe).ToList();
+                             select l).Where(m => m.CHUYENBAY.MAYBAY.HANGMAYBAY.TenHang.Contains(HeThongQuanLyDatVeMayBay.Models.Content.TenHang)).OrderBy(x => x.idVe).ToList();
             }
             
             int pageSize = 8;

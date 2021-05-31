@@ -157,6 +157,9 @@
     <Compile Include="Models\DATVE.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DATVEKOLOGIN.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DBModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -201,6 +204,9 @@
     <Compile Include="Models\PromotionModel.cs" />
     <Compile Include="Models\RoleModel.cs" />
     <Compile Include="Models\SigninModel.cs" />
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\USER.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -250,6 +256,29 @@
     <Content Include="Content\bootstrap-reboot.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Image\about\Abacus.gif" />
+    <Content Include="Image\about\airline_logo .png" />
+    <Content Include="Image\about\bamboo_airway.png" />
+    <Content Include="Image\about\colormedia.png" />
+    <Content Include="Image\about\DatDz.png" />
+    <Content Include="Image\about\Enviet.gif" />
+    <Content Include="Image\about\gioi-thieu-abay-5.jpg" />
+    <Content Include="Image\about\gioi-thieu-abay-7.png" />
+    <Content Include="Image\about\gioi-thieu-abay-9.jpg" />
+    <Content Include="Image\about\Hongngocha.gif" />
+    <Content Include="Image\about\HuongHaiLogo.gif" />
+    <Content Include="Image\about\Jetstar.gif" />
+    <Content Include="Image\about\KaiTo.png" />
+    <Content Include="Image\about\kosshop.jpg" />
+    <Content Include="Image\about\KuTruong.png" />
+    <Content Include="Image\about\logoSenpay.gif" />
+    <Content Include="Image\about\logoTransviet.gif" />
+    <Content Include="Image\about\nganluong.gif" />
+    <Content Include="Image\about\Noibaitaxi.gif" />
+    <Content Include="Image\about\ononpaylogo.png" />
+    <Content Include="Image\about\sohapay.gif" />
+    <Content Include="Image\about\Vietjetair.gif" />
+    <Content Include="Image\about\vna.gif" />
     <Content Include="Image\airline_logo .png" />
     <Content Include="Image\ajax-loader.gif" />
     <Content Include="Image\avata1.gif" />
@@ -268,7 +297,7 @@
     <Content Include="Image\flights\airlines\5.png" />
     <Content Include="Image\flights\airlines\6.png" />
     <Content Include="Image\flights\airlines\7.png" />
-    <Content Include="Image\flights\airlines\bamboo_airway.jpg" />
+    <Content Include="Image\flights\airlines\bamboo_airway.png" />
     <Content Include="Image\flights\airlines\vietject_logo.jpg" />
     <Content Include="Image\flights\airlines\vietnam_airline.png" />
     <Content Include="Image\flights\banner\1.png" />
@@ -306,6 +335,7 @@
     <Content Include="Image\flights\vietject.jpg" />
     <Content Include="Image\hinh-nen-mau-vang.jpg" />
     <Content Include="Image\icon\adjust.png" />
+    <Content Include="Image\icon\dathangthanhcong.png" />
     <Content Include="Image\icon\down-black.png" />
     <Content Include="Image\icon\down.png" />
     <Content Include="Image\icon\footer-logo.png" />
@@ -314,11 +344,13 @@
     <Content Include="Image\icon\sandwich.png" />
     <Content Include="Image\icon\seat.png" />
     <Content Include="Image\icon\suitcase.png" />
+    <Content Include="Image\icon\tichxanh.png" />
     <Content Include="Image\icon\time\night.png" />
     <Content Include="Image\icon\time\sun.png" />
     <Content Include="Image\icon\time\sunrise.png" />
     <Content Include="Image\icon\user.png" />
     <Content Include="Image\icon\userlogo.png" />
+    <Content Include="Image\icon\voucher1.png" />
     <Content Include="Image\loader.gif" />
     <Content Include="Image\logo_hethongbig.png" />
     <Content Include="Image\Plain-Black-Wallpaper.png" />
@@ -331,8 +363,8 @@
     <Content Include="Image\zig-zag-1.png" />
     <Content Include="Models\DBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DBModel.Context.cs</LastGenOutput>
       <DependentUpon>DBModel.edmx</DependentUpon>
+      <LastGenOutput>DBModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\DBModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -413,13 +445,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <EntityDeploy Include="Models\DBModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DBModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\DBModel.edmx.diagram">
-      <DependentUpon>DBModel.edmx</DependentUpon>
-    </Content>
     <Content Include="fonts\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
@@ -475,6 +500,13 @@
     <Content Include="fonts\fonts\poppins\Poppins-SemiBoldItalic.ttf" />
     <Content Include="fonts\fonts\poppins\Poppins-Thin.ttf" />
     <Content Include="fonts\fonts\poppins\Poppins-ThinItalic.ttf" />
+    <EntityDeploy Include="Models\DBModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DBModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\DBModel.edmx.diagram">
+      <DependentUpon>DBModel.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
@@ -511,6 +543,10 @@
     <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\Role\Create.cshtml" />
     <Content Include="Views\Role\Edit.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Promotion.cshtml" />
+    <Content Include="Views\Booknow\Datvenologin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

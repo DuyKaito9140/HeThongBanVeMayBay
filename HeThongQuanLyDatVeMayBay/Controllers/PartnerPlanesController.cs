@@ -19,13 +19,13 @@ namespace HeThongQuanLyDatVeMayBay.Controllers
             if (!String.IsNullOrEmpty(mysearch))
             {
                 links = (from l in db.MAYBAYs
-                             select l).OrderBy(x => x.idMayBay).Where(m=>m.TenMayBay.Contains(mysearch) 
-                             || m.HANGMAYBAY.TenHang.Contains(mysearch) || m.SoLuongKhach.ToString().Contains(mysearch)).ToList();
+                             select l).OrderBy(x => x.idMayBay).Where(m=> (m.TenMayBay.Contains(mysearch) 
+                             || m.HANGMAYBAY.TenHang.Contains(mysearch) || m.SoLuongKhach.ToString().Contains(mysearch)) && m.HANGMAYBAY.TenHang.Contains(HeThongQuanLyDatVeMayBay.Models.Content.TenHang)).ToList();
             }
             else
             {
                 links = (from l in db.MAYBAYs
-                             select l).OrderBy(x => x.idMayBay).ToList();
+                             select l).Where(m=> m.HANGMAYBAY.TenHang.Contains(HeThongQuanLyDatVeMayBay.Models.Content.TenHang)).OrderBy(x => x.idMayBay).ToList();
             }            
             int pageSize = 8;
 

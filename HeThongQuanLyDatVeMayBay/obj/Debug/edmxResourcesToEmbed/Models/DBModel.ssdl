@@ -29,6 +29,20 @@
     <Property Name="idUser" Type="nvarchar" MaxLength="50" />
     <Property Name="NgayDatVe" Type="date" />
     <Property Name="idVe" Type="nvarchar" MaxLength="50" />
+    <Property Name="TienThanhToan" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="DATVEKOLOGIN">
+    <Key>
+      <PropertyRef Name="idUser2" />
+    </Key>
+    <Property Name="idUser2" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="HoTen2" Type="ntext" />
+    <Property Name="GioiTinh2" Type="nvarchar" MaxLength="12" />
+    <Property Name="Sdt2" Type="nvarchar" MaxLength="12" />
+    <Property Name="Email2" Type="nvarchar" MaxLength="50" />
+    <Property Name="NgayDat2" Type="date" />
+    <Property Name="idVe" Type="nvarchar" MaxLength="50" />
+    <Property Name="tienthanhtoan" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="DOANHTHU">
     <Key>
@@ -94,6 +108,16 @@
     <Property Name="SoLuongKhach" Type="int" />
     <Property Name="idHang" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
   <EntityType Name="USER">
     <Key>
       <PropertyRef Name="idUser" />
@@ -118,6 +142,7 @@
     <Property Name="idLoaiVe" Type="nvarchar" MaxLength="50" />
     <Property Name="SoKgHanhLy" Type="int" />
     <Property Name="GiaVe" Type="int" />
+    <Property Name="TrangThai" Type="nvarchar" MaxLength="20" />
   </EntityType>
   <Association Name="FK_ACCOUNT_LOAIQUYEN">
     <End Role="LOAIQUYEN" Type="Self.LOAIQUYEN" Multiplicity="0..1" />
@@ -163,6 +188,18 @@
         <PropertyRef Name="idVe" />
       </Principal>
       <Dependent Role="DATVE">
+        <PropertyRef Name="idVe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DATVEKOLOGIN_VEMAYBAY">
+    <End Role="VEMAYBAY" Type="Self.VEMAYBAY" Multiplicity="0..1" />
+    <End Role="DATVEKOLOGIN" Type="Self.DATVEKOLOGIN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VEMAYBAY">
+        <PropertyRef Name="idVe" />
+      </Principal>
+      <Dependent Role="DATVEKOLOGIN">
         <PropertyRef Name="idVe" />
       </Dependent>
     </ReferentialConstraint>
@@ -243,6 +280,7 @@
     <EntitySet Name="ACCOUNT" EntityType="Self.ACCOUNT" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CHUYENBAY" EntityType="Self.CHUYENBAY" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DATVE" EntityType="Self.DATVE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DATVEKOLOGIN" EntityType="Self.DATVEKOLOGIN" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DOANHTHU" EntityType="Self.DOANHTHU" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HANGMAYBAY" EntityType="Self.HANGMAYBAY" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HOADON" EntityType="Self.HOADON" Schema="dbo" store:Type="Tables" />
@@ -250,6 +288,7 @@
     <EntitySet Name="LOAIQUYEN" EntityType="Self.LOAIQUYEN" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LOAIVE" EntityType="Self.LOAIVE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MAYBAY" EntityType="Self.MAYBAY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="USER" EntityType="Self.USER" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="VEMAYBAY" EntityType="Self.VEMAYBAY" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_ACCOUNT_LOAIQUYEN" Association="Self.FK_ACCOUNT_LOAIQUYEN">
@@ -267,6 +306,10 @@
     <AssociationSet Name="FK_DATVE_VEMAYBAY" Association="Self.FK_DATVE_VEMAYBAY">
       <End Role="VEMAYBAY" EntitySet="VEMAYBAY" />
       <End Role="DATVE" EntitySet="DATVE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DATVEKOLOGIN_VEMAYBAY" Association="Self.FK_DATVEKOLOGIN_VEMAYBAY">
+      <End Role="VEMAYBAY" EntitySet="VEMAYBAY" />
+      <End Role="DATVEKOLOGIN" EntitySet="DATVEKOLOGIN" />
     </AssociationSet>
     <AssociationSet Name="FK_HANGMAYBAY_ACCOUNT" Association="Self.FK_HANGMAYBAY_ACCOUNT">
       <End Role="ACCOUNT" EntitySet="ACCOUNT" />
