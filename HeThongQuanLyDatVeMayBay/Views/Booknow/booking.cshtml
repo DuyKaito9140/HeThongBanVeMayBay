@@ -4,6 +4,7 @@
     ViewBag.Title = "booking";
     DBEntities_QLHeThongDatVeMayBay db = new DBEntities_QLHeThongDatVeMayBay();
     var listkm = db.KHUYENMAIs.ToList();
+    string check = Content.QuyenUser;
 }
 <style>
     .typeticket {
@@ -42,7 +43,7 @@
 <!-- breadcrumb end -->
 <!-- booking section start -->
 <section class="small-section">
-    @using (Html.BeginForm("Datvenologin", "Booknow", FormMethod.Post))
+    @using (Html.BeginForm("Datve", "Booknow", FormMethod.Post))
     {
         <div class="container">
             <div class="row">
@@ -214,57 +215,115 @@
                             string sum = tongtien.ToString();
 
                         }
-                        <div class="review_box">
-                            <div class="title-top">
-                                <h5>Information Payment</h5>
-                            </div>
-                            <div class="flight_detail">
-                                <div class="row form_flight">
-                                    <div class="col-md-12">
-                                        <form>
-                                            <h6>Nhập thông tin: </h6>
-                                            <div class="row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="first">Fullname: </label>
-                                                    <input type="text" name="HoTen2" class="form-control" id="first" required>
+                        @if (check != "")
+                        {
+                            <div class="review_box">
+                                <div class="title-top">
+                                    <h5>Information Payment</h5>
+                                </div>
+                                <div class="flight_detail">
+                                    <div class="row form_flight">
+                                        <div class="col-md-12">
+                                            <form>
+                                                <h6>Nhập thông tin: </h6>
+                                                <div class="row">
+                                                    <div class="form-group col-md-4">
+                                                        <label for="first">Fullname: </label>
+                                                        <input type="text" name="idUser" class="form-control" id="first" value="@Content.idUser" readonly>
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label for="first">Fullname: </label>
+                                                        <input type="text" name="" class="form-control" id="first" value="@Content.HoTen" readonly>
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label for="last">Gender:</label>
+                                                        <input type="text" name="" class="form-control" value="@Content.Gioitinh" readonly>
+                                                    </div>
                                                 </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="last">Gender:</label>
-                                                    <select id="input" class="form-control" name="GioiTinh2">
-                                                        <option selected>Choose...</option>
-                                                        <option>Nam</option>
-                                                        <option>Nữ</option>
-                                                    </select>
+                                                <br />
+                                                <h6>contact details</h6>
+                                                <div class="row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputEmail4">Email</label>
+                                                        <input type="email" name="" class="form-control" value="@Content.email" id="inputEmail4" readonly>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputnumber">Phone no:</label>
+                                                        <input type="tel" name="" class="form-control" value="@Content.sdt" id="inputnumber" readonly>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <br />
-                                            <h6>contact details</h6>
-                                            <div class="row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputEmail4">Email</label>
-                                                    <input type="email" name="Email2" class="form-control" id="inputEmail4" required>
+                                                <br />
+                                                <div class="row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputEmail4">ID Vé: </label>
+                                                        <input type="text" name="idVe" class="form-control" value="@Model.idVe" required readonly>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputnumber">Pay (VNĐ):</label>
+                                                        <input type="text" name="TienThanhToan" class="form-control" value="@Content.TienByString(sum)" required readonly>
+                                                    </div>
                                                 </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputnumber">Phone no:</label>
-                                                    <input type="tel" name="Sdt2" class="form-control" id="inputnumber" required>
-                                                </div>
-                                            </div>
-                                            <br />
-                                            <div class="row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputEmail4">ID Vé: </label>
-                                                    <input type="text" name="idVe" class="form-control" value="@Model.idVe" required readonly>
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputnumber">Pay (VNĐ):</label>
-                                                    <input type="text" name="tienthanhtoan" class="form-control" value="@Content.TienByString(sum)" required readonly>
-                                                </div>
-                                            </div>
-                                        </form>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        }
+                        else
+                        {
+                            <div class="review_box">
+                                <div class="title-top">
+                                    <h5>Information Payment</h5>
+                                </div>
+                                <div class="flight_detail">
+                                    <div class="row form_flight">
+                                        <div class="col-md-12">
+                                            <form>
+                                                <h6>Nhập thông tin: </h6>
+                                                <div class="row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="first">Fullname: </label>
+                                                        <input type="text" name="HoTen2" class="form-control" id="first" required>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="last">Gender:</label>
+                                                        <select id="input" class="form-control" name="GioiTinh2">
+                                                            <option selected>Choose...</option>
+                                                            <option>Nam</option>
+                                                            <option>Nữ</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <br />
+                                                <h6>contact details</h6>
+                                                <div class="row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputEmail4">Email</label>
+                                                        <input type="email" name="Email2" class="form-control" id="inputEmail4" required>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputnumber">Phone no:</label>
+                                                        <input type="tel" name="Sdt2" class="form-control" id="inputnumber" required>
+                                                    </div>
+                                                </div>
+                                                <br />
+                                                <div class="row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputEmail4">ID Vé: </label>
+                                                        <input type="text" name="idVe" class="form-control" value="@Model.idVe" required readonly>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputnumber">Pay (VNĐ):</label>
+                                                        <input type="text" name="tienthanhtoan" class="form-control" value="@Content.TienByString(sum)" required readonly>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
                     </div>
                 </div>
                 <div class="col-lg-4 res-margin">
@@ -272,12 +331,14 @@
                         <div class="review-section">
                             <div class="review_box">
                                 <div class="title-top">
-                                    <h5>Chi tiết thanh toán</h5>
+                                    <h5>
+                                        Payment Details
+                                    </h5>
                                 </div>
                                 <div class="flight_detail">
                                     <div class="summery_box">
                                         <table class="table table-borderless">
-                                            <tbody>                                                
+                                            <tbody>
                                                 <tr>
                                                     <td>Giá vé mặc định: </td>
                                                     <td>@Content.TienByString(sumgiave) VNĐ</td>
@@ -324,10 +385,140 @@
                                             }
 
                                         </div>
-                                        
+
                                         <div class="grand_total">
                                             <h5>Tổng tiền:  <span style="color: brown;"><b id="tongtientrukm">@Content.TienByString(sum)</b> <b>VNĐ</b></span></h5>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="review_box">
+                                <div class="title-top">
+                                    <h5>Payment Option</h5>
+                                </div>
+                                <div class="flight_detail payment-gateway">
+                                    <div class="accordion" id="accordionExample">
+                                        <div class="card">
+                                            <div class="card-header" id="h_one">
+                                                <div class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#one"
+                                                     aria-expanded="true" aria-controls="one">
+                                                    <label for='r_one'>
+                                                        <input type='radio' class="radio_animated ms-0" checked id='r_one'
+                                                               name='occupation' value='Working' required />
+                                                        Debit card
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div id="one" class="collapse show" aria-labelledby="h_one"
+                                                 data-bs-parent="#accordionExample">
+                                                <div class="card-body">
+                                                    <form>
+                                                        <div class="form-group">
+                                                            <label for="name">Name on card</label>
+                                                            <input type="text" class="form-control" id="name" required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="number">Card number</label>
+                                                            <input type="text" class="form-control" id="number" required>
+                                                            <img src="~/Image/creditcards.png" alt=""
+                                                                 class="img-fluid blur-up lazyload">
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group col-md-4">
+                                                                <label for="month">Month</label>
+                                                                <select id="month" class="form-control" required>
+                                                                    <option selected disabled>...</option>
+                                                                    <option>January</option>
+                                                                    <option>February</option>
+                                                                    <option>March</option>
+                                                                    <option>April</option>
+                                                                    <option>May</option>
+                                                                    <option>June</option>
+                                                                    <option>July</option>
+                                                                    <option>August</option>
+                                                                    <option>September</option>
+                                                                    <option>October</option>
+                                                                    <option>November</option>
+                                                                    <option>December</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group col-md-4">
+                                                                <label for="c-year">Year</label>
+                                                                <input type="number" class="form-control" placeholder="..."
+                                                                       id="c-year" required>
+                                                            </div>
+                                                            <div class="form-group col-md-4">
+                                                                <label for="cvv">CVV</label>
+                                                                <input type="password" maxlength="4" class="form-control" placeholder="..."
+                                                                       id="cvv" required>
+                                                                <img src="~/Image/cvv.png"
+                                                                     class="img-fluid blur-up lazyload" alt="" style="margin-right: 8px">
+                                                            </div>
+                                                        </div>                                             
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-header" id="h_two">
+                                                <div class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#two"
+                                                     aria-expanded="true" aria-controls="two">
+                                                    <label for='r_two'>
+                                                        <input type='radio' class="radio_animated ms-0" id='r_two'
+                                                               name='occupation' value='Working' required /> credit card
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div id="two" class="collapse" aria-labelledby="h_two"
+                                                 data-bs-parent="#accordionExample">
+                                                <div class="card-body">
+                                                    <form>
+                                                        <div class="form-group">
+                                                            <label for="c-name">Name on card</label>
+                                                            <input type="text" class="form-control" id="c-name" required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="c-number">Card number</label>
+                                                            <input type="text" class="form-control" id="c-number" required>
+                                                            <img src="~/Image/creditcards.png" alt=""
+                                                                 class="img-fluid blur-up lazyload">
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group col-md-4">
+                                                                <label for="c-month">Month</label>
+                                                                <select id="c-month" class="form-control" required>
+                                                                    <option selected>Month...</option>
+                                                                    <option>January</option>
+                                                                    <option>February</option>
+                                                                    <option>March</option>
+                                                                    <option>April</option>
+                                                                    <option>May</option>
+                                                                    <option>June</option>
+                                                                    <option>July</option>
+                                                                    <option>August</option>
+                                                                    <option>September</option>
+                                                                    <option>October</option>
+                                                                    <option>November</option>
+                                                                    <option>December</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group col-md-4">
+                                                                <label for="c-year">Year</label>
+                                                                <input type="number" class="form-control" placeholder="..." required
+                                                                       id="c-year">
+                                                            </div>
+                                                            <div class="form-group col-md-4">
+                                                                <label for="c-cvv">CVV</label>
+                                                                <input type="password" class="form-control" placeholder="..." required
+                                                                       id="c-cvv">
+                                                                <img src="~/Image/cvv.png"
+                                                                     class="img-fluid blur-up lazyload" alt="" style="margin-right: 8px">
+                                                            </div>
+                                                        </div>                                                      
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>                                        
                                     </div>
                                 </div>
                             </div>

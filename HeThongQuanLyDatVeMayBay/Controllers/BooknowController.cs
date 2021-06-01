@@ -89,15 +89,23 @@ namespace HeThongQuanLyDatVeMayBay.Controllers
             return RedirectToAction("Booknow/booking");
         }
 
-        public ActionResult Datvenologin()
+        public ActionResult booknowsuccess() 
         {
             return View();
         }
         [HttpPost]
-        public ActionResult Datvenologin(DATVEKOLOGIN v)
+        public ActionResult Datve(DATVEKOLOGIN v, DATVE dv) 
         {
-            bn.dat_ve_nologin(v);
-            return RedirectToAction("Datvenologin");
+            string check = HeThongQuanLyDatVeMayBay.Models.Content.QuyenUser;
+            if(check != "")
+            {
+                bn.dat_ve_login(dv);
+            }
+            else
+            {
+                bn.dat_ve_nologin(v);
+            }
+            return RedirectToAction("booknowsuccess");
         }
     }
 }

@@ -28,7 +28,19 @@ namespace HeThongQuanLyDatVeMayBay.Models
             db.SaveChanges();
             db.DATVEKOLOGINs.Add(cb);
             db.SaveChanges();
+        }
 
+        public void dat_ve_login(DATVE dv) 
+        {
+            DateTime date = DateTime.Now; 
+            string iddatve = Content.RandomString(12);
+            dv.idDatVe = iddatve;
+            dv.NgayDatVe = date;
+            VEMAYBAY vedangdat = db.VEMAYBAYs.First(m => m.idVe == dv.idVe);
+            vedangdat.TrangThai = "Hết vé";
+            db.SaveChanges();
+            db.DATVEs.Add(dv);
+            db.SaveChanges();
         }
     }
 }

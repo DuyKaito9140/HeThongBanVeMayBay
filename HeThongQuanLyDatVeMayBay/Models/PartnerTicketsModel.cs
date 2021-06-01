@@ -33,19 +33,19 @@ namespace HeThongQuanLyDatVeMayBay.Models
                 x.SoKgHanhLy = vmb.SoKgHanhLy;
                 x.GiaVe = vmb.GiaVe;
                 x.TrangThai = vmb.TrangThai;
-                if (i < 16)
+                if (i < 3) //0-16
                 {
                     x.idLoaiVe = "lv004";
                 }
-                else if (i >= 16 && i < 40)
+                else if (i >= 3 && i < 5) //17-39
                 {
                     x.idLoaiVe = "lv003";
                 }
-                else if (i >= 40 && i < 72)
+                else if (i >= 5 && i < 8) //40-71
                 {
                     x.idLoaiVe = "lv002";
                 }
-                else
+                else //72-...
                 {
                     x.idLoaiVe = "lv001";
                 }

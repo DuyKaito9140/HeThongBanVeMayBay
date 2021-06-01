@@ -110,6 +110,13 @@ namespace HeThongQuanLyDatVeMayBay.Controllers
         {
             return RedirectToAction("Booknow/Index");
         }
+        public ActionResult History() 
+        {
+            string idu = HeThongQuanLyDatVeMayBay.Models.Content.idUser;
+            var listvebooked = db.DATVEs.Where(m => m.idUser == idu).ToList();
+            ViewBag.TicketBooked = listvebooked;
+            return View(ViewBag);
+        }
         public ActionResult Promotion() 
         {            
             return View(pr.Listkhuyenmai());

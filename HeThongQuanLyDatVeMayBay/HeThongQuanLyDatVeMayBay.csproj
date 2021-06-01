@@ -352,6 +352,8 @@
     <Content Include="Image\icon\userlogo.png" />
     <Content Include="Image\icon\voucher1.png" />
     <Content Include="Image\loader.gif" />
+    <Content Include="Image\loading.gif" />
+    <Content Include="Image\loading_color.gif" />
     <Content Include="Image\logo_hethongbig.png" />
     <Content Include="Image\Plain-Black-Wallpaper.png" />
     <Content Include="Image\tour\footer\1.jpg" />
@@ -546,7 +548,8 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Promotion.cshtml" />
-    <Content Include="Views\Booknow\Datvenologin.cshtml" />
+    <Content Include="Views\Booknow\booknowsuccess.cshtml" />
+    <Content Include="Views\Home\History.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

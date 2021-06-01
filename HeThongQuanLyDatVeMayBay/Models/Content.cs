@@ -34,6 +34,7 @@ namespace HeThongQuanLyDatVeMayBay.Models
 
         public static string idquyen = "";
         public static string codekhuyenmai= "";
+        public static int numstart = 0;
         public static string RandomString(int length)
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
