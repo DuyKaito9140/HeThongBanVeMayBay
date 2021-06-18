@@ -56,6 +56,9 @@
           <ScalarProperty Name="ThangNamTK" ColumnName="ThangNamTK" />
           <ScalarProperty Name="TongSoHD" ColumnName="TongSoHD" />
           <ScalarProperty Name="TongDT" ColumnName="TongDT" />
+          <ScalarProperty Name="TitleTK" ColumnName="TitleTK" />
+          <ScalarProperty Name="ThangdcTk" ColumnName="ThangdcTk" />
+          <ScalarProperty Name="NamdcTk" ColumnName="NamdcTk" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -60,6 +60,11 @@
         background-color: #ffe75b;
         cursor: pointer;
     }
+
+    .btn-danger {
+        font-size: 13px;
+        width: 140px;
+    }
 </style>
 <div style="width: 100%; height: 108px; background-color: #00a6ff;"></div>
 <div class="container mt-5">
@@ -69,17 +74,18 @@
                 <tr>
                     <th>TICKETS BOOKED</th>
                     <th>DAY BOOKED</th>
+                    <th>ACTION</th>
                 </tr>
                 @foreach (var vemaybay in ViewBag.TicketBooked)
                 {
                     <tr>
                         <td>
-                            @{ 
+                            @{
                                 int sokg = vemaybay.VEMAYBAY.SoKgHanhLy + vemaybay.VEMAYBAY.LOAIVE.ThemSoKg;
                                 int giave = vemaybay.VEMAYBAY.GiaVe + vemaybay.VEMAYBAY.LOAIVE.TienTraThem;
                                 string giavevnd = giave.ToString();
                                 string tenhang = vemaybay.VEMAYBAY.CHUYENBAY.MAYBAY.HANGMAYBAY.TenHang.ToString();
-                            }                           
+                            }
                             <div class="detail-wrap wow fadeInUp" style="background-color: #dceef6;">
                                 <div class="row">
                                     <div class="col-md-3">
@@ -96,7 +102,7 @@
                                             }
                                             else if (tenhang == "VietJet Air")
                                             {
-                                                <img src="~/Image/flights/airlines/vietject_logo.jpg"
+                                                <img src="~/Image/flights/airlines/vietject_logo.png"
                                                      class="img-fluid blur-up lazyload" alt="" width="290" height="290">
                                             }
                                             <span class="title" name="">@tenhang</span>
@@ -141,8 +147,39 @@
                         <td style="font-size: 18px">
                             @vemaybay.NgayDatVe.Day&#47;@vemaybay.NgayDatVe.Month&#47;@vemaybay.NgayDatVe.Year
                         </td>
+
+                        @{
+                            int day = vemaybay.VEMAYBAY.CHUYENBAY.NgayBay.Day;
+                            int month = vemaybay.VEMAYBAY.CHUYENBAY.NgayBay.Month;
+                            int year = vemaybay.VEMAYBAY.CHUYENBAY.NgayBay.Year;
+
+
+
+                            int checklink = Content.ckeckngay(day, month, year);
+
+
+
+                            if (checklink == 2)
+                            {
+                                <td>
+                                    @Html.ActionLink("Return Ticket", "ReturnTicket", new { iddv = vemaybay.idDatVe.Trim() }, new { @class = "btn btn-danger" })
+                                </td>
+                            }
+                            else if (checklink == 1)
+                            {
+                                <td>
+                                    <input class="btn btn-warning" style="font-size: 13px;width: 140px;" value="Prepare..." />
+                                </td>
+                            }
+                            else if (checklink == 0)
+                            {
+                                <td>
+                                    <input class="btn btn-success" style="font-size: 13px;width: 140px;" value="Complete" />
+                                </td>
+                            }
+                        }
                     </tr>
-                }
+            }
             </table>
             
         </div>

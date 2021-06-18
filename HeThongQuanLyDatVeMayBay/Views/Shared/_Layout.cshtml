@@ -430,17 +430,17 @@
         $(document).ready(function () {
             $(".tryoh .getrow234").filter(".getrow234").hide();
 
-        }) 
+        })
         var num = 1;
         var giacodinh = [];
         function applycode() {
-            $(".tryoh .getrow234").filter(".getrow234").hide();            
-            var code = document.getElementById("macode").value;            
+            $(".tryoh .getrow234").filter(".getrow234").hide();
+            var code = document.getElementById("macode").value;
             $(`.tryoh .${code}`).show().is(function () {
-                var gia = $("#tongtientrukm").text().split(".");                
+                var gia = $("#tongtientrukm").text().split(".");
                 if (num == 1) {
                     giacodinh = gia;
-                }                
+                }
                 if (gia.length == 3) {
                     var giaend = gia[0] + gia[1] + gia[2];
                 }
@@ -470,6 +470,7 @@
                 var setgia = doi_tien(sumtienend.toString());
                 num++;
                 document.getElementById("tongtientrukm").innerHTML = setgia;
+                document.getElementById("gialuu").value = setgia;
             })
         }
 
@@ -484,7 +485,7 @@
         function doi_tien(tongtien) {
             var sum = "";
             if (tongtien.length == 9) {
-                sum = tongtien[0] + tongtien[1] + tongtien[2] + "." + tongtien[3] + tongtien[4]+ tongtien[5] + "." + tongtien[6] + tongtien[7] + tongtien[8];
+                sum = tongtien[0] + tongtien[1] + tongtien[2] + "." + tongtien[3] + tongtien[4] + tongtien[5] + "." + tongtien[6] + tongtien[7] + tongtien[8];
             }
             else if (tongtien.length == 8) {
                 sum = tongtien[0] + tongtien[1] + "." + tongtien[2] + tongtien[3] + tongtien[4] + "." + tongtien[5] + tongtien[6] + tongtien[7];
@@ -503,6 +504,25 @@
             }
             return sum;
         }
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("input[type='radio']").click(function () {
+                var radioValue = $("input[name='HienThi']:checked").val();
+                if (radioValue == "1") {
+                    $('.detail-bar .detail-wrap').filter('.conve').show();
+                    $('.detail-bar .detail-wrap').filter('.hetve').hide();
+                }
+                else if (radioValue == "2") {
+                    $('.detail-bar .detail-wrap').filter('.hetve').show();
+                    $('.detail-bar .detail-wrap').filter('.conve').hide();
+                }
+                else if (radioValue == "3") {
+                    $('.detail-bar .detail-wrap').filter('.hetve').show();
+                    $('.detail-bar .detail-wrap').filter('.conve').show();
+                }
+            });
+        });
     </script>
 </body>
 </html>

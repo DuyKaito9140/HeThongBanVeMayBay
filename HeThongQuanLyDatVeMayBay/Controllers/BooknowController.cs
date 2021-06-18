@@ -68,6 +68,18 @@ namespace HeThongQuanLyDatVeMayBay.Controllers
                          && v.CHUYENBAY.NgayBay.ToString().Contains(chuyenbayngaybay)
                          && v.LOAIVE.TenLoaiVe.Contains(chuyenbayloaive)).ToList();
             }
+            else if (HeThongQuanLyDatVeMayBay.Models.Content.sort == "up")
+            {
+                HeThongQuanLyDatVeMayBay.Models.Content.sort = "";
+                links = (from l in db.VEMAYBAYs
+                         select l).OrderBy(x => x.GiaVe).ToList();
+            }
+            else if (HeThongQuanLyDatVeMayBay.Models.Content.sort == "down")
+            {
+                HeThongQuanLyDatVeMayBay.Models.Content.sort = "";
+                links = (from l in db.VEMAYBAYs
+                         select l).OrderByDescending(x => x.GiaVe).ToList();
+            }
             else
             {
                 links = (from l in db.VEMAYBAYs
@@ -79,6 +91,18 @@ namespace HeThongQuanLyDatVeMayBay.Controllers
             return View(links.ToPagedList(pageNumber, pageSize));
         }
 
+        [HttpPost]
+        public ActionResult sortup()
+        {
+            HeThongQuanLyDatVeMayBay.Models.Content.sort = "up";           
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public ActionResult sortdown()
+        {
+            HeThongQuanLyDatVeMayBay.Models.Content.sort = "down";
+            return RedirectToAction("Index");
+        }
         public ActionResult booking(string idVe)
         {
             return View(bn.NhanOneVBM(idVe));

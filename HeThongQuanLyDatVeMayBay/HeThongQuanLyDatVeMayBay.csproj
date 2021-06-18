@@ -136,11 +136,16 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminUserController.cs" />
     <Compile Include="Controllers\BooknowController.cs" />
+    <Compile Include="Controllers\HistoryAdminController.cs" />
+    <Compile Include="Controllers\HistoryPartnerController.cs" />
+    <Compile Include="Controllers\ManagmentTicketController.cs" />
     <Compile Include="Controllers\PartnerFlightsController.cs" />
     <Compile Include="Controllers\PartnerPlanesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PartnerTicketsController.cs" />
     <Compile Include="Controllers\PromotionController.cs" />
+    <Compile Include="Controllers\RevenueController.cs" />
+    <Compile Include="Controllers\RevenuePartnerController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -182,9 +187,12 @@
     <Compile Include="Models\HANGMAYBAY.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\HistoryAdminModel.cs" />
+    <Compile Include="Models\HistoryPartnerModel.cs" />
     <Compile Include="Models\HOADON.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Models\KHUYENMAI.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -195,6 +203,7 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\ManagmentTicketModel.cs" />
     <Compile Include="Models\MAYBAY.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -202,6 +211,8 @@
     <Compile Include="Models\PartnerPlanesModel.cs" />
     <Compile Include="Models\PartnerTicketsModel.cs" />
     <Compile Include="Models\PromotionModel.cs" />
+    <Compile Include="Models\RevenueModel.cs" />
+    <Compile Include="Models\RevenuePartnerModel.cs" />
     <Compile Include="Models\RoleModel.cs" />
     <Compile Include="Models\SigninModel.cs" />
     <Compile Include="Models\sysdiagram.cs">
@@ -235,6 +246,7 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\magnific-popup.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\partner.css" />
     <Content Include="Content\price-range.css" />
     <Content Include="Content\slick-theme.css" />
     <Content Include="Content\slick.css" />
@@ -298,7 +310,7 @@
     <Content Include="Image\flights\airlines\6.png" />
     <Content Include="Image\flights\airlines\7.png" />
     <Content Include="Image\flights\airlines\bamboo_airway.png" />
-    <Content Include="Image\flights\airlines\vietject_logo.jpg" />
+    <Content Include="Image\flights\airlines\vietject_logo.png" />
     <Content Include="Image\flights\airlines\vietnam_airline.png" />
     <Content Include="Image\flights\banner\1.png" />
     <Content Include="Image\flights\banner\2.png" />
@@ -550,6 +562,11 @@
     <Content Include="Views\Home\Promotion.cshtml" />
     <Content Include="Views\Booknow\booknowsuccess.cshtml" />
     <Content Include="Views\Home\History.cshtml" />
+    <Content Include="Views\Revenue\Index.cshtml" />
+    <Content Include="Views\HistoryAdmin\Index.cshtml" />
+    <Content Include="Views\HistoryPartner\Index.cshtml" />
+    <Content Include="Views\RevenuePartner\Index.cshtml" />
+    <Content Include="Views\ManagmentTicket\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

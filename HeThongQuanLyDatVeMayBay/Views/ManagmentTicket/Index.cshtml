@@ -1,0 +1,104 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+        overflow: hidden;
+    }
+
+    td, th {
+        border-top: 1px solid #8500ff;
+        padding: 10px;
+        text-align: center;
+    }
+
+    tr {
+        background-color: #fffdef;        
+    }
+
+    td {
+        border-left: 1px solid #ECF0F1;
+        border-right: 1px solid #ECF0F1;
+    }
+    th {
+        background-color: #4ECDC4;
+        color: #950a0a;
+    }
+
+    tr:nth-of-type(even) td {
+        background-color: lighten(#4ECDC4, 35%);
+    }
+
+    .typeticket {
+        position: absolute;
+        left: 49%;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+        top: -25px;
+        width: 100%;
+        background: -webkit-linear-gradient(bottom, #05dbff, #dd56ff);
+        width: 100px;
+    }
+
+    .myclassed {
+        width: 35px;
+        height: 35px;
+        border: 1px solid #d6d4d4;
+        background-color: white;
+        margin-left: 5px;
+        padding-top: 7px;
+        text-align: center;
+        vertical-align: central;
+    }
+
+    .myclassed:hover {
+        background-color: #ffe75b;
+        cursor: pointer;
+    }
+
+    .btn-danger {
+        font-size: 13px;
+        width: 140px;
+    }
+</style>
+<div class="container mt-5" style="padding: 0px 50px 0px 60px;">
+    <form class="flight-detail-sec">
+        <div class="detail-bar">
+            <table>
+                <tr>
+                    <th>HÃNG</th>
+                    <th>TỔNG SỐ LƯỢNG VÉ</th>
+                    <th>SỐ LƯỢNG VÉ CHƯA BÁN</th>
+                    <th>SỐ LƯỢNG VÉ ĐÃ BÁN</th>
+                </tr>
+                <tr>
+                    <td><div style="background-color: #e4effe; text-align: center; border-radius: 50%; width: 140px; height: 140px; padding-top: 20px; margin: 10px -50px 0px 45px;"><img src="~/Image/flights/airlines/bamboo_airway.png" alt="Avatar" style="width: 100px; height: 100px"></div><br /></td>
+                    <td><div style="color: white; font-size: 30px; background-color: #1600ff; text-align: center; border-radius: 50%; width: 140px; height: 140px; padding-top: 45px; margin: 1px -50px 0px 55px;">@ViewBag.SumVeBamBoo</div><br /></td>
+                    <td><div style="color: white; font-size: 30px; background-color: #19a634; text-align: center; border-radius: 50%; width: 140px; height: 140px; padding-top: 45px; margin: -35px -50px -20px 85px;">@ViewBag.VeNoBamBooBooked</div></td>
+                    <td><div style="color: white; font-size: 30px; background-color: #ec4242; text-align: center; border-radius: 50%; width: 140px; height: 140px; padding-top: 45px; margin: -35px -50px -20px 70px;">@ViewBag.VeBamBooBooked</div></td>
+                </tr>
+                <tr>
+                    <td><div style="background-color: #e4effe; text-align: center; border-radius: 50%; width: 140px; height: 140px; padding-top: 20px; margin: 10px -50px 0px 45px;"><img src="~/Image/flights/airlines/vietnam_airline.png" alt="Avatar" style="width: 100px; height: 100px"></div><br /></td>
+                    <td><div style="color: white; font-size: 30px; background-color: #1600ff; text-align: center; border-radius: 50%; width: 140px; height: 140px; padding-top: 45px; margin: 10px -50px 0px 55px;">@ViewBag.SumVeVN</div><br /></td>
+                    <td><div style="color: white; font-size: 30px; background-color: #19a634; text-align: center; border-radius: 50%; width: 140px; height: 140px; padding-top: 45px; margin: -35px -50px -20px 85px;">@ViewBag.VeNoVNBooked</div></td>
+                    <td><div style="color: white; font-size: 30px; background-color: #ec4242; text-align: center; border-radius: 50%; width: 140px; height: 140px; padding-top: 45px; margin: -35px -50px -20px 70px;">@ViewBag.VeVNBooked</div></td>
+                </tr>
+                <tr>
+                    <td><div style="background-color: #e4effe; text-align: center; border-radius: 50%; width: 140px; height: 140px; padding-top: 20px; margin: 10px -50px 0px 45px;"><img src="~/Image/flights/airlines/vietject_logo.png" alt="Avatar" style="width: 100px; height: 100px"></div><br /></td>
+                    <td><div style="color: white; font-size: 30px; background-color: #1600ff; text-align: center; border-radius: 50%; width: 140px; height: 140px; padding-top: 45px; margin: 10px -50px 0px 55px;">@ViewBag.SumVeVietJ</div><br /></td>
+                    <td><div style="color: white; font-size: 30px; background-color: #19a634; text-align: center; border-radius: 50%; width: 140px; height: 140px; padding-top: 45px; margin: -35px -50px -20px 85px;">@ViewBag.VeNoVietJBooked</div></td>
+                    <td><div style="color: white; font-size: 30px; background-color: #ec4242; text-align: center; border-radius: 50%; width: 140px; height: 140px; padding-top: 45px; margin: -35px -50px -20px 70px;">@ViewBag.VeVietJBooked</div></td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>
+<br />
+<br />
+<br />
+
+

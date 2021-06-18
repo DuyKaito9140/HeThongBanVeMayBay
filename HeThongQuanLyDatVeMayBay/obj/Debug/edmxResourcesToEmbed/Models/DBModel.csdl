@@ -61,6 +61,9 @@
     <Property Name="ThangNamTK" Type="DateTime" Precision="0" />
     <Property Name="TongSoHD" Type="Int32" />
     <Property Name="TongDT" Type="Int32" />
+    <Property Name="TitleTK" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ThangdcTk" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="NamdcTk" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="HANGMAYBAY">
     <Key>

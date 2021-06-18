@@ -74,7 +74,7 @@
                                                 }
                                                 else if (tenhang == "VietJet Air")
                                                 {
-                                                    <img src="~/Image/flights/airlines/vietject_logo.jpg"
+                                                    <img src="~/Image/flights/airlines/vietject_logo.png"
                                                          class="img-fluid blur-up lazyload" alt="" width="290" height="290">
                                                 }<br />
                                                 <span class="title" name="">@tenhang</span>
@@ -260,7 +260,7 @@
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputnumber">Pay (VNĐ):</label>
-                                                        <input type="text" name="TienThanhToan" class="form-control" value="@Content.TienByString(sum)" required readonly>
+                                                        <input type="text" name="TienThanhToan" id="gialuu" class="form-control" value="@Content.TienByString(sum)" required readonly>
                                                     </div>
                                                 </div>
                                             </form>
@@ -314,7 +314,7 @@
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="inputnumber">Pay (VNĐ):</label>
-                                                        <input type="text" name="tienthanhtoan" class="form-control" value="@Content.TienByString(sum)" required readonly>
+                                                        <input type="text" name="tienthanhtoan" id="gialuu" class="form-control" value="@Content.TienByString(sum)" required readonly>
                                                     </div>
                                                 </div>
                                             </form>
@@ -363,7 +363,7 @@
                                             <div class="input-group">
                                                 <input type="text" id="macode" name="khuyenmai" class="form-control" placeholder="Promo Code">
                                                 <div class="input-group-prepend">
-                                                    <button onclick="applycode()" class="input-group-text" style="background-color: #b7f6f6;">Apply</button>
+                                                    <button onclick="applycode()" type="button" class="input-group-text" style="background-color: #b7f6f6;">Apply</button>
                                                 </div>
                                             </div>
                                         </div>

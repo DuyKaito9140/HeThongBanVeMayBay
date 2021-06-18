@@ -1,0 +1,81 @@
+﻿@model List<HeThongQuanLyDatVeMayBay.Models.DOANHTHU>
+@{
+    ViewBag.Title = "Index Revenue Admin";
+}
+
+<br />
+<div class="container mt-2" style=" padding: 10px 50px 0px 60px;">
+    <form action="/Revenue/getrevenue" method="POST">
+        <label for="first">Tháng: </label>
+        <select name="ThangTK" class="form-control">
+            <option>...</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+            <option>11</option>
+            <option>12</option>
+        </select><br>
+        <label for="first">Năm: </label>
+        <select name="NamTK" class="form-control">
+            <option>...</option>
+            <option>2018</option>
+            <option>2019</option>
+            <option>2020</option>
+            <option>2021</option>
+            <option>2022</option>
+            <option>2023</option>
+            <option>2024</option>
+            <option>2025</option>
+            <option>2026</option>
+            <option>2027</option>
+            <option>2028</option>
+            <option>2029</option>
+            <option>2030</option>
+        </select><br>
+        <input class="btn btn-primary" type="submit" value="Thống kê" style="width: 120px" /><br />
+    </form>
+    <br />
+    <hr />
+    <style>
+        table tr th, td {
+            text-align: center;
+        }
+    </style>
+    <div style="height: 30px; width: 100%; text-align: center; text-transform: uppercase; font-weight: 600; padding: 0px 230px 0px 230px; color: white; margin: 20px 0px 20px 0px;">
+        <h5 style=" background: -webkit-linear-gradient(top, #0101DF, #b224ef); height: 40px; padding-top: 6px">Doanh thu của công ty</h5>
+    </div>
+    <table class="table">
+        <tr style="background-color: #4bfdc0;">
+            <th>Ngày thống kê</th>
+            <th>Tháng được Thống kê</th>
+            <th>Thuộc năm</th>
+            <th>Số hóa đơn</th>
+            <th>Tổng doanh thu</th>
+            <th></th>
+        </tr>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                if (item.TitleTK == "Admin")
+                {
+                    <tr>
+                        <td>@item.ThangNamTK.Value.Day/@item.ThangNamTK.Value.Month/@item.ThangNamTK.Value.Year</td>
+                        <td>Tháng @item.ThangdcTk</td>
+                        <td>@item.NamdcTk</td>
+                        <td>@item.TongSoHD</td>
+                        <td class="tongdt">@item.TongDT</td>
+                        <td>@Html.ActionLink("Delete", "Delete", new { iddt = item.idDoanhThu.Trim() }, new { @class = "btn btn-danger" })</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+

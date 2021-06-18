@@ -57,6 +57,9 @@
           <Property Name="ThangNamTK" Type="date" />
           <Property Name="TongSoHD" Type="int" />
           <Property Name="TongDT" Type="int" />
+          <Property Name="TitleTK" Type="nvarchar" MaxLength="50" />
+          <Property Name="ThangdcTk" Type="nvarchar" MaxLength="10" />
+          <Property Name="NamdcTk" Type="nvarchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="HANGMAYBAY">
           <Key>
@@ -407,6 +410,9 @@
           <Property Name="ThangNamTK" Type="DateTime" Precision="0" />
           <Property Name="TongSoHD" Type="Int32" />
           <Property Name="TongDT" Type="Int32" />
+          <Property Name="TitleTK" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ThangdcTk" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="NamdcTk" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="HANGMAYBAY">
           <Key>
@@ -765,6 +771,9 @@
                 <ScalarProperty Name="ThangNamTK" ColumnName="ThangNamTK" />
                 <ScalarProperty Name="TongSoHD" ColumnName="TongSoHD" />
                 <ScalarProperty Name="TongDT" ColumnName="TongDT" />
+                <ScalarProperty Name="TitleTK" ColumnName="TitleTK" />
+                <ScalarProperty Name="ThangdcTk" ColumnName="ThangdcTk" />
+                <ScalarProperty Name="NamdcTk" ColumnName="NamdcTk" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

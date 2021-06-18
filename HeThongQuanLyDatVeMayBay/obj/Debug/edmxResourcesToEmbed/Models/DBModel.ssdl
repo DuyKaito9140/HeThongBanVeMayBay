@@ -52,6 +52,9 @@
     <Property Name="ThangNamTK" Type="date" />
     <Property Name="TongSoHD" Type="int" />
     <Property Name="TongDT" Type="int" />
+    <Property Name="TitleTK" Type="nvarchar" MaxLength="50" />
+    <Property Name="ThangdcTk" Type="nvarchar" MaxLength="10" />
+    <Property Name="NamdcTk" Type="nvarchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="HANGMAYBAY">
     <Key>

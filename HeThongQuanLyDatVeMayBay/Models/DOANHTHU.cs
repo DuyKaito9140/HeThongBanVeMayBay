@@ -18,5 +18,8 @@ namespace HeThongQuanLyDatVeMayBay.Models
         public Nullable<System.DateTime> ThangNamTK { get; set; }
         public Nullable<int> TongSoHD { get; set; }
         public Nullable<int> TongDT { get; set; }
+        public string TitleTK { get; set; }
+        public string ThangdcTk { get; set; }
+        public string NamdcTk { get; set; }
     }
 }

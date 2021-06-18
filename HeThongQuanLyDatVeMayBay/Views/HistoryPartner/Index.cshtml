@@ -1,0 +1,156 @@
+﻿@model List<HeThongQuanLyDatVeMayBay.Models.DATVE>
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+        overflow: hidden;
+    }
+
+    td, th {
+        border-top: 1px solid #8500ff;
+        padding: 10px;
+        text-align: center;
+    }
+
+    tr {
+        background-color: #fffdef;
+    }
+
+    td {
+        border-left: 1px solid #ECF0F1;
+        border-right: 1px solid #ECF0F1;
+    }
+
+    th {
+        background-color: #4ECDC4;
+        color: #950a0a;
+    }
+
+    tr:nth-of-type(even) td {
+        background-color: lighten(#4ECDC4, 35%);
+    }
+
+    .typeticket {
+        position: absolute;
+        left: 49%;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+        top: -25px;
+        width: 100%;
+        background: -webkit-linear-gradient(bottom, #05dbff, #dd56ff);
+        width: 100px;
+    }
+
+    .myclassed {
+        width: 35px;
+        height: 35px;
+        border: 1px solid #d6d4d4;
+        background-color: white;
+        margin-left: 5px;
+        padding-top: 7px;
+        text-align: center;
+        vertical-align: central;
+    }
+
+        .myclassed:hover {
+            background-color: #ffe75b;
+            cursor: pointer;
+        }
+</style>
+<div class="container mt-5" style=" padding: 10px 50px 0px 60px;">
+    <form class="flight-detail-sec">
+        <div class="detail-bar">
+            <table>
+                <tr>
+                    <th>TICKETS BOOKED</th>
+                    <th>DAY BOOKED</th>
+                    <th>USER</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    var tongsokg = item.VEMAYBAY.SoKgHanhLy + item.VEMAYBAY.LOAIVE.ThemSoKg;
+                    <tr>
+                        <td>
+                            <div class="detail-wrap wow fadeInUp" style="background-color: #dceef6;">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="logo-sec">
+                                            @if (item.VEMAYBAY.CHUYENBAY.MAYBAY.HANGMAYBAY.TenHang == "BamBoo Airways")
+                                            {
+                                                <img src="~/Image/flights/airlines/bamboo_airway.png"
+                                                     class="img-fluid blur-up lazyload" alt="" style="width: 90px;">
+                                            }
+                                            else if (item.VEMAYBAY.CHUYENBAY.MAYBAY.HANGMAYBAY.TenHang == "VietNam Airlines")
+                                            {
+                                                <img src="~/Image/flights/airlines/vietnam_airline.png"
+                                                     class="img-fluid blur-up lazyload" alt="" style="width: 110px;">
+                                            }
+                                            else if (item.VEMAYBAY.CHUYENBAY.MAYBAY.HANGMAYBAY.TenHang == "VietJet Air")
+                                            {
+                                                <img src="~/Image/flights/airlines/vietject_logo.png"
+                                                     class="img-fluid blur-up lazyload" alt="" style="width: 130px; margin-top: 15px">
+                                            }
+                                            <span class="title" name="">@item.VEMAYBAY.CHUYENBAY.MAYBAY.HANGMAYBAY.TenHang</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="airport-part">
+                                            <div class="airport-name">
+                                                <h4 name="">@item.VEMAYBAY.CHUYENBAY.GioBay</h4>
+                                                <h6 name="" style="width: 50px">@item.VEMAYBAY.CHUYENBAY.NoiDi</h6>
+                                            </div>
+                                            <div class="airport-progress">
+                                                <div class="typeticket">
+                                                    @item.VEMAYBAY.LOAIVE.TenLoaiVe
+                                                </div>
+                                                <a name=""></a>
+                                                <i class="fas fa-plane-departure float-start"></i>
+                                                <i class="fas fa-plane-arrival float-end"></i>
+                                                <div class="stop" name="">
+                                                    @item.VEMAYBAY.CHUYENBAY.NgayBay.Value.Day/@item.VEMAYBAY.CHUYENBAY.NgayBay.Value.Month/@item.VEMAYBAY.CHUYENBAY.NgayBay.Value.Year
+                                                </div>
+                                            </div>
+                                            <div class="airport-name arrival">
+                                                <h4 name="">@item.VEMAYBAY.CHUYENBAY.GioDen</h4>
+                                                <h6 name="" style="width: 50px">@item.VEMAYBAY.CHUYENBAY.NoiDen</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="price">
+                                            <div>
+                                                <span style="font-size: 3px; color: white" name="idVe">@item.idVe</span>
+                                                <h4 name="">@item.TienThanhToan VNĐ</h4>
+                                                <h6 name="" style="margin-top: 5px;">@tongsokg Kg</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </td>
+                        <td style="font-size: 18px">
+                            @item.NgayDatVe.Value.Day/@item.NgayDatVe.Value.Month/@item.NgayDatVe.Value.Year
+                        </td>
+                        <td>
+                            @item.USER.HoTen
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+        </div>
+    </form>
+</div>
+<br />
+<br />
+<br />
+
+
+
+

@@ -31,6 +31,7 @@ namespace HeThongQuanLyDatVeMayBay.Controllers
             int pageSize = 8;
 
             int pageNumber = (page ?? 1);
+            
             return View(links.ToPagedList(pageNumber, pageSize));
         }
         [HttpPost]

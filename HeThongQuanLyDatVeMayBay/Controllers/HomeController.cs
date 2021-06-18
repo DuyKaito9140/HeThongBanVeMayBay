@@ -11,6 +11,7 @@ namespace HeThongQuanLyDatVeMayBay.Controllers
     public class HomeController : Controller
     {
         DBEntities_QLHeThongDatVeMayBay db = new DBEntities_QLHeThongDatVeMayBay();
+        HomeModel home = new HomeModel();
         LoginModel lg = new LoginModel();
         SigninModel sg = new SigninModel();
         EditInfomation ei = new EditInfomation();
@@ -113,7 +114,7 @@ namespace HeThongQuanLyDatVeMayBay.Controllers
         public ActionResult History() 
         {
             string idu = HeThongQuanLyDatVeMayBay.Models.Content.idUser;
-            var listvebooked = db.DATVEs.Where(m => m.idUser == idu).ToList();
+            var listvebooked = db.DATVEs.Where(m => m.idUser == idu).OrderByDescending(m => m.NgayDatVe).ToList();
             ViewBag.TicketBooked = listvebooked;
             return View(ViewBag);
         }
@@ -128,6 +129,11 @@ namespace HeThongQuanLyDatVeMayBay.Controllers
         public ActionResult Contact() 
         {
             return View();
+        }
+        public ActionResult ReturnTicket(string iddv)
+        {
+            home.Return_ticket(iddv);
+            return RedirectToAction("History");
         }
     }
 }

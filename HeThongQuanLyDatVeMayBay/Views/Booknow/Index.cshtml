@@ -36,6 +36,12 @@
     .fontbold {
         font-weight: 600;
     }
+
+    .create-refesh {
+        display: flex;
+        margin-top: 30px;
+        text-align: center;
+    }
 </style>
 <!-- pre-loader start -->
 <div class="skeleton_loader">
@@ -704,401 +710,34 @@
     <div class="flight run"></div>
 </section>
 <!-- breadcrumb end -->
-<!-- search section start -->
-<div class="bg-inner small-section pb-0">
-    <div class="container">
-        <div class="flight-search">
-            <div class="responsive-detail">
-                <div class="destination">
-                    <span>dubai</span>
-                    <span><i class="fas fa-long-arrow-alt-right"></i></span>
-                    <span>paris</span>
-                </div>
-                <div class="details">
-                    <span>tue, 19-Aug-2019</span>
-                    <span class="divider">|</span>
-                    <span>2 Adults</span>
-                </div>
-                <div class="modify-search">
-                    <a href="javascript:void(0)" class="btn btn-solid color1"> modify search</a>
-                </div>
-            </div>
-            <div class="flight-search-detail">
-                <form class="row m-0">
-                    <div class="col-lg-2">
-                        <div class="form-group">
-                            <label>from</label>
-                            <input type="text" class="form-control open-select" id="exampleInputEmail1"
-                                   value="dubai(DXB)" placeholder="from">
-                            <img src="../assets/images/icon/from.png" class="img-fluid blur-up lazyload" alt="">
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="form-group">
-                            <label>to</label>
-                            <input type="text" class="form-control open-select" value="paris(PAR)" placeholder="to">
-                            <img src="../assets/images/icon/location.png" class="img-fluid blur-up lazyload" alt="">
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="form-group">
-                            <label>departure date</label>
-                            <input placeholder="Depart Date" value="10/01/2019" id="datepicker" style="height: 38px" />
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="form-group">
-                            <label>return date</label>
-                            <input placeholder="Return Date" id="datepicker1" style="height: 38px" />
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="form-group">
-                            <label>traveller & class</label>
-                            <input type="text" class="form-control  open-select" value="1 traveller"
-                                   placeholder="to">
-                            <img src="../assets/images/icon/user.png" class="img-fluid blur-up lazyload" alt="">
-                            <div class="selector-box-flight">
-                                <div class="room-cls">
-                                    <div class="qty-box">
-                                        <label>adult</label>
-                                        <div class="input-group">
-                                            <button type="button" class="btn quantity-left-minus" data-type="minus"
-                                                    data-field="">
-                                                -
-                                            </button>
-                                            <input type="text" name="quantity"
-                                                   class="form-control qty-input input-number" value="1">
-                                            <button type="button" class="btn quantity-right-plus" data-type="plus"
-                                                    data-field="">
-                                                +
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="qty-box">
-                                        <label>children</label>
-                                        <div class="input-group">
-                                            <button type="button" class="btn quantity-left-minus" data-type="minus"
-                                                    data-field="">
-                                                -
-                                            </button>
-                                            <input type="text" name="quantity"
-                                                   class="form-control qty-input input-number" value="1">
-                                            <button type="button" class="btn quantity-right-plus" data-type="plus"
-                                                    data-field="">
-                                                +
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flight-class">
-                                    <div class="form-check">
-                                        <input class="form-check-input radio_animated" type="radio"
-                                               name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                                        <label class="form-check-label" for="exampleRadios1">
-                                            economy
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input radio_animated" type="radio"
-                                               name="exampleRadios" id="exampleRadios2" value="option2">
-                                        <label class="form-check-label" for="exampleRadios2">
-                                            premium
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input radio_animated" type="radio"
-                                               name="exampleRadios" id="exampleRadios3" value="option3">
-                                        <label class="form-check-label" for="exampleRadios3">
-                                            business
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="bottom-part">
-                                    <a href="javascript:void(0)" class="btn">apply</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="search-btn">
-                            <a href="#" class="btn btn-solid color1">search</a>
-                        </div>
-                    </div>
-                    <div class="responsive-close">
-                        <i class="far fa-times-circle"></i>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- search section end -->
 <!-- section body start -->
 <section class="pt-0 bg-inner small-section">
-    <div class="container">
+    <div class="container" style="margin-left: 8%">
         <div class="row">
-            <div class="col-lg-3">
-                <div class="left-sidebar">
-                    <div class="back-btn">
-                        back
-                    </div>
-                    <div class="search-bar">
-                        <input type="text" placeholder="Search here..">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <div class="middle-part collection-collapse-block open">
-                        <a href="javascript:void(0)" class="section-title collapse-block-title">
-                            <h5>latest filter</h5>
-                            <img src="../assets/images/icon/adjust.png" class="img-fluid blur-up lazyload" alt="">
-                        </a>
-                        <div class="collection-collapse-block-content ">
-                            <div class="filter-block">
-                                <div class="collection-collapse-block open">
-                                    <h6 class="collapse-block-title">stops</h6>
-                                    <div class="collection-collapse-block-content">
-                                        <div class="collection-brand-filter">
-                                            <div class="form-check collection-filter-checkbox">
-                                                <input type="checkbox" class="form-check-input" id="free-d">
-                                                <label class="form-check-label" for="free-d">non stop</label>
-                                            </div>
-                                            <div class="form-check collection-filter-checkbox">
-                                                <input type="checkbox" class="form-check-input" id="time">
-                                                <label class="form-check-label" for="time">1 stop</label>
-                                            </div>
-                                            <div class="form-check collection-filter-checkbox">
-                                                <input type="checkbox" class="form-check-input" id="zara">
-                                                <label class="form-check-label" for="zara">2 stop</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="filter-block">
-                                <div class="collection-collapse-block open">
-                                    <h6 class="collapse-block-title">price</h6>
-                                    <div class="collection-collapse-block-content">
-                                        <div class="wrapper">
-                                            <div class="range-slider">
-                                                <input type="text" class="js-range-slider" value="" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="filter-block">
-                                <div class="collection-collapse-block open">
-                                    <h6 class="collapse-block-title">airlines</h6>
-                                    <div class="collection-collapse-block-content">
-                                        <div class="collection-brand-filter">
-                                            <div class="form-check collection-filter-checkbox">
-                                                <input type="checkbox" class="form-check-input" id="wifi">
-                                                <label class="form-check-label" for="wifi">Qatar airways</label>
-                                            </div>
-                                            <div class="form-check collection-filter-checkbox">
-                                                <input type="checkbox" class="form-check-input" id="spa">
-                                                <label class="form-check-label" for="spa">
-                                                    singapore
-                                                    airlines
-                                                </label>
-                                            </div>
-                                            <div class="form-check collection-filter-checkbox">
-                                                <input type="checkbox" class="form-check-input" id="pet">
-                                                <label class="form-check-label" for="pet">Nippon Airways</label>
-                                            </div>
-                                            <div class="form-check collection-filter-checkbox">
-                                                <input type="checkbox" class="form-check-input" id="parking">
-                                                <label class="form-check-label" for="parking">
-                                                    Cathay
-                                                    Pacific
-                                                </label>
-                                            </div>
-                                            <div class="form-check collection-filter-checkbox">
-                                                <input type="checkbox" class="form-check-input" id="swimming">
-                                                <label class="form-check-label" for="swimming">Emirates</label>
-                                            </div>
-                                            <div class="form-check collection-filter-checkbox">
-                                                <input type="checkbox" class="form-check-input" id="chinese">
-                                                <label class="form-check-label" for="chinese">
-                                                    Hainan
-                                                    Airlines
-                                                </label>
-                                            </div>
-                                            <div class="form-check collection-filter-checkbox">
-                                                <input type="checkbox" class="form-check-input" id="restaurant">
-                                                <label class="form-check-label" for="restaurant">
-                                                    Qantas
-                                                    Airways
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="filter-block">
-                                <div class="collection-collapse-block open">
-                                    <h6 class="collapse-block-title">departure time</h6>
-                                    <div class="collection-collapse-block-content">
-                                        <div class="collection-brand-filter">
-                                            <div class="form-check collection-filter-checkbox">
-                                                <input type="checkbox" class="form-check-input" id="suomi">
-                                                <label class="form-check-label" for="suomi">
-                                                    <img src="../assets/images/icon/time/sunrise.png"
-                                                         class="img-fluid blur-up lazyload me-1" alt=""> morning (6am
-                                                    to 12pm)
-                                                </label>
-                                            </div>
-                                            <div class="form-check collection-filter-checkbox">
-                                                <input type="checkbox" class="form-check-input" id="english">
-                                                <label class="form-check-label" for="english">
-                                                    <img src="../assets/images/icon/time/sun.png"
-                                                         class="img-fluid blur-up lazyload me-1" alt=""> noon (12pm
-                                                    to 6pm)
-                                                </label>
-                                            </div>
-                                            <div class="form-check collection-filter-checkbox">
-                                                <input type="checkbox" class="form-check-input" id="sign">
-                                                <label class="form-check-label" for="sign">
-                                                    <img src="../assets/images/icon/time/night.png"
-                                                         class="img-fluid blur-up lazyload me-1" alt=""> evening
-                                                    (after 6pm)
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="filter-block">
-                                <div class="collection-collapse-block open">
-                                    <h6 class="collapse-block-title">arrival time</h6>
-                                    <div class="collection-collapse-block-content">
-                                        <div class="collection-brand-filter">
-                                            <div class="form-check collection-filter-checkbox">
-                                                <input type="checkbox" class="form-check-input" id="morning">
-                                                <label class="form-check-label" for="morning">
-                                                    <img src="../assets/images/icon/time/sunrise.png"
-                                                         class="img-fluid blur-up lazyload me-1" alt=""> morning (6am
-                                                    to 12pm)
-                                                </label>
-                                            </div>
-                                            <div class="form-check collection-filter-checkbox">
-                                                <input type="checkbox" class="form-check-input" id="noon">
-                                                <label class="form-check-label" for="noon">
-                                                    <img src="../assets/images/icon/time/sun.png"
-                                                         class="img-fluid blur-up lazyload me-1" alt=""> noon (12pm
-                                                    to 6pm)
-                                                </label>
-                                            </div>
-                                            <div class="form-check collection-filter-checkbox">
-                                                <input type="checkbox" class="form-check-input" id="evening">
-                                                <label class="form-check-label" for="evening">
-                                                    <img src="../assets/images/icon/time/night.png"
-                                                         class="img-fluid blur-up lazyload me-1" alt=""> evening
-                                                    (after 6pm)
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bottom-info">
-                        <h5><span>i</span> need help</h5>
-                        <h4>856 - 215 - 211</h4>
-                        <h6>Monday to Friday 9.00am - 7.30pm</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-9 ratio3_2">
+            <div class="col-lg-11 ratio3_2">
                 <a href="javascript:void(0)" class="mobile-filter border-top-0">
                     <h5>latest filter</h5>
                     <img src="../assets/images/icon/adjust.png" class="img-fluid blur-up lazyload" alt="">
                 </a>
-                <div class="top-bar-flight">
-                    <div class="date-fare-slider">
-                        <div class="fare-6">
-                            <div>
-                                <a href="javascript:void(0)">
-                                    <div class="fare-box">
-                                        <h5 class="date">oct 14</h5>
-                                        <h6 class="fare">$250</h6>
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <a href="javascript:void(0)">
-                                    <div class="fare-box">
-                                        <h5 class="date">oct 15</h5>
-                                        <h6 class="fare">$250</h6>
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <a href="javascript:void(0)">
-                                    <div class="fare-box active">
-                                        <h5 class="date">oct 16</h5>
-                                        <h6 class="fare">$250</h6>
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <a href="javascript:void(0)">
-                                    <div class="fare-box">
-                                        <h5 class="date">oct 17</h5>
-                                        <h6 class="fare">$250</h6>
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <a href="javascript:void(0)">
-                                    <div class="fare-box">
-                                        <h5 class="date">oct 18</h5>
-                                        <h6 class="fare">$250</h6>
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <a href="javascript:void(0)">
-                                    <div class="fare-box">
-                                        <h5 class="date">oct 19</h5>
-                                        <h6 class="fare">$250</h6>
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <div class="fare-box">
-                                    <h5 class="date">oct 22</h5>
-                                    <h6 class="fare">$250</h6>
-                                </div>
-                            </div>
-                            <div>
-                                <a href="javascript:void(0)">
-                                    <div class="fare-box">
-                                        <h5 class="date">oct 22</h5>
-                                        <h6 class="fare">$250</h6>
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                <a href="javascript:void(0)">
-                                    <div class="fare-box">
-                                        <h5 class="date">oct 22</h5>
-                                        <h6 class="fare">$250</h6>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="fare-calender">
-                        <div>
-                            <i class="far fa-calendar-alt"></i>
-                            <h6 class="title">fare calender</h6>
-                        </div>
-                        <div class="calender-external">
-                            <div id='calendar'></div>
-                        </div>
-                    </div>
+                <div class="create-refesh">
+                    <input type="radio" name="HienThi" value="3" style=" height: 20px; width: 50px; margin: 3px 0px 0px 100px;" />
+                    <label style="margin-top: 4px;">Tất cả</label><br /><br />
+                    <input type="radio" name="HienThi" value="1" style=" height: 20px; width: 50px; margin: 3px 0px 0px 50px;" />
+                    <label style="margin-top: 4px;">Còn vé</label> <br />
+                    <input type="radio" name="HienThi" value="2" style=" height: 20px; width: 50px; margin: 3px 0px 0px 50px;" />
+                    <label style="margin-top: 4px;">Hết vé</label><br />
+
+                    <label style="margin-left: 200px; font-size: 16px;margin-top: 4px;">Lọc theo giá: </label>
+                    <form action="/Booknow/sortup" method="post">
+                        <button type="submit" style="margin-left: 30px; height: 35px; padding-top: 11px;" class="btn btn-outline-primary"><i class="fas fa-sort-up" style="font-size: 18px;"></i></button>
+                        <label style="margin-left: 5px; font-size: 16px;margin-top: 4px;">Từ thấp đến cao</label>
+                    </form>
+                    
+                    <form action="/Booknow/sortdown" method="post">
+                        <button type="submit" style="margin-left: 30px; height: 35px" class="btn btn-outline-primary"><i class="fas fa-sort-down" style="font-size: 18px;"></i></button>
+                        <label style="margin-left: 5px; font-size: 16px;margin-top: 4px;">Từ cao xuống thấp</label>
+                    </form>                   
+                    
                 </div>
                 <form class="flight-detail-sec">
                     <div class="title-bar">
@@ -1124,7 +763,7 @@
                             string tenhang = vemaybay.CHUYENBAY.MAYBAY.HANGMAYBAY.TenHang.ToString();
                             if (vemaybay.TrangThai == "Còn vé")
                             {
-                                <div class="detail-wrap wow fadeInUp">
+                                <div class="detail-wrap wow fadeInUp conve">
 
                                     <div class="row">
                                         <div class="col-md-2">
@@ -1141,7 +780,7 @@
                                                 }
                                                 else if (tenhang == "VietJet Air")
                                                 {
-                                                    <img src="~/Image/flights/airlines/vietject_logo.jpg"
+                                                    <img src="~/Image/flights/airlines/vietject_logo.png"
                                                          class="img-fluid blur-up lazyload" alt="" width="290" height="290">
                                                 }
                                                 <span class="title" name="">@tenhang</span>
@@ -1191,7 +830,7 @@
                             }
                             else
                             {
-                                <div class="detail-wrap wow fadeInUp" style="background-color: #e9e5e5">
+                                <div class="detail-wrap wow fadeInUp hetve" style="background-color: #e9e5e5">
 
                                     <div class="row">
                                         <div class="col-md-2">
@@ -1249,7 +888,7 @@
                                         <div class="col-md-3">
                                             <div class="book-flight">
                                                 <div style="width: 116px; height: 35px;padding-top: 5px; font-size: 16px; font-weight: 700;
-                                                    text-align: center; color: white; background-color: seagreen;">Sold Out</div>                                                
+                                                    text-align: center; color: white; background-color: seagreen;">Sold Out</div>
                                             </div>
                                         </div>
                                     </div>

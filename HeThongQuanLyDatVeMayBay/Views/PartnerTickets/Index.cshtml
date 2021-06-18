@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Index";
 }
-<div class="container mt-5">
+<div class="container mt-5"  style=" padding: 10px 50px 0px 60px;">
     <div class="create-refesh">
         @Html.ActionLink("Create list ticket for a flight", "Create", "PartnerTickets", new { @class = "btn btn-success" })
         @using (Html.BeginForm())
@@ -58,7 +58,7 @@
                             }
                             else if (tenhang == "VietJet Air")
                             {
-                                <img src="~/Image/flights/airlines/vietject_logo.jpg"
+                                <img src="~/Image/flights/airlines/vietject_logo.png"
                                      class="img-fluid blur-up lazyload" alt="" style="width: 160px; margin-top: 15px">
                             }
                         </td>

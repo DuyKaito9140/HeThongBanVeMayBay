@@ -35,6 +35,8 @@ namespace HeThongQuanLyDatVeMayBay.Models
         public static string idquyen = "";
         public static string codekhuyenmai= "";
         public static int numstart = 0;
+
+        public static string sort = "";
         public static string RandomString(int length)
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -70,6 +72,35 @@ namespace HeThongQuanLyDatVeMayBay.Models
                 sum = "0";
             }
             return sum;
+        }
+
+        public static int ckeckngay(int d, int m, int y) //  7/7/2021
+        {
+            DateTime date = DateTime.Now;
+            int y_now = date.Year;
+            int m_now = date.Month;
+            int d_now = date.Day;
+
+            if (y < y_now)
+            {
+                return 0;
+            }
+            else if (y == y_now && m < m_now)
+            {
+                return 0;
+            }
+            else if (y == y_now && m == m_now && (d - d_now) < 0)
+            {
+                return 0;
+            }
+            else if (y == y_now && m == m_now && (d - d_now) < 2 && (d - d_now) >= 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return 2;
+            }
         }
     }
 }
