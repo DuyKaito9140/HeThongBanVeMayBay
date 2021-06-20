@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
+using System.Net;
 using System.Web.Mvc;
 using HeThongQuanLyDatVeMayBay.Models;
 using PagedList;
@@ -134,6 +136,31 @@ namespace HeThongQuanLyDatVeMayBay.Controllers
         {
             home.Return_ticket(iddv);
             return RedirectToAction("History");
+        }
+        public ActionResult Resetpass()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Resetpass_sendEmail(string toemail) 
+        {
+            var listuser = db.USERs.ToList();
+            foreach(var item in listuser)
+            {
+                if(item.Email == toemail)
+                {
+                    string subject = "GOLDSKY Reset Password";
+                    string body = "Hệ thống đã xác thực tài khoản của bạn !\nMật khẩu : " + item.ACCOUNT.Password;
+
+                    WebMail.Send(toemail, subject, body, null, null, null, true, null, null, null, null, null, null);  
+
+                    HeThongQuanLyDatVeMayBay.Models.Content.mess = "Success";
+                    return RedirectToAction("Resetpass");
+                }
+            }
+            HeThongQuanLyDatVeMayBay.Models.Content.mess = "Send Email Fail";
+            return RedirectToAction("Resetpass");
         }
     }
 }

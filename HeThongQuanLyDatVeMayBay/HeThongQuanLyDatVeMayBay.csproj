@@ -240,6 +240,7 @@
     <Content Include="Content\css\main.css" />
     <Content Include="Content\css\sb-admin-2.css" />
     <Content Include="Content\css\sb-admin-2.min.css" />
+    <Content Include="Content\css\style.css" />
     <Content Include="Content\css\util.css" />
     <Content Include="Content\datepicker.min.css" />
     <Content Include="Content\fare-calender.css" />
@@ -567,6 +568,7 @@
     <Content Include="Views\HistoryPartner\Index.cshtml" />
     <Content Include="Views\RevenuePartner\Index.cshtml" />
     <Content Include="Views\ManagmentTicket\Index.cshtml" />
+    <Content Include="Views\Home\Resetpass.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

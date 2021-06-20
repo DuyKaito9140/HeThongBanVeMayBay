@@ -37,6 +37,8 @@ namespace HeThongQuanLyDatVeMayBay.Models
         public static int numstart = 0;
 
         public static string sort = "";
+        public static string mess = ""; 
+
         public static string RandomString(int length)
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";

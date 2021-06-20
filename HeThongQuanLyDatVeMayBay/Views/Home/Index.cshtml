@@ -6,6 +6,11 @@
     var listnoiden = db.CHUYENBAYs.Select(p => p.NoiDen).Distinct().ToList();
     var listloaive = db.LOAIVEs.ToList();
 }
+<style>
+    body {
+        overflow-y: hidden;
+    }
+</style>
 <!-- pre-loader start -->
 @if (Content.numstart == 0)
 {
